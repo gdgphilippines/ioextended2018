@@ -3,8 +3,8 @@ import { template } from './template.js';
 import style from './style.styl';
 const { HTMLElement, customElements } = window;
 
-class Page extends ElementLiteLit(HTMLElement) {
-  static get is () { return 'banner-header'; }
+class Component extends ElementLiteLit(HTMLElement) {
+  static get is () { return 'section-location'; }
 
   constructor () {
     super();
@@ -52,8 +52,8 @@ class Page extends ElementLiteLit(HTMLElement) {
   }
 }
 
-if (!customElements.get(Page.is)) {
-  customElements.define(Page.is, Page);
+if (!customElements.get(Component.is)) {
+  customElements.define(Component.is, Component);
 } else {
-  console.warn(`${Page.is} is already defined somewhere. Please check your code.`);
+  console.warn(`${Component.is} is already defined somewhere. Please check your code.`);
 }

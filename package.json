@@ -31,6 +31,7 @@
     "es6-shim": "^0.35.3",
     "intersection-observer": "^0.5.0",
     "localforage": "^1.7.1",
+    "marked": "^0.4.0",
     "whatwg-fetch": "^2.0.3"
   },
   "flat": true,

@@ -1,1 +1,48 @@
 @import '../../styles/general/host-block.styl'
+@import '../../styles/general/typography.styl'
+@import '../../styles/general/color.styl'
+
+:host
+  padding-left 72px
+  padding-top 10rem
+  padding-right 72px
+
+.google
+  height 15rem
+  margin-left -2rem
+  vertical-align middle
+  @media screen and (max-width: 520px)
+    height auto
+
+.io18
+  height 15rem
+  vertical-align middle
+  @media screen and (max-width: 520px)
+    height auto
+
+.extended
+  display inline-block
+  vertical-align middle
+  margin-top -12px
+  @media screen and (max-width: 610px)
+    margin-top 12px
+
+.h1
+  h1()
+  color $gray-6
+  display block
+  line-height 4rem
+
+.paragraph
+  paragraph()
+  color $gray-6
+  display block
+  padding-left 3px
+
+.icon
+  fill $orange
+  height 3rem
+  vertical-align middle
+
+.icon-text
+  padding-left 1rem

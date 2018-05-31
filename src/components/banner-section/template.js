@@ -1,7 +1,8 @@
 import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
-  <img class="banner-img" src$="${self.img}">
+  <div class="banner-img" style$="background-image: url('${self.img}')">
+  </div>
   <div class="banner-title-container">
     <div class="banner-title">
       <slot></slot>

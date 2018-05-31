@@ -5,7 +5,7 @@ import '../../smart-components/navigation-loader/index.js';
 import '../../components/header-navigation/index.js';
 const { HTMLElement, customElements } = window;
 
-class Page extends ElementLiteLit(HTMLElement) {
+class Component extends ElementLiteLit(HTMLElement) {
   static get is () { return 'project-header'; }
 
   render () {
@@ -25,8 +25,8 @@ class Page extends ElementLiteLit(HTMLElement) {
   }
 }
 
-if (!customElements.get(Page.is)) {
-  customElements.define(Page.is, Page);
+if (!customElements.get(Component.is)) {
+  customElements.define(Component.is, Component);
 } else {
-  console.warn(`${Page.is} is already defined somewhere. Please check your code.`);
+  console.warn(`${Component.is} is already defined somewhere. Please check your code.`);
 }
