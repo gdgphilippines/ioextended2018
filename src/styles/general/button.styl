@@ -1,0 +1,19 @@
+@import './color.styl'
+@import './typography.styl'
+
+button()
+  display inline-block
+  vertical-align top
+  paragraph()
+  padding 13px 20px
+  border-radius 10px
+  background $teal
+  border none
+  text-decoration none
+  color $dark-teal
+  text-transform uppercase
+
+  [disable]
+    background $gray-3
+    color $gray-4
+

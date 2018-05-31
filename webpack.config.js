@@ -52,6 +52,10 @@ const copyStatics = {
     {
       from: resolve(__dirname, './src/assets'),
       to: 'assets'
+    },
+    {
+      from: resolve(__dirname, './data'),
+      to: 'data'
     }
   ]
 };
@@ -84,9 +88,9 @@ const shared = env => {
         {
           test: /\.worker\.js$/,
           use: [
-            
-            { 
-              loader: 'worker-loader' 
+
+            {
+              loader: 'worker-loader'
             },
             {
               loader: 'babel-loader',
