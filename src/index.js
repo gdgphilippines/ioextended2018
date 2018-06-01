@@ -3,7 +3,7 @@ import { fragments } from './utils/fragments.js';
 import { updateState } from './utils/ui-state.js';
 const core = document.querySelector('core-lite');
 core.addEventListener('current-route-change', currentRouteChanged);
-core.addEventListener('route-param-object-change', routeParamObjectChanged);
+core.addEventListener('router-param-object-change', routeParamObjectChanged);
 window.addEventListener('click', closeSidebar);
 
 function currentRouteChanged ({ detail: route }) {

@@ -10,6 +10,7 @@ const theme = {
 
 const fragments = {
   'page-home': 'src/pages/page-home/index.js',
+  'page-location': 'src/pages/page-location/index.js',
   'page-design-guide': 'src/pages/page-design-guide/index.js',
   'page-not-found': 'src/pages/page-not-found/index.js'
 };
@@ -22,6 +23,10 @@ const routes = [
   {
     route: '/design-guide',
     page: 'page-design-guide'
+  },
+  {
+    route: '/location/:id',
+    page: 'page-location'
   },
   {
     route: 'no-page',
