@@ -1,7 +1,7 @@
 {
-  "name": "@littleq/spa-lite",
+  "name": "ioextended2018ph",
   "version": "0.0.0",
-  "description": "Single-page-architecture that uses lite",
+  "description": "Google I/O is an annual software developer-focused conference which features a keynote on the latest updates and announcements by Google. The conference hosts in-depth sessions focused on building web, mobile, and enterprise applications.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -76,7 +76,7 @@
     "superstatic": "5.0.1",
     "text-loader": "0.0.1",
     "webpack": "4.1.1",
-    "webpack-cli": "2.0.12",
+    "webpack-cli": "2.1.4",
     "webpack-merge": "4.1.1",
     "worker-loader": "^1.1.1"
   }
