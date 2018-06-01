@@ -1,0 +1,30 @@
+{
+  "web": {
+    "title": "Web",
+    "icon": ""
+  },
+  "kotlin": {
+    "title": "Android / Kotlin",
+    "icon": ""
+  },
+  "firebase": {
+    "title": "Firebase",
+    "icon": ""
+  },
+  "iot": {
+    "title": "Internet of Things / Android Things",
+    "icon": ""
+  },
+  "machine-learning": {
+    "title": "Machine Learning / Tensorflow",
+    "icon": ""
+  },
+  "cloud": {
+    "title": "Cloud",
+    "icon": ""
+  },
+  "assistant": {
+    "title": "Google Assistant / Actions on Google",
+    "icon": ""
+  }
+}
