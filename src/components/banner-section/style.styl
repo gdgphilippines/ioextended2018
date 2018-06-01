@@ -1,0 +1,25 @@
+@import '../../styles/general/host-block.styl'
+@import '../../styles/general/color.styl'
+
+.banner-img
+  height 80vh
+  background-repeat no-repeat
+  background-position bottom
+  background-size cover
+
+.banner-title-container
+  display flex
+
+.banner-title
+  background $purple
+  flex 9
+
+::slotted(*)
+  color $white
+  padding-left 72px
+  padding-right 48px
+
+.banner-dots
+  flex 3
+  background-image url('/assets/images/dot-3.svg')
+  background-size 24px

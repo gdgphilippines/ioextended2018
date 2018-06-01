@@ -1,0 +1,54 @@
+@import '../../styles/general/host-block.styl'
+
+.header
+  display: flex
+  align-items: center
+  position: relative
+  height: 60px
+
+.header::before
+  position: absolute
+  right: 0px
+  bottom: -5px
+  left: 0px
+  width: 100%
+  height: 5px
+  content: ""
+  box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4)
+
+.header
+  .title
+    margin: 0
+    padding-left: 20px
+
+  .spacer
+    flex: 1
+
+  .button
+    margin-left: 20px
+
+.button
+  border: 0
+  background: none
+  cursor: pointer
+  border-radius: 50%
+  padding: 0
+
+  &:hover
+    background: #eee
+
+.icon
+  width: 24px
+  height: 24px
+
+.mobile-only
+  display: none
+
+  @media screen and (max-width: 600px)
+    display: block
+
+.not-mobile
+  display: block
+
+  @media screen and (max-width: 600px)
+    display: none

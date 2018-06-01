@@ -1,2 +1,2 @@
-# ioextended2018
-IO Extended 2018 Site built on SPA-lite
+# Google IO Extended Philippines 2018
+Google IO Extended Philippines 2018 Single Page Architecture using lite components
