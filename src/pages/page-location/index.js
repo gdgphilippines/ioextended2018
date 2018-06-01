@@ -6,6 +6,7 @@ import '../../components/banner-section/index.js';
 import '../../components/general-section/index.js';
 import '../../components/footer-section/index.js';
 import '../../components/section-location/index.js';
+import '../../components/schedule-topic/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
 class Page extends ElementLiteLit(HTMLElement) {
@@ -16,7 +17,8 @@ class Page extends ElementLiteLit(HTMLElement) {
     this.__data = {
       data: {
         date: 'Loading...',
-        location: 'Loading...'
+        location: 'Loading...',
+        schedule: []
       }
     };
     this.__boundFetchPageData = this.fetchPageData.bind(this);

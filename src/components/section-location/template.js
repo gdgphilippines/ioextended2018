@@ -22,8 +22,8 @@ const template = (self) => html`
     <span class="location icon-text">${self.location}</span>
   </p>
   ${self.registerLink ? html`
-    <a class="button" href="${self.registerLink}">
-      Register
+    <a class="button" target="_blank" rel="noopener" href="${self.registerLink}">
+      Register 
     </a>
     ${self.registerDisable ? html`
       <p class="register">
