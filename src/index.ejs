@@ -242,6 +242,51 @@
         }
       })();
     </script>
+    
+    <script>
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/service-worker.js', {
+          scope: '/'
+        }).then(function (registration) {
+          registration.onupdatefound = function () {
+            var installingWorker = registration.installing
+            installingWorker.onstatechange = function () {
+              switch (installingWorker.state) {
+                case 'installed':
+                  if (!navigator.serviceWorker.controller) {
+                    console.log('Caching Complete! Future visits will work offline.')
+                    // if (App.Shell && App.Shell.showMessage && typeof App.Shell.showMessage === 'function') {
+                    //   App.Shell.showMessage('Caching complete! Future visits will work offline.', function() { App.Shell.closeToast() }, 'Close', null, 10000)
+                    // } else {
+                      
+                    // }
+                  }
+                  break
+                case 'redundant':
+                  console.error(new Error('The installing service worker became redundant.'));
+                  // Raven.captureMessage('The installing service worker became redundant.');
+              }
+            }
+          }
+          if (navigator.serviceWorker.controller) {
+            console.log('The service worker is currently handling network operations.')
+          } else {
+            console.log('Please reload this page to allow the service worker to handle network operations.')
+          }
+        })
+        // Check to see if the service worker controlling the page at initial load
+        // has become redundant, since this implies there's a new service worker with fresh content.
+        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+          navigator.serviceWorker.controller.onstatechange = function (event) {
+            if (event.target.state === 'redundant') {
+              // Define a handler that will be used for the next io-toast tap, at which point it
+              // be automatically removed.
+              window.location.reload();
+            }
+          };
+        }
+      }
+    </script>
 
     <script>
       (function(){

@@ -2,6 +2,7 @@ const { resolve } = require('path');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const moduleConf = require('./webpack-module.config');
 const nomoduleConf = require('./webpack-nomodule.config');
 const getHtmlOptions = require('./src/utils/html-webpack/get-html-options');
@@ -62,6 +63,56 @@ const copyStatics = {
 
 const shared = env => {
   const IS_MODULE_BUILD = env.BROWSERS === 'module';
+  
+  const plugins = [
+    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, 'index')),
+    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, '404')),
+    new CopyWebpackPlugin(copyStatics.copyPolyfills),
+  ];
+  
+  if (!IS_DEV_SERVER) {
+    plugins.push(new WorkboxPlugin.GenerateSW({
+      swDest: 'service-worker.js',
+      skipWaiting: true,
+      clientsClaim: true,
+      // Define runtime caching rules.
+      runtimeCaching: [
+        {
+          // Match any request ends with .png, .jpg, .jpeg or .svg.
+          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+
+          // Apply a cache-first strategy.
+          handler: 'cacheFirst',
+
+          options: {
+            cacheName: 'ioextended-data',
+            // Only cache 10 images.
+            expiration: {
+              maxEntries: 30,
+            },
+          },
+        },
+        {
+          // Match any request ends with .md, .json.
+          urlPattern: /\.(?:md|json)$/,
+          
+          
+
+          // Apply a cache-first strategy.
+          handler: 'networkFirst',
+          
+          options: {
+            cacheName: 'ioextended-data',
+            expiration: {
+              maxAgeSeconds: 60
+            }
+          }
+        }
+      ]
+    }))
+  }
+  
+  
 
   return {
     entry: {
@@ -130,11 +181,7 @@ const shared = env => {
         }
       ]
     },
-    plugins: [
-      new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, 'index')),
-      new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, '404')),
-      new CopyWebpackPlugin(copyStatics.copyPolyfills)
-    ]
+    plugins
   };
 };
 

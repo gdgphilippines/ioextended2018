@@ -15,6 +15,32 @@ const template = (self) => html`
         registerLink="${self.data.registrationLink}"
         registerDisable="${self.data.registrationClosed}">
     </section-location>
+    
+    <general-section class="sponsor">
+      <div class="section-text">
+        <h1>
+          Schedule
+        </h1>
+        
+        <ul class="schedule">
+          ${self.data.schedule.map(item => html`
+            <li class="schedule-item">
+              <div class="time">
+                ${item.time}
+              </div>
+              <schedule-topic 
+                  class="schedule-topic"
+                  title="${item.title}"
+                  session="${item.session}"
+                  codelabs="${item.codelabs}">
+              </schedule-topic>
+            </li>
+          `)}
+        </div>
+      </div>
+    </general-section>
+    
+    
   </main>
   <footer-section>
   </footer-section>
