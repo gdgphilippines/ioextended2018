@@ -8,7 +8,9 @@ const template = (self) => html`
       </svg>
     </button>
     <h1 class="title">
-      SPA-lite
+      <a class="logo-anchor" href="/">
+        <img class="logo" src="/assets/images/io18-2.svg">
+      </a>
     </h1>
     <div class="spacer">
     </div>

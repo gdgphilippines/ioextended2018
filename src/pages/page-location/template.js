@@ -9,23 +9,15 @@ const template = (self) => html`
     </banner-section>
   </header>
   <main class="main" role="main">
-    <section-location date="${'June - August 2018'}" location="${'Cavite, Manila, Pampanga, Palawan, Albay, and Naga'}"></section-location>
-    <general-section>
-      <mark-lite class="section-text" text="${self.about}"></mark-lite>
-    </general-section>
-    <banner-section img="${'/assets/images/pix.jpg'}">
-      <h1 class="h1">
-        What happened last year? <a class="button" href="" target="_blank" rel="noopener">View Photos</a>
-      </h1>
-    </banner-section>
-    <general-section class="sponsor">
-      <div class="section-text">
-        <h1>
-          Sponsor <a class="button" href="" target="_blank" rel="noopener">Be a Sponsor</a>
-        </h1>
-      </div>
-    </general-section>
+    <section-location 
+        date="${self.data.date}" 
+        location="${self.data.location}"
+        registerLink="${self.data.registrationLink}"
+        registerDisable="${self.data.registrationClosed}">
+    </section-location>
   </main>
+  <footer-section>
+  </footer-section>
 `;
 
 export { template };
