@@ -2,8 +2,17 @@ import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
   <heading>
-    <img class="google" alt="Google" src="/assets/images/google.svg">
-    <img class="io18" alt="I/O 18" src="/assets/images/io18.svg">
+    <lazy-picture
+        class="google"
+        src="/assets/images/google.svg"
+        alt="Google">
+    </lazy-picture>
+    <lazy-picture
+        class="io18"
+        src="/assets/images/io18.svg"
+        alt="I/O 18">
+    </lazy-picture>
+
     <div class="extended">
       <span class="h1">Extended</span>
       <span class="h1">Roadshow</span>

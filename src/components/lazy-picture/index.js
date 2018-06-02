@@ -30,8 +30,8 @@ class Component extends ElementLiteLit(HTMLElement) {
     const options = {
       threshold: [0.25, 0.75]
     };
-    const picture = this.shadowRoot.querySelector('picture');
-    this.shadowRoot.insertBefore(this.__bitmap, picture);
+    // const picture = this.shadowRoot.querySelector('picture');
+
     setTimeout(() => {
       this.__observer = new IntersectionObserver(this.__boundActivateImage, options);
       this.__observer.observe(this);
@@ -40,17 +40,6 @@ class Component extends ElementLiteLit(HTMLElement) {
 
   disconnectedCallback () {
     if (this.__observer && 'disconnect' in this.__observer) this.__observer.disconnect();
-  }
-
-  set viewPort (viewPort) {
-    this.__data['viewPort'] = viewPort;
-    if (viewPort) {
-
-    }
-  }
-
-  get viewPort () {
-    return this.__data['viewPort'];
   }
 
   set active (active) {
@@ -134,14 +123,19 @@ class Component extends ElementLiteLit(HTMLElement) {
   }
 
   loadImage () {
-    const picture = this.shadowRoot.querySelector('picture');
-    const img = picture.querySelector('.img');
-    if (this.__data['active']) {
-      this.__bitmap.src = this.__data['bitmap'];
-      this.__img.src = this.__data['src'];
-      this.__img.srcset = this.__data['srcset'];
-      if (img && img !== this.__img) picture.removeChild(img);
-      setTimeout(() => { picture.appendChild(this.__img) });
+    if (this.shadowRoot) {
+      const picture = this.shadowRoot.querySelector('picture');
+      const img = picture.querySelector('.img');
+      if (this.__data['active']) {
+        if (this.__data['bitmap']) this.shadowRoot.insertBefore(this.__bitmap, picture);
+        setTimeout(() => {
+          this.__bitmap.src = this.__data['bitmap'];
+          this.__img.src = this.__data['src'];
+          this.__img.srcset = this.__data['srcset'];
+          if (img && img !== this.__img) picture.removeChild(img);
+          setTimeout(() => { picture.appendChild(this.__img); });
+        });
+      }
     }
   }
 

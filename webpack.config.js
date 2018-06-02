@@ -88,9 +88,7 @@ const shared = env => {
       skipWaiting: true,
       clientsClaim: true,
       navigateFallback: '/index.html',
-      navigateFallbackWhitelist: [
-        [/^(?!(\/__)|(\/service-worker\.js)|(\/_bundle-sizes\.html)|(\/_statistic\.html)|(\/_statistic\.json))/]
-      ],
+      navigateFallbackWhitelist: [/^(?!(\/__)|(\/service-worker\.js)|(\/_bundle-sizes\.html)|(\/_statistic\.html)|(\/_statistic\.json))/],
       // Define runtime caching rules.
       runtimeCaching: [
         {

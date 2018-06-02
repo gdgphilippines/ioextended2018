@@ -54,6 +54,8 @@
     <style>
       <%= require('./index.styl') %>
     </style>
+
+
   </head>
   <body>
 
@@ -183,6 +185,7 @@
         }, false)
       })()
     </script>
+    <!-- <script src="/module.core.js" type="module" async></script> -->
     <script>
       (function() {
         'use strict';
@@ -307,5 +310,9 @@
     <noscript>
       <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     </noscript>
+    <% for (let i in compilation.assets) { %>
+    <% if (i.indexOf('worker') >= 0 || i.indexOf('core') >= 0)  { %>
+    <link rel="preload" href="/<%= i %>" as="script">
+    <% }} %>
   </body>
 </html>

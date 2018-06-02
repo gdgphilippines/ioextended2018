@@ -1,4 +1,5 @@
 import { ElementLiteLit, html } from '@littleq/element-lite';
+import { PageMixin } from '../../mixins/page-mixin/index.js';
 import { template } from './template.js';
 import style from './style.styl';
 import '../../components/banner-section/index.js';
@@ -8,7 +9,7 @@ import '../../components/section-location/index.js';
 import '../../components/mark-lite/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
-class Page extends ElementLiteLit(HTMLElement) {
+class Page extends PageMixin(ElementLiteLit(HTMLElement)) {
   static get is () { return 'page-home'; }
 
   constructor () {
