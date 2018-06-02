@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const packages = require('./package.json');
 const moduleConf = require('./webpack-module.config');
 const nomoduleConf = require('./webpack-nomodule.config');
 const getHtmlOptions = require('./src/utils/html-webpack/get-html-options');
@@ -51,6 +52,10 @@ const copyStatics = {
       to: 'vendor/fetch.js'
     },
     {
+      from: resolve(__dirname, './node_modules/object-fit-images/dist/ofi.min.js'),
+      to: 'vendor/ofi.js'
+    },
+    {
       from: resolve(__dirname, './src/assets'),
       to: 'assets'
     },
@@ -61,20 +66,31 @@ const copyStatics = {
   ]
 };
 
+if (IS_DEV_SERVER) {
+  copyStatics.copyPolyfills.push({
+    from: resolve(__dirname, './src/service-worker.js'),
+    to: 'service-worker.js'
+  });
+}
+
 const shared = env => {
   const IS_MODULE_BUILD = env.BROWSERS === 'module';
-  
+
   const plugins = [
     new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, 'index')),
     new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, '404')),
-    new CopyWebpackPlugin(copyStatics.copyPolyfills),
+    new CopyWebpackPlugin(copyStatics.copyPolyfills)
   ];
-  
+
   if (!IS_DEV_SERVER) {
     plugins.push(new WorkboxPlugin.GenerateSW({
       swDest: 'service-worker.js',
       skipWaiting: true,
       clientsClaim: true,
+      navigateFallback: '/index.html',
+      navigateFallbackWhitelist: [
+        [/^(?!(\/__)|(\/service-worker\.js)|(\/_bundle-sizes\.html)|(\/_statistic\.html)|(\/_statistic\.json))/]
+      ],
       // Define runtime caching rules.
       runtimeCaching: [
         {
@@ -85,34 +101,63 @@ const shared = env => {
           handler: 'cacheFirst',
 
           options: {
-            cacheName: 'ioextended-data',
-            // Only cache 10 images.
+            cacheName: `${packages.name}-images`,
             expiration: {
-              maxEntries: 30,
-            },
-          },
+              maxAgeSeconds: 3600
+            }
+          }
+        },
+        {
+          // Match any request ends with .png, .jpg, .jpeg or .svg.
+          urlPattern: /^https:\/\/fonts.gstatic.com\/.*/,
+
+          // Apply a cache-first strategy.
+          handler: 'cacheFirst',
+
+          options: {
+            cacheName: `${packages.name}-font`,
+            expiration: {
+              maxAgeSeconds: 3600
+            }
+          }
         },
         {
           // Match any request ends with .md, .json.
           urlPattern: /\.(?:md|json)$/,
-          
-          
 
           // Apply a cache-first strategy.
           handler: 'networkFirst',
-          
+
           options: {
-            cacheName: 'ioextended-data',
+            cacheName: `${packages.name}-data`,
+            expiration: {
+              maxAgeSeconds: 60
+            }
+          }
+        },
+        {
+          urlPattern: /^https:\/\/www.gstatic.com\/firebasejs\/.*/,
+          handler: 'cacheFirst',
+          options: {
+            cacheName: `${packages.name}-firebase`,
+            expiration: {
+              maxAgeSeconds: 3600
+            }
+          }
+        },
+        {
+          urlPattern: /^https:\/\/www.google-analytics.com\/analytics.js/,
+          handler: 'networkFirst',
+          options: {
+            cacheName: `${packages.name}-analytics`,
             expiration: {
               maxAgeSeconds: 60
             }
           }
         }
       ]
-    }))
+    }));
   }
-  
-  
 
   return {
     entry: {

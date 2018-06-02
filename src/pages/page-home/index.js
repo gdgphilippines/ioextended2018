@@ -13,17 +13,30 @@ class Page extends ElementLiteLit(HTMLElement) {
 
   constructor () {
     super();
-    this.__data = {};
+    this.__data = {
+      landing: {
+        date: 'Loading...',
+        location: 'Loading...',
+        banner: {
+          source: []
+        }
+      }
+    };
   }
 
   connectedCallback () {
     super.connectedCallback();
     const location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
     this.fetchAbout(location);
+    this.fetchLanding(location);
   }
 
   async fetchAbout (location) {
     this.about = await fetch(`${location}/data/about.md`).then(result => result.text());
+  }
+
+  async fetchLanding (location) {
+    this.landing = await fetch(`${location}/data/landing.json`).then(result => result.json());
   }
 
   set about (about) {
@@ -33,6 +46,15 @@ class Page extends ElementLiteLit(HTMLElement) {
 
   get about () {
     return this.__data['about'];
+  }
+
+  set landing (landing) {
+    this.__data['landing'] = landing;
+    this.invalidate();
+  }
+
+  get landing () {
+    return this.__data['landing'];
   }
 
   render () {

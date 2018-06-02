@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/tjmonsi/spa-lite#readme",
   "dependencies": {
-    "@littleq/core-lite": "0.0.4",
+    "@littleq/core-lite": "0.0.5",
     "@littleq/element-lite": "^0.2.0",
     "@webcomponents/shadycss": "^1.1.1",
     "@webcomponents/webcomponentsjs": "^1.1.0",
@@ -32,6 +32,7 @@
     "intersection-observer": "^0.5.0",
     "localforage": "^1.7.1",
     "marked": "^0.4.0",
+    "object-fit-images": "^3.2.3",
     "whatwg-fetch": "^2.0.3"
   },
   "flat": true,

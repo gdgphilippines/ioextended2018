@@ -5,6 +5,23 @@
   "locationLink": "",
   "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSfiPnUDc3ofD96R19760cSqVf9uCLyXKlNwAh3SEMTlNYTPTw/viewform",
   "registrationClosed": false,
+  "banner": {
+    "bitmap": "/data/images/naga-bitmap.jpg",
+    "src": "/data/images/naga-small.jpg",
+    "alt": "Image of the Google I/O Extended Roadshow last year",
+    "source": [
+      {
+        "srcset": "/data/images/naga-large.jpg",
+        "type": "image/jpeg",
+        "media": "(min-width: 1200px)"
+      },
+      {
+        "srcset": "/data/images/naga-medium.jpg",
+        "type": "image/jpeg",
+        "media": "(min-width: 600px) and (max-width: 1119px)"
+      }
+    ]
+  },
   "schedule": [
     {
       "time": "700",

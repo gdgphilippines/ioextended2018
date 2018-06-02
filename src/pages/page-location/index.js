@@ -18,6 +18,9 @@ class Page extends ElementLiteLit(HTMLElement) {
       data: {
         date: 'Loading...',
         location: 'Loading...',
+        banner: {
+          source: []
+        },
         schedule: []
       }
     };
@@ -28,7 +31,7 @@ class Page extends ElementLiteLit(HTMLElement) {
     super.connectedCallback();
     subscribe('routeParamObject', this.__boundFetchPageData);
   }
-  
+
   disconnectedCallback () {
     unsubscribe('routeParamObject', this.__boundFetchPageData);
   }

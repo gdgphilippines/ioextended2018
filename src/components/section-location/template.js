@@ -2,8 +2,8 @@ import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
   <heading>
-    <img class="google" src="/assets/images/google.svg">
-    <img class="io18" src="/assets/images/io18.svg">
+    <img class="google" alt="Google" src="/assets/images/google.svg">
+    <img class="io18" alt="I/O 18" src="/assets/images/io18.svg">
     <div class="extended">
       <span class="h1">Extended</span>
       <span class="h1">Roadshow</span>
@@ -23,7 +23,7 @@ const template = (self) => html`
   </p>
   ${self.registerLink ? html`
     <a class="button" target="_blank" rel="noopener" href="${self.registerLink}">
-      Register 
+      Register
     </a>
     ${self.registerDisable ? html`
       <p class="register">
