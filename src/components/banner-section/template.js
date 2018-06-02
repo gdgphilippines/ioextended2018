@@ -8,7 +8,8 @@ const template = (self) => html`
         src="${self.src}"
         srcset="${self.srcset}"
         sizes="${self.sizes}"
-        sources="${self.sources}">
+        sources="${self.sources}"
+        cover>
     </lazy-picture>
   </div>
   <div class="banner-title-container">

@@ -56,6 +56,23 @@ class Component extends ElementLiteLit(HTMLElement) {
     return this.__data['active'];
   }
 
+  set cover (cover) {
+    this.__data['cover'] = typeof cover === 'boolean' ? cover : (cover !== null && cover !== undefined);
+    if (this.__data['cover']) {
+      this.setAttribute('cover', '');
+      this.__bitmap.setAttribute('cover', '');
+      this.__img.setAttribute('cover', '');
+    } else {
+      this.removeAttribute('cover');
+      this.__bitmap.removeAttribute('cover');
+      this.__img.removeAttribute('cover');
+    }
+  }
+
+  get cover () {
+    return this.__data['cover'];
+  }
+
   set bitmap (bitmap) {
     this.__data['bitmap'] = bitmap;
   }
@@ -115,7 +132,7 @@ class Component extends ElementLiteLit(HTMLElement) {
   }
 
   static get observedAttributes () {
-    return ['bitmap', 'src', 'srcset', 'alt'];
+    return ['bitmap', 'src', 'srcset', 'alt', 'cover'];
   }
 
   attributeChangedCallback (attr, oldValue, newValue) {
@@ -127,7 +144,7 @@ class Component extends ElementLiteLit(HTMLElement) {
       const picture = this.shadowRoot.querySelector('picture');
       const img = picture.querySelector('.img');
       if (this.__data['active']) {
-        if (this.__data['bitmap']) this.shadowRoot.insertBefore(this.__bitmap, picture);
+        if (this.__data['bitmap']) picture.parentNode.insertBefore(this.__bitmap, picture);
         setTimeout(() => {
           this.__bitmap.src = this.__data['bitmap'];
           this.__img.src = this.__data['src'];
