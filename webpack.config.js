@@ -84,6 +84,7 @@ const shared = env => {
 
   if (!IS_DEV_SERVER) {
     plugins.push(new WorkboxPlugin.GenerateSW({
+      cacheId: packages.name,
       swDest: 'service-worker.js',
       skipWaiting: true,
       clientsClaim: true,

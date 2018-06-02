@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="<%= app.title %>">
-    <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes, shrink-to-fit=no">
 
     <title><%= app.title %></title>
     <meta name="description" content="<%= app.description %>">
@@ -311,7 +311,7 @@
       <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
     </noscript>
     <% for (let i in compilation.assets) { %>
-    <% if (i.indexOf('worker') >= 0 || i.indexOf('core') >= 0)  { %>
+    <% if (i.indexOf('worker') >= 0)  { %>
     <link rel="preload" href="/<%= i %>" as="script">
     <% }} %>
   </body>
