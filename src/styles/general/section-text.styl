@@ -1,0 +1,28 @@
+@import '../../styles/general/typography.styl'
+@import '../../styles/general/spacing.styl'
+
+spacing-and-width()
+  max-width 720px
+  margin 0 $rem-semi-medium $small 0
+
+.section-text
+  paragraph()
+  padding-left $x-large
+  display block
+  color $gray-2
+  @media screen and (max-width: 500px)
+    padding-left $large
+
+  h1
+    h1()
+    spacing-and-width()
+
+  p
+    spacing-and-width()
+
+  ul
+    spacing-and-width()
+    padding 0
+
+    li
+      margin $small

@@ -1,19 +1,23 @@
 @import '../../styles/general/host-block.styl'
 @import '../../styles/general/typography.styl'
+@import '../../styles/general/button.styl'
 @import '../../styles/general/color.styl'
+@import '../../styles/general/spacing.styl'
 
 :host
-  padding 10rem 72px
+  padding $rem-large $x-large
+  @media screen and (max-width: 500px)
+    padding $rem-medium $large
 
 .google
-  height 15rem
-  margin-left -2rem
+  height $rem-x-large
+  margin-left -$rem-small
   vertical-align middle
   @media screen and (max-width: 520px)
     height auto
 
 .io18
-  height 15rem
+  height $rem-x-large
   vertical-align middle
   @media screen and (max-width: 520px)
     height auto
@@ -21,15 +25,15 @@
 .extended
   display inline-block
   vertical-align middle
-  margin-top -12px
+  margin-top -$micro
   @media screen and (max-width: 610px)
-    margin-top 12px
+    margin-top $micro
 
 .h1
   h1()
   color $gray-6
   display block
-  line-height 4rem
+  line-height $rem-medium
 
 .paragraph
   paragraph()
@@ -39,8 +43,11 @@
 
 .icon
   fill $orange
-  height 3rem
+  height $rem-semi-medium
   vertical-align middle
 
 .icon-text
-  padding-left 1rem
+  padding-left $rem-small
+
+.button
+  button()

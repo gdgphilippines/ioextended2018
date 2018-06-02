@@ -1,31 +1,57 @@
+@import '../../styles/general/color.styl'
+
 :host
   display block
   padding: 10rem 72px 72px
+  @media screen and (max-width: 500px)
+    padding: 10rem 36px 72px
 
 .footer
   display flex
   align-items center
+  @media screen and (max-width: 860px)
+    display block
 
 .logo
   height 4rem
-  
+  @media screen and (max-width: 350px)
+    height 3rem
+
 .spacer
   flex 1
 
 .social-nav-list
   display flex
   margin 0
+  padding 0
   list-style-type none
+  @media screen and (max-width: 860px)
+    margin: 3rem 0 0 -20px
+  @media screen and (max-width: 400px)
+    margin: 2rem 0 0 -10px
+  @media screen and (max-width: 350px)
+    margin 1rem 0 0 -10px
 
 .social-nav
   margin 10px 20px
   display block
   list-style-type none
-  
+  @media screen and (max-width: 400px)
+    margin: 10px
+  @media screen and (max-width: 350px)
+    margin 10px
+
+
 .social-icon-anchor
   text-decoration none
   color $gray-2
-  
+
 .social-icon
   width 4rem
   fill $gray-2
+  @media screen and (max-width: 500px)
+    width 3rem
+  @media screen and (max-width: 400px)
+    width 2.5rem
+  @media screen and (max-width: 350px)
+    width 2rem

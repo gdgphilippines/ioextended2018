@@ -1,20 +1,29 @@
 @import '../../styles/general/host-block.styl'
 
 .sidebar
-  position: fixed
-  width: 250px
-  height: 100vh
-  top: 0
-  bottom: 0
-  left: -300px;
-  transition: left 0.3s
-  padding: 20px
-  background: #fff
-  box-shadow: 5px 0 5px -2px #888;
+  position fixed
+  width 250px
+  height 100vh
+  top 0
+  bottom 0
+  left -300px
+  transition left 0.3s
+  padding 20px
+  background #fff
+  box-shadow 5px 0 5px -2px #888
+  z-index 10000
+  overflow hidden
 
   .title
-    margin: 0
+    margin 0
 
 .open
   left: 0
   transition: left 0.3s
+
+.logo-anchor
+  text-decoration none
+  color inherit
+
+.logo
+  height 5rem

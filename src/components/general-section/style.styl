@@ -1,15 +1,19 @@
+@import '../../styles/general/spacing.styl'
+
 :host
   display block
 
 .section
   position relative
-  padding-bottom 10rem
+  padding-bottom $rem-large
+  @media screen and (max-width: 500px)
+    padding-bottom $rem-medium
 
   .accent
     position absolute
     top 0
     left 0
     background-image url('/assets/images/slash.svg')
-    width 20px
+    width $small
     background-repeat repeat-y
-    height 30rem
+    height $rem-uber-large

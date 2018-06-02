@@ -1,11 +1,14 @@
 @import '../../styles/general/host-block.styl'
 @import '../../styles/general/color.styl'
+@import '../../styles/general/spacing.styl'
+
+.banner-img-container
+  height 80vh
+  position relative
 
 .banner-img
   height 80vh
-  background-repeat no-repeat
-  background-position bottom
-  background-size cover
+  width 100%
 
 .banner-title-container
   display flex
@@ -16,10 +19,13 @@
 
 ::slotted(*)
   color $white
-  padding-left 72px
-  padding-right 48px
+  padding 0 $large 0 $x-large
+  @media screen and (max-width: 500px)
+    padding 0 $large
+  @media screen and (max-width: 400px)
+    padding 0 $small
 
 .banner-dots
   flex 3
   background-image url('/assets/images/dot-3.svg')
-  background-size 24px
+  background-size $small

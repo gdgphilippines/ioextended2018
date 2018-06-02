@@ -1,6 +1,9 @@
 @import '../../styles/general/typography.styl'
 @import '../../styles/general/color.styl'
 @import '../../styles/general/button.styl'
+@import '../../styles/general/main-page.styl'
+@import '../../styles/general/section-text.styl'
+@import '../../styles/general/spacing.styl'
 
 :host
   display block
@@ -10,26 +13,26 @@
 
 .button
   button()
-  margin 0 20px
+  margin 0 $small
 
-.main
-  background-image url('/assets/images/map.svg')
-  background-position 30vw 0px
-  background-repeat no-repeat
-  background-size 100%
+.schedule
+  margin 0
+  list-style-type none
+  padding-right $large
+  @media screen and (max-width: 500px)
+    padding-right $medium
 
-.section-text
-  paragraph()
-  padding-left 72px
-  display block
-  color $gray-2
+.schedule-item
+  margin 0
+  list-style-type none
+  display flex
+  padding 2rem 0
+  border-bottom 1px solid $gray-3
 
-  h1
-    h1()
+  .time
+    time()
+    width 10rem
 
-  p
-    width 720px
-
-
-.sponsor
-  padding-top: 10rem
+  .schedule-topic
+    flex 1
+    margin-left 2rem
