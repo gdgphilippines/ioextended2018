@@ -9,6 +9,7 @@ const template = (self) => html`
         srcset="${self.srcset}"
         sizes="${self.sizes}"
         sources="${self.sources}"
+        alt="${self.alt}"
         cover>
     </lazy-picture>
   </div>

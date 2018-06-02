@@ -30,8 +30,6 @@ class Component extends ElementLiteLit(HTMLElement) {
     const options = {
       threshold: [0.25, 0.75]
     };
-    // const picture = this.shadowRoot.querySelector('picture');
-
     setTimeout(() => {
       this.__observer = new IntersectionObserver(this.__boundActivateImage, options);
       this.__observer.observe(this);

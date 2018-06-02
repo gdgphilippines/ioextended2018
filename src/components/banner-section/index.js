@@ -14,6 +14,7 @@ class Component extends ElementLiteLit(HTMLElement) {
       src: '',
       srcset: '',
       sizes: '',
+      alt: '',
       sources: []
     };
   }

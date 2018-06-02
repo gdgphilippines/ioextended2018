@@ -5,7 +5,6 @@ import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
   <picture>
-    <slot></slot>
     ${self.sources.map(item => html`
       <source srcset$="${item.srcset}" type$="${item.type}" media$="${item.media}">
     `)}
