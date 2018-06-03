@@ -2,11 +2,13 @@ import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
   <footer class="footer">
-    <lazy-picture
-        class="logo"
-        src="/assets/images/gdgph.png"
-        alt="GDG Philippines logo">
-    </lazy-picture>
+    <a class="logo-anchor" href="https://gdgph.org" target="_blank" rel="noopener">
+      <lazy-picture
+          class="logo"
+          src="/assets/images/gdgph-3.png"
+          alt="GDG Philippines logo">
+      </lazy-picture>
+    </a>
     <div class="spacer"></div>
     <nav class="social-nav-container">
       <ul class="social-nav-list">
