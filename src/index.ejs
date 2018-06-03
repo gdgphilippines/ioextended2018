@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="generator" content="<%= app.title %>">
-    <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes, shrink-to-fit=no">
 
     <title><%= app.title %></title>
     <meta name="description" content="<%= app.description %>">
@@ -54,6 +54,8 @@
     <style>
       <%= require('./index.styl') %>
     </style>
+
+
   </head>
   <body>
 
@@ -73,9 +75,9 @@
 
     <script>
       // polyfill detector
-      /*! modernizr 3.5.0 (Custom Build) | MIT *
-      * https://modernizr.com/download/?-es5array-es5date-es5function-es5object-es5string-es6array-es6collections-es6math-es6number-es6object-es6string-promises !*/
-      !function(t,e,r){function o(t,e){return typeof t===e}function n(){var t,e,r,n,i,p,y;for(var c in a)if(a.hasOwnProperty(c)){if(t=[],e=a[c],e.name&&(t.push(e.name.toLowerCase()),e.options&&e.options.aliases&&e.options.aliases.length))for(r=0;r<e.options.aliases.length;r++)t.push(e.options.aliases[r].toLowerCase());for(n=o(e.fn,"function")?e.fn():e.fn,i=0;i<t.length;i++)p=t[i],y=p.split("."),1===y.length?Modernizr[y[0]]=n:(!Modernizr[y[0]]||Modernizr[y[0]]instanceof Boolean||(Modernizr[y[0]]=new Boolean(Modernizr[y[0]])),Modernizr[y[0]][y[1]]=n),s.push((n?"":"no-")+y.join("-"))}}var a=[],i={_version:"3.5.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(t,e){var r=this;setTimeout(function(){e(r[t])},0)},addTest:function(t,e,r){a.push({name:t,fn:e,options:r})},addAsyncTest:function(t){a.push({name:null,fn:t})}},Modernizr=function(){};Modernizr.prototype=i,Modernizr=new Modernizr,Modernizr.addTest("es5array",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest("es5date",function(){var t="2013-04-12T06:06:37.307Z",e=!1;try{e=!!Date.parse(t)}catch(r){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&e)}),Modernizr.addTest("es5function",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest("es5object",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest("es5string",function(){return!(!String.prototype||!String.prototype.trim)}),Modernizr.addTest("es6array",!!(Array.prototype&&Array.prototype.copyWithin&&Array.prototype.fill&&Array.prototype.find&&Array.prototype.findIndex&&Array.prototype.keys&&Array.prototype.entries&&Array.prototype.values&&Array.from&&Array.of)),Modernizr.addTest("es6collections",!!(t.Map&&t.Set&&t.WeakMap&&t.WeakSet)),Modernizr.addTest("es6math",!!(Math&&Math.clz32&&Math.cbrt&&Math.imul&&Math.sign&&Math.log10&&Math.log2&&Math.log1p&&Math.expm1&&Math.cosh&&Math.sinh&&Math.tanh&&Math.acosh&&Math.asinh&&Math.atanh&&Math.hypot&&Math.trunc&&Math.fround)),Modernizr.addTest("es6number",!!(Number.isFinite&&Number.isInteger&&Number.isSafeInteger&&Number.isNaN&&Number.parseInt&&Number.parseFloat&&Number.isInteger(Number.MAX_SAFE_INTEGER)&&Number.isInteger(Number.MIN_SAFE_INTEGER)&&Number.isFinite(Number.EPSILON))),Modernizr.addTest("es6object",!!(Object.assign&&Object.is&&Object.setPrototypeOf)),Modernizr.addTest("promises",function(){return"Promise"in t&&"resolve"in t.Promise&&"reject"in t.Promise&&"all"in t.Promise&&"race"in t.Promise&&function(){var e;return new t.Promise(function(t){e=t}),"function"==typeof e}()}),Modernizr.addTest("es6string",!!(String.fromCodePoint&&String.raw&&String.prototype.codePointAt&&String.prototype.repeat&&String.prototype.startsWith&&String.prototype.endsWith&&String.prototype.includes));var s=[];n(),delete i.addTest,delete i.addAsyncTest;for(var p=0;p<Modernizr._q.length;p++)Modernizr._q[p]();t.Modernizr=Modernizr}(window,document);
+      /*! modernizr 3.6.0 (Custom Build) | MIT *
+      * https://modernizr.com/download/?-es5array-es5date-es5function-es5object-es5string-es6array-es6collections-es6math-es6number-es6object-es6string-objectfit-promises-setclasses !*/
+      !function(e,t,r){function n(e,t){return typeof e===t}function o(){var e,t,r,o,i,s,a;for(var p in v)if(v.hasOwnProperty(p)){if(e=[],t=v[p],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(r=0;r<t.options.aliases.length;r++)e.push(t.options.aliases[r].toLowerCase());for(o=n(t.fn,"function")?t.fn():t.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),b.push((o?"":"no-")+a.join("-"))}}function i(e){var t=A.className,r=Modernizr._config.classPrefix||"";if(O&&(t=t.baseVal),Modernizr._config.enableJSClass){var n=new RegExp("(^|\\s)"+r+"no-js(\\s|$)");t=t.replace(n,"$1"+r+"js$2")}Modernizr._config.enableClasses&&(t+=" "+r+e.join(" "+r),O?A.className.baseVal=t:A.className=t)}function s(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,r){return t+r.toUpperCase()}).replace(/^-/,"")}function a(e,t){return!!~(""+e).indexOf(t)}function p(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):O?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function u(e,t){return function(){return e.apply(t,arguments)}}function l(e,t,r){var o;for(var i in e)if(e[i]in t)return r===!1?e[i]:(o=t[e[i]],n(o,"function")?u(o,r||t):o);return!1}function f(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function c(t,r,n){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,t,r);var i=e.console;if(null!==o)n&&(o=o.getPropertyValue(n));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!r&&t.currentStyle&&t.currentStyle[n];return o}function d(){var e=t.body;return e||(e=p(O?"svg":"body"),e.fake=!0),e}function y(e,r,n,o){var i,s,a,u,l="modernizr",f=p("div"),c=d();if(parseInt(n,10))for(;n--;)a=p("div"),a.id=o?o[n]:l+(n+1),f.appendChild(a);return i=p("style"),i.type="text/css",i.id="s"+l,(c.fake?c:f).appendChild(i),c.appendChild(f),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),f.id=l,c.fake&&(c.style.background="",c.style.overflow="hidden",u=A.style.overflow,A.style.overflow="hidden",A.appendChild(c)),s=r(f,e),c.fake?(c.parentNode.removeChild(c),A.style.overflow=u,A.offsetHeight):f.parentNode.removeChild(f),!!s}function m(t,n){var o=t.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(f(t[o]),n))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+f(t[o])+":"+n+")");return i=i.join(" or "),y("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==c(e,null,"position")})}return r}function h(e,t,o,i){function u(){f&&(delete P.style,delete P.modElem)}if(i=n(i,"undefined")?!1:i,!n(o,"undefined")){var l=m(e,o);if(!n(l,"undefined"))return l}for(var f,c,d,y,h,g=["modernizr","tspan","samp"];!P.style&&g.length;)f=!0,P.modElem=p(g.shift()),P.style=P.modElem.style;for(d=e.length,c=0;d>c;c++)if(y=e[c],h=P.style[y],a(y,"-")&&(y=s(y)),P.style[y]!==r){if(i||n(o,"undefined"))return u(),"pfx"==t?y:!0;try{P.style[y]=o}catch(b){}if(P.style[y]!=h)return u(),"pfx"==t?y:!0}return u(),!1}function g(e,t,r,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+j.join(s+" ")+s).split(" ");return n(t,"string")||n(t,"undefined")?h(a,t,o,i):(a=(e+" "+x.join(s+" ")+s).split(" "),l(a,t,r))}var b=[],v=[],S={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var r=this;setTimeout(function(){t(r[e])},0)},addTest:function(e,t,r){v.push({name:e,fn:t,options:r})},addAsyncTest:function(e){v.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=S,Modernizr=new Modernizr,Modernizr.addTest("es5array",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest("es5date",function(){var e="2013-04-12T06:06:37.307Z",t=!1;try{t=!!Date.parse(e)}catch(r){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&t)}),Modernizr.addTest("es5function",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest("es5object",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest("es5string",function(){return!(!String.prototype||!String.prototype.trim)}),Modernizr.addTest("es6array",!!(Array.prototype&&Array.prototype.copyWithin&&Array.prototype.fill&&Array.prototype.find&&Array.prototype.findIndex&&Array.prototype.keys&&Array.prototype.entries&&Array.prototype.values&&Array.from&&Array.of)),Modernizr.addTest("es6collections",!!(e.Map&&e.Set&&e.WeakMap&&e.WeakSet)),Modernizr.addTest("es6math",!!(Math&&Math.clz32&&Math.cbrt&&Math.imul&&Math.sign&&Math.log10&&Math.log2&&Math.log1p&&Math.expm1&&Math.cosh&&Math.sinh&&Math.tanh&&Math.acosh&&Math.asinh&&Math.atanh&&Math.hypot&&Math.trunc&&Math.fround)),Modernizr.addTest("es6number",!!(Number.isFinite&&Number.isInteger&&Number.isSafeInteger&&Number.isNaN&&Number.parseInt&&Number.parseFloat&&Number.isInteger(Number.MAX_SAFE_INTEGER)&&Number.isInteger(Number.MIN_SAFE_INTEGER)&&Number.isFinite(Number.EPSILON))),Modernizr.addTest("es6object",!!(Object.assign&&Object.is&&Object.setPrototypeOf)),Modernizr.addTest("promises",function(){return"Promise"in e&&"resolve"in e.Promise&&"reject"in e.Promise&&"all"in e.Promise&&"race"in e.Promise&&function(){var t;return new e.Promise(function(e){t=e}),"function"==typeof t}()}),Modernizr.addTest("es6string",!!(String.fromCodePoint&&String.raw&&String.prototype.codePointAt&&String.prototype.repeat&&String.prototype.startsWith&&String.prototype.endsWith&&String.prototype.includes));var A=t.documentElement,O="svg"===A.nodeName.toLowerCase(),C="Moz O ms Webkit",j=S._config.usePrefixes?C.split(" "):[];S._cssomPrefixes=j;var N=function(t){var n,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return r;if(!t)return!1;if(t=t.replace(/^@/,""),n=t.replace(/-/g,"_").toUpperCase()+"_RULE",n in i)return"@"+t;for(var s=0;o>s;s++){var a=prefixes[s],p=a.toUpperCase()+"_"+n;if(p in i)return"@-"+a.toLowerCase()+"-"+t}return!1};S.atRule=N;var x=S._config.usePrefixes?C.toLowerCase().split(" "):[];S._domPrefixes=x;var w={elem:p("modernizr")};Modernizr._q.push(function(){delete w.elem});var P={style:w.elem.style};Modernizr._q.unshift(function(){delete P.style}),S.testAllProps=g;var _=S.prefixed=function(e,t,r){return 0===e.indexOf("@")?N(e):(-1!=e.indexOf("-")&&(e=s(e)),t?g(e,t,r):g(e,"pfx"))};Modernizr.addTest("objectfit",!!_("objectFit"),{aliases:["object-fit"]}),o(),i(b),delete S.addTest,delete S.addAsyncTest;for(var M=0;M<Modernizr._q.length;M++)Modernizr._q[M]();e.Modernizr=Modernizr}(window,document);
       (function() {
         var refScript = document.body.getElementsByTagName('script')[0] || document.body.getElementsByTagName('style')[0];
         // loads es5 polyfills if it doesn't have the following
@@ -121,6 +123,11 @@
           var fetchPoly = document.createElement('script')
           fetchPoly.src = '/vendor/fetch.js'
           refScript.parentNode.insertBefore(fetchPoly, refScript)
+        }
+        if (!Modernizr.objectfit || 'objectFit' in document.documentElement.style === false) {
+          var ofi = document.createElement('script')
+          ofi.src = '/vendor/ofi.js'
+          refScript.parentNode.insertBefore(ofi, refScript)
         }
         window.onerror = function(err, url, line) {
           try {
@@ -178,6 +185,7 @@
         }, false)
       })()
     </script>
+    <!-- <script src="/module.core.js" type="module" async></script> -->
     <script>
       (function() {
         'use strict';
@@ -242,9 +250,9 @@
         }
       })();
     </script>
-    
+
     <script>
-      if (navigator.serviceWorker) {
+      if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js', {
           scope: '/'
         }).then(function (registration) {
@@ -258,7 +266,7 @@
                     // if (App.Shell && App.Shell.showMessage && typeof App.Shell.showMessage === 'function') {
                     //   App.Shell.showMessage('Caching complete! Future visits will work offline.', function() { App.Shell.closeToast() }, 'Close', null, 10000)
                     // } else {
-                      
+
                     // }
                   }
                   break
@@ -268,7 +276,7 @@
               }
             }
           }
-          if (navigator.serviceWorker.controller) {
+          if ('controller' in navigator.serviceWorker) {
             console.log('The service worker is currently handling network operations.')
           } else {
             console.log('Please reload this page to allow the service worker to handle network operations.')
@@ -276,7 +284,7 @@
         })
         // Check to see if the service worker controlling the page at initial load
         // has become redundant, since this implies there's a new service worker with fresh content.
-        if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+        if ('serviceWorker' in navigator && 'controller' in navigator.serviceWorker) {
           navigator.serviceWorker.controller.onstatechange = function (event) {
             if (event.target.state === 'redundant') {
               // Define a handler that will be used for the next io-toast tap, at which point it
@@ -292,7 +300,7 @@
       (function(){
         setTimeout(function(){
           var font = document.createElement('link');
-          font.href = 'https://fonts.googleapis.com/css?family=Open+Sans|Roboto';
+          font.href = 'https://fonts.googleapis.com/css?family=Roboto:400,700';
           font.rel = 'stylesheet';
           document.head.appendChild(font);
           document.body.classList.toggle('font-loaded')
@@ -300,7 +308,11 @@
       })();
     </script>
     <noscript>
-      <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     </noscript>
+    <% for (let i in compilation.assets) { %>
+    <% if (i.indexOf('worker') >= 0)  { %>
+    <link rel="preload" href="/<%= i %>" as="script">
+    <% }} %>
   </body>
 </html>

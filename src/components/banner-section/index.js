@@ -1,6 +1,7 @@
 import { ElementLiteLit, html } from '@littleq/element-lite';
 import { template } from './template.js';
 import style from './style.styl';
+import '../lazy-picture/index.js';
 const { HTMLElement, customElements } = window;
 
 class Component extends ElementLiteLit(HTMLElement) {
@@ -8,16 +9,68 @@ class Component extends ElementLiteLit(HTMLElement) {
 
   constructor () {
     super();
-    this.__data = {};
+    this.__data = {
+      bitmap: '',
+      src: '',
+      srcset: '',
+      sizes: '',
+      alt: '',
+      sources: []
+    };
   }
 
-  set img (img) {
-    this.__data['img'] = img;
+  set bitmap (bitmap) {
+    this.__data['bitmap'] = bitmap;
     this.invalidate();
   }
 
-  get img () {
-    return this.__data['img'];
+  get bitmap () {
+    return this.__data['bitmap'];
+  }
+
+  set src (src) {
+    this.__data['src'] = src;
+    this.invalidate();
+  }
+
+  get src () {
+    return this.__data['src'];
+  }
+
+  set alt (alt) {
+    this.__data['alt'] = alt;
+    this.invalidate();
+  }
+
+  get alt () {
+    return this.__data['alt'];
+  }
+
+  set srcset (srcset) {
+    this.__data['srcset'] = srcset;
+    this.invalidate();
+  }
+
+  get srcset () {
+    return this.__data['srcset'];
+  }
+
+  set sizes (sizes) {
+    this.__data['sizes'] = sizes;
+    this.invalidate();
+  }
+
+  get sizes () {
+    return this.__data['sizes'];
+  }
+
+  set sources (sources) {
+    this.__data['sources'] = sources;
+    this.invalidate();
+  }
+
+  get sources () {
+    return this.__data['sources'];
   }
 
   render () {

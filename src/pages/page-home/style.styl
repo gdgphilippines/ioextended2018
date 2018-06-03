@@ -1,6 +1,8 @@
 @import '../../styles/general/typography.styl'
 @import '../../styles/general/color.styl'
 @import '../../styles/general/button.styl'
+@import '../../styles/general/main-page.styl'
+@import '../../styles/general/section-text.styl'
 
 :host
   display block
@@ -10,26 +12,7 @@
 
 .button
   button()
-  margin 0 20px
-
-.main
-  background-image url('/assets/images/map.svg')
-  background-position 30vw 0px
-  background-repeat no-repeat
-  background-size 100%
-
-.section-text
-  paragraph()
-  padding-left 72px
-  display block
-  color $gray-2
-
-  h1
-    h1()
-
-  p
-    width 720px
-
+  margin 0 $small
 
 .sponsor
-  padding-top: 10rem
+  padding-top: $rem-large

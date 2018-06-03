@@ -5,6 +5,23 @@
   "locationLink": "",
   "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSe7FADRIgwYx4wmIQX9_NMIQAICF9LYGgFL7WhI16oOKj2DnQ/viewform",
   "registrationClosed": false,
+  "banner": {
+    "bitmap": "/data/images/palawan-bitmap.jpg",
+    "src": "/data/images/palawan-small.jpg",
+    "alt": "Image of the Google I/O Extended Roadshow last year",
+    "source": [
+      {
+        "srcset": "/data/images/palawan-large.jpg",
+        "type": "image/jpeg",
+        "media": "(min-width: 1200px)"
+      },
+      {
+        "srcset": "/data/images/palawan-medium.jpg",
+        "type": "image/jpeg",
+        "media": "(min-width: 600px) and (max-width: 1119px)"
+      }
+    ]
+  },
   "schedule": [
     {
       "time": "700",

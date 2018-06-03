@@ -1,6 +1,7 @@
 import { ElementLiteLit, html } from '@littleq/element-lite';
 import { template } from './template.js';
 import style from './style.styl';
+import '../lazy-picture/index.js';
 const { HTMLElement, customElements } = window;
 
 class Component extends ElementLiteLit(HTMLElement) {

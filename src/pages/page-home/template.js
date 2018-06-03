@@ -2,14 +2,20 @@ import { html } from '@littleq/element-lite';
 
 const template = (self) => html`
   <header>
-    <banner-section img="${'/assets/images/banner.jpg'}">
+    <banner-section
+        class="banner"
+        bitmap="${self.landing.banner.bitmap}"
+        src="${self.landing.banner.src}"
+        srcset="${self.landing.banner.srcset}"
+        alt="${self.landing.banner.alt}"
+        sources="${self.landing.banner.source}">
       <h1 class="h1">
         Bringing you the IO Experience, one city at a time
       </h1>
     </banner-section>
   </header>
   <main class="main" role="main">
-    <section-location date="${'June - August 2018'}" location="${'Cavite, Manila, Pampanga, Palawan, Albay, and Naga'}"></section-location>
+    <section-location date="${self.landing.date}" location="${self.landing.location}"></section-location>
     <general-section>
       <mark-lite class="section-text" text="${self.about}"></mark-lite>
     </general-section>

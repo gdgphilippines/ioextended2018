@@ -1,26 +1,27 @@
 @import '../../styles/general/host-block.styl'
 @import '../../styles/general/typography.styl'
 @import '../../styles/general/color.styl'
+@import '../../styles/general/spacing.styl'
 
 .header-navigation
-  padding: 0 20px
+  padding: 0 $small
 
 .navigation-list
-  display: flex
-  list-style-type: none
+  display flex
+  list-style-type none
 
 .navigation-item
   list-style-type: none
-  padding: 0 10px;
+  padding 0 $micro;
   color $gray-2
-  paragraph()
+  navigation()
   text-transform uppercase
 
   &:first-child
-    padding 0 10px 0 0
+    padding 0 $micro 0 0
 
   &:last-child
-    padding: 0 0 0 10px
+    padding 0 0 0 $micro
 
 .navigation-anchor
   color: inherit
