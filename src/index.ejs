@@ -72,6 +72,9 @@
       </template-loader-lite>
     </core-lite>
 
+    <snackbar-lite class="snackbar-lite">
+    </snackbar-lite>
+
     <section class="core-lite-loader">
       <div class="loader-center">
         <img class="loader-icon" src="/assets/images/io18.svg">
@@ -455,53 +458,6 @@
           }
         }
       })();
-    </script>
-
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js', {
-          scope: '/'
-        }).then(function (registration) {
-          registration.onupdatefound = function () {
-            var installingWorker = registration.installing
-            if (installingWorker) {
-              installingWorker.onstatechange = function () {
-                switch (installingWorker.state) {
-                  case 'installed':
-                    if ('controller' in navigator.serviceWorker) {
-                      console.log('Caching Complete! Future visits will work offline.')
-                      // if (App.Shell && App.Shell.showMessage && typeof App.Shell.showMessage === 'function') {
-                      //   App.Shell.showMessage('Caching complete! Future visits will work offline.', function() { App.Shell.closeToast() }, 'Close', null, 10000)
-                      // } else {
-
-                      // }
-                    }
-                    break
-                  case 'redundant':
-                    console.error(new Error('The installing service worker became redundant.'));
-                    // Raven.captureMessage('The installing service worker became redundant.');
-                }
-              }
-            }
-          }
-          if ('controller' in navigator.serviceWorker) {
-            console.log('The service worker is currently handling network operations.')
-          } else {
-            console.log('Please reload this page to allow the service worker to handle network operations.')
-          }
-        })
-        // Check to see if the service worker controlling the page at initial load
-        // has become redundant, since this implies there's a new service worker with fresh content.
-        if ('serviceWorker' in navigator && 'controller' in navigator.serviceWorker) {
-          navigator.serviceWorker.controller.onstatechange = function (event) {
-            if (event.target.state === 'redundant') {
-              // Define a handler that will be used for the next io-toast tap, at which point it
-              // be automatically removed.
-              window.location.reload();
-            }
-          };
-        }
-      }
     </script>
 
     <script>
