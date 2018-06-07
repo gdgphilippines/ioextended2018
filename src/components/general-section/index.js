@@ -1,15 +1,17 @@
-import { ElementLiteLit, html } from '@littleq/element-lite';
+import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
 import { template } from './template.js';
 import style from './style.styl';
 const { HTMLElement, customElements } = window;
 
-class Component extends ElementLiteLit(HTMLElement) {
+class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   static get is () { return 'general-section'; }
 
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
   }
 }
+
+if (window.ShadyCSS) prepareShadyCSS(style.toString(), Component.is);
 
 if (!customElements.get(Component.is)) {
   customElements.define(Component.is, Component);
