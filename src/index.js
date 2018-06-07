@@ -5,6 +5,7 @@ const core = document.querySelector('core-lite');
 core.addEventListener('current-route-change', currentRouteChanged);
 core.addEventListener('router-param-object-change', routeParamObjectChanged);
 window.addEventListener('click', closeSidebar);
+const loader = document.querySelector('.core-lite-loader');
 
 function currentRouteChanged ({ detail: route }) {
   lazyLoad(fragments[route]);
@@ -24,6 +25,12 @@ async function lazyLoad (fragment) {
   try {
     if (fragment && typeof fragment === 'function') {
       await fragment();
+      if (loader && loader.style.opacity !== 0) {
+        loader.style.opacity = 0;
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 1000)
+      }
     } else {
       await Promise.reject(new Error('No fragment found'));
     }
@@ -36,3 +43,5 @@ import('./components/project-header/index.js').then(() => {
   const header = document.querySelector('project-header');
   header.addEventListener('click', closeSidebar);
 });
+
+

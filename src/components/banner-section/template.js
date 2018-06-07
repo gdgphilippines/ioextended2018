@@ -4,7 +4,7 @@ const template = (self) => html`
   <div class="banner-img-container">
     <lazy-picture
         class="banner-img"
-        bitmap="${self.bitmap}"
+        thumbnail="${self.thumbnail}"
         src="${self.src}"
         srcset="${self.srcset}"
         sizes="${self.sizes}"

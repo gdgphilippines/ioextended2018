@@ -4,7 +4,7 @@ const template = (self) => html`
   <header>
     <banner-section
         class="banner"
-        bitmap="${self.landing.banner.bitmap}"
+        thumbnail="${self.landing.banner.bitmap}"
         src="${self.landing.banner.src}"
         srcset="${self.landing.banner.srcset}"
         alt="${self.landing.banner.alt}"

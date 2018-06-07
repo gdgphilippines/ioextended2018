@@ -10,7 +10,7 @@ class Component extends ElementLiteLit(HTMLElement) {
     super();
 
     this.__data = {
-      bitmap: '',
+      thumbnail: '',
       src: '',
       srcset: '',
       sizes: '',
@@ -18,9 +18,9 @@ class Component extends ElementLiteLit(HTMLElement) {
     };
     this.__boundImageLoaded = this.__imageLoaded.bind(this);
     this.__boundActivateImage = this.__imageActivate.bind(this);
-    this.__bitmap = document.createElement('img');
+    this.__thumbnail = document.createElement('img');
     this.__img = document.createElement('img');
-    this.__bitmap.classList.add('bitmap');
+    this.__thumbnail.classList.add('thumbnail');
     this.__img.classList.add('img');
     this.__img.addEventListener('load', this.__boundImageLoaded);
   }
@@ -58,11 +58,11 @@ class Component extends ElementLiteLit(HTMLElement) {
     this.__data['cover'] = typeof cover === 'boolean' ? cover : (cover !== null && cover !== undefined);
     if (this.__data['cover']) {
       this.setAttribute('cover', '');
-      this.__bitmap.setAttribute('cover', '');
+      this.__thumbnail.setAttribute('cover', '');
       this.__img.setAttribute('cover', '');
     } else {
       this.removeAttribute('cover');
-      this.__bitmap.removeAttribute('cover');
+      this.__thumbnail.removeAttribute('cover');
       this.__img.removeAttribute('cover');
     }
   }
@@ -71,12 +71,12 @@ class Component extends ElementLiteLit(HTMLElement) {
     return this.__data['cover'];
   }
 
-  set bitmap (bitmap) {
-    this.__data['bitmap'] = bitmap;
+  set thumbnail (thumbnail) {
+    this.__data['thumbnail'] = thumbnail;
   }
 
-  get bitmap () {
-    return this.__data['bitmap'];
+  get thumbnail () {
+    return this.__data['thumbnail'];
   }
 
   set src (src) {
@@ -90,7 +90,7 @@ class Component extends ElementLiteLit(HTMLElement) {
 
   set alt (alt) {
     this.__data['alt'] = alt;
-    this.__bitmap.alt = alt;
+    this.__thumbnail.alt = alt;
     this.__img.alt = alt;
   }
 
@@ -130,7 +130,7 @@ class Component extends ElementLiteLit(HTMLElement) {
   }
 
   static get observedAttributes () {
-    return ['bitmap', 'src', 'srcset', 'alt', 'cover'];
+    return ['thumbnail', 'src', 'srcset', 'alt', 'cover'];
   }
 
   attributeChangedCallback (attr, oldValue, newValue) {
@@ -140,15 +140,15 @@ class Component extends ElementLiteLit(HTMLElement) {
   loadImage () {
     if (this.shadowRoot) {
       const picture = this.shadowRoot.querySelector('picture');
-      const img = picture.querySelector('.img');
       if (this.__data['active']) {
-        if (this.__data['bitmap']) picture.parentNode.insertBefore(this.__bitmap, picture);
+        if (this.__data['thumbnail'] && !picture.parentNode.contains(this.__thumbnail)) {
+          picture.parentNode.insertBefore(this.__thumbnail, picture);
+        }
         setTimeout(() => {
-          this.__bitmap.src = this.__data['bitmap'];
+          this.__thumbnail.src = this.__data['thumbnail'];
           this.__img.src = this.__data['src'];
           this.__img.srcset = this.__data['srcset'];
-          if (img && img !== this.__img) picture.removeChild(img);
-          setTimeout(() => { picture.appendChild(this.__img); });
+          if (!picture.contains(this.__img)) setTimeout(() => { picture.appendChild(this.__img); });
         });
       }
     }
@@ -157,7 +157,7 @@ class Component extends ElementLiteLit(HTMLElement) {
   __imageLoaded () {
     const event = new Event('load');
     event.detail = { originalTarget: this.__img };
-    this.__bitmap.classList.add('image-loaded');
+    this.__thumbnail.classList.add('image-loaded');
     this.__img.classList.add('image-img-loaded');
     this.dispatchEvent(event);
   }

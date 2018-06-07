@@ -10,7 +10,7 @@ class Component extends ElementLiteLit(HTMLElement) {
   constructor () {
     super();
     this.__data = {
-      bitmap: '',
+      thumbnail: '',
       src: '',
       srcset: '',
       sizes: '',
@@ -19,13 +19,13 @@ class Component extends ElementLiteLit(HTMLElement) {
     };
   }
 
-  set bitmap (bitmap) {
-    this.__data['bitmap'] = bitmap;
+  set thumbnail (thumbnail) {
+    this.__data['thumbnail'] = thumbnail;
     this.invalidate();
   }
 
-  get bitmap () {
-    return this.__data['bitmap'];
+  get thumbnail () {
+    return this.__data['thumbnail'];
   }
 
   set src (src) {

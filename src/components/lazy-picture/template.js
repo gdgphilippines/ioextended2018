@@ -1,6 +1,6 @@
 import { html } from '@littleq/element-lite';
 
-// <img class="bitmap" src$="${self.bitmap}">
+// <img class="thumbnail" src$="${self.thumbnail}">
 // <img class="img" src$="${self.src}" alt$="${self.alt}" srcset$="${self.srcset}">
 
 const template = (self) => html`
