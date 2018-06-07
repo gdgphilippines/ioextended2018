@@ -1,4 +1,4 @@
-<% const { app, theme, routes } = require('../spa-lite.config.js'); const { registration } = require('./utils/locations.js'); %><!DOCTYPE html>
+<% const package = require('../package.json'); const { app, theme, routes } = require('../spa-lite.config.js'); const { registration } = require('./utils/locations.js'); %><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -58,9 +58,6 @@
 
   </head>
   <body>
-
-
-
     <project-header></project-header>
     <project-sidebar></project-sidebar>
 
@@ -115,6 +112,30 @@
         icon.addEventListener('load', addAnimation);
       })();
     </script>
+
+    <% if (app.sentry && !htmlWebpackPlugin.options.dev) { %>
+    <script>
+      (function () {
+        var raven = document.createElement('script');
+        raven.src = 'https://cdn.ravenjs.com/3.25.2/raven.min.js';
+        raven.crossOrigin = 'anonymous';
+        raven.async = 'true';
+        window.RavenErrorList = [];
+        raven.addEventListener('load', function() {
+          if (window.Raven) {
+            window.Raven.config('<%= app.sentry %>').install();
+            if (window.RavenErrorList) {
+              for (var ravenIndex = 0; ravenIndex < window.RavenErrorList.length; ravenIndex++) {
+                console.log(window.RavenErrorList[ravenIndex])
+                window.Raven.captureException(window.RavenErrorList[ravenIndex]);
+              }
+            }
+          }
+        });
+        document.body.appendChild(raven);
+      })();
+    </script>
+    <% } %>
 
     <script>
       // polyfill detector
@@ -172,20 +193,32 @@
           ofi.src = '/vendor/ofi.js'
           refScript.parentNode.insertBefore(ofi, refScript)
         }
-        window.onerror = function(err, url, line) {
+        window.onerror = function (message, source, lineno, colno, err) {
           try {
             if (window.ga) {
               ga('send', 'exception', {
-                exDescription: err.message,
+                exDescription: message,
                 exFatal: true
               })
+            }
+            if (!window.Raven && window.RavenErrorList) {
+              window.RavenErrorList.push(err || new Error(message, source, lineno));
+            }
+
+            if (document.querySelector('.core-lite-loader').style.opacity !== 0) {
+              document.querySelector('.loader-text').innerHTML =
+                "There's seems to be an error in processing the core script." +
+                "This will not work on IE 11 below and Safari 9 below." +
+                "If you are using such browsers, please upgrade to your latest browsers now." +
+                "<br><br>If you are still having some problems, please file an issue at " +
+                "<a href=\"<%= package.bugs.url %>/new?labels=bug\">here</a>.";
             }
           } catch (e) {
             console.error(err)
             console.error(e)
           }
         }
-      })()
+      })();
     </script>
 
     <!--
@@ -214,14 +247,30 @@
       (function () {
         document.addEventListener('WebComponentsReady', function componentsReady() {
           document.removeEventListener('WebComponentsReady', componentsReady, false);
+          var text = "There's seems to be an error in loading the core script. " +
+            "Please try again later." +
+            "<br><br>If you are still having some problems, please file an issue at " +
+            "<a href=\"<%= package.bugs.url %>/new?labels=bug\">here</a>.";
           var script = document.createElement('script');
           script.async = true
           script.src = '/core.js';
+          script.crossOrigin = 'anonymous';
           script.setAttribute('nomodule', true);
+          script.addEventListener('error', function(error) {
+            if (document.querySelector('.core-lite-loader').style.opacity !== 0) {
+              document.querySelector('.loader-text').innerHTML = text
+            }
+          });
           var scriptModule = document.createElement('script');
           scriptModule.async = true
           scriptModule.src = '/module.core.js';
+          scriptModule.crossOrigin = 'anonymous';
           scriptModule.setAttribute('type', 'module');
+          scriptModule.addEventListener('error', function(error) {
+            if (document.querySelector('.core-lite-loader').style.opacity !== 0) {
+              document.querySelector('.loader-text').innerHTML = text
+            }
+          });
           var refScript = document.body.getElementsByTagName('script')[0];
           refScript.parentNode.insertBefore(script, refScript);
           refScript.parentNode.insertBefore(scriptModule, refScript);
