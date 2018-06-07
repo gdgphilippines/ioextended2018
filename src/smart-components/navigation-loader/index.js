@@ -1,4 +1,4 @@
-import { ElementLiteStatic } from '@littleq/element-lite';
+import { ElementLiteStatic } from '@littleq/element-lite/element-lite-static.js';
 const { HTMLElement, customElements } = window;
 
 class Page extends ElementLiteStatic(HTMLElement) {

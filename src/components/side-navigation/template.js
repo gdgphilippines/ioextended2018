@@ -1,10 +1,10 @@
-import { html } from '@littleq/element-lite';
+import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <nav class="side-navigation">
-    <ul class="navigation-list">
+    <ul class="side-navigation-list">
       ${self.navigation.map(i => html`
-        <li class="navigation-item" on-click=${self.closeSidebar.bind(self)}>
+        <li class="side-navigation-item" on-click=${self.closeSidebar.bind(self)}>
           <a href="${i.href}" class="navigation-anchor">
             ${i.label}
           </a>

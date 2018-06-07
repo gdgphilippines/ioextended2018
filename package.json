@@ -23,7 +23,7 @@
   "homepage": "https://github.com/gdgphilippines/ioextended2018#readme",
   "dependencies": {
     "@littleq/core-lite": "0.0.5",
-    "@littleq/element-lite": "^0.2.0",
+    "@littleq/element-lite": "^0.2.4",
     "@webcomponents/shadycss": "^1.1.1",
     "@webcomponents/webcomponentsjs": "2.0.0",
     "es5-shim": "^4.5.10",

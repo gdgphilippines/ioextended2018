@@ -16,6 +16,10 @@ const copyStatics = {
       to: 'vendor/[name].[ext]'
     },
     {
+      from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/bundles/*.js'),
+      to: 'vendor/bundles/[name].[ext]'
+    },
+    {
       from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/*.map'),
       to: 'vendor/[name].[ext]'
     },

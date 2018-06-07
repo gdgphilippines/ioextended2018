@@ -1,4 +1,4 @@
-import { ElementLiteStatic } from '@littleq/element-lite';
+import { ElementLiteStatic } from '@littleq/element-lite/element-lite-static.js';
 const { HTMLElement, customElements } = window;
 
 class Component extends ElementLiteStatic(HTMLElement) {
@@ -9,11 +9,7 @@ class Component extends ElementLiteStatic(HTMLElement) {
       navigation: {
         type: Array,
         observer: '_setNavigation',
-        value: [
-          {
-            
-          }
-        ]
+        value: []
       }
     };
   }
