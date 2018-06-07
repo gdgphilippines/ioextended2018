@@ -10,7 +10,12 @@
 .img
   width 100%
   opacity 0
+
+img
   transition opacity 1s
+
+img:not([src])
+  opacity 0
 
 img[cover]
   height 100%
@@ -19,7 +24,6 @@ img[cover]
 
 .image-loaded
   opacity 0
-  transition opacity 1s
 
 .image-img-loaded
   opacity 1

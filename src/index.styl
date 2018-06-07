@@ -15,3 +15,69 @@ body
 
 body.font-loaded
   body()
+
+.core-lite-loader
+  position absolute
+  top 0
+  left 0
+  height 100vh
+  width 100vw
+  text-align center
+  display flex
+  align-items center
+  background $gray-4
+  transition opacity 1s
+
+.loader-center
+  flex 1
+
+.loader-icon
+  max-width 500px
+  margin 0 24px
+
+.loader-text, .loader-text-no-script
+  paragraph()
+  max-width 720px
+  margin 0 auto
+  padding 0 24px 12px
+  @media screen and (max-width: 450px)
+    font-size 1.2rem
+
+.loader-text-list-no-script
+  paragraph()
+  margin 0
+  list-style-type none
+  padding 0 24px 24px
+  @media screen and (max-width: 450px)
+    font-size 1.2rem
+
+  li
+    margin 0
+    padding 12px 0
+    list-style-type none
+
+    @media screen and (max-width: 450px)
+      padding 6px 0
+
+    a
+      color $orange
+      text-decoration none
+
+@keyframes zoomIn
+  from
+    opacity 0
+    transform scale3d(0.3, 0.3, 0.3)
+
+  50%
+    opacity 1
+
+.zoomIn
+  animation-name zoomIn
+
+.animated
+  animation-duration 1s
+  animation-fill-mode both
+
+  &.infinite
+    animation-iteration-count infinite
+

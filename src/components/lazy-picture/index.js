@@ -141,7 +141,9 @@ class Component extends ElementLiteLit(HTMLElement) {
     if (this.shadowRoot) {
       const picture = this.shadowRoot.querySelector('picture');
       if (this.__data['active']) {
-        if (this.__data['thumbnail'] && !picture.parentNode.contains(this.__thumbnail)) picture.parentNode.insertBefore(this.__thumbnail, picture);
+        if (this.__data['thumbnail'] && !picture.parentNode.contains(this.__thumbnail)) {
+          picture.parentNode.insertBefore(this.__thumbnail, picture);
+        }
         setTimeout(() => {
           this.__thumbnail.src = this.__data['thumbnail'];
           this.__img.src = this.__data['src'];
