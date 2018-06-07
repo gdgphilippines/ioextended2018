@@ -1,4 +1,4 @@
-<% const { app, theme, routes } = require('../spa-lite.config.js'); %><!DOCTYPE html>
+<% const { app, theme, routes } = require('../spa-lite.config.js'); const { registration } = require('./utils/locations.js'); %><!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -59,6 +59,8 @@
   </head>
   <body>
 
+
+
     <project-header></project-header>
     <project-sidebar></project-sidebar>
 
@@ -72,6 +74,47 @@
         </template><% } %>
       </template-loader-lite>
     </core-lite>
+
+    <section class="core-lite-loader">
+      <div class="loader-center">
+        <img class="loader-icon" src="/assets/images/io18.svg">
+        <p class="loader-text">
+        </p>
+        <noscript>
+          <p class="loader-text-no-script">
+            Google I/O Extended 2018 Philippines Web App is a Single Page Application.
+            Thus, it needs you to turn on Javascript. If you just need to register, you can register here:
+          </p>
+          <ul class="loader-text-list-no-script">
+            <% for (let reg of registration) { %>
+            <li>
+              <a href="<%= reg.registrationLink %>">
+                <%= reg.date %> - <%= reg.location %>
+              </a>
+            </li>
+            <% } %>
+          </ul>
+        </noscript>
+      </div>
+    </section>
+
+    <script>
+      (function () {
+        var icon = document.querySelector('.loader-icon');
+        var text = document.querySelector('.loader-text')
+        text.textContent = 'Loading...'
+        function addAnimation () {
+          icon.removeEventListener('load', addAnimation);
+          icon.classList.add('animated');
+          icon.classList.add('zoomIn');
+
+          setTimeout(function() {
+            icon.classList.remove('zoomIn');
+          }, 3000);
+        }
+        icon.addEventListener('load', addAnimation);
+      })();
+    </script>
 
     <script>
       // polyfill detector
@@ -185,7 +228,7 @@
         }, false)
       })()
     </script>
-    <!-- <script src="/module.core.js" type="module" async></script> -->
+
     <script>
       (function() {
         'use strict';
