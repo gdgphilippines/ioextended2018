@@ -1,7 +1,7 @@
 const { resolve } = require('path');
 
-module.exports = (env, file) => {
-  const minify = !env
+module.exports = (dev, file) => {
+  const minify = !dev
     ? {
       caseSensitive: true,
       collapseWhitespace: true,
@@ -18,6 +18,6 @@ module.exports = (env, file) => {
     inject: false,
     filename: `${file}.html`,
     minify,
-    env
+    dev
   };
 };

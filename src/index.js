@@ -43,5 +43,3 @@ import('./components/project-header/index.js').then(() => {
   const header = document.querySelector('project-header');
   header.addEventListener('click', closeSidebar);
 });
-
-

@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tjmonsi/spa-lite.git"
+    "url": "git+https://github.com/gdgphilippines/ioextended2018.git"
   },
   "author": "TJ Monserrat",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tjmonsi/spa-lite/issues"
+    "url": "https://github.com/gdgphilippines/ioextended2018/issues"
   },
-  "homepage": "https://github.com/tjmonsi/spa-lite#readme",
+  "homepage": "https://github.com/gdgphilippines/ioextended2018#readme",
   "dependencies": {
     "@littleq/core-lite": "0.0.5",
     "@littleq/element-lite": "^0.2.0",
