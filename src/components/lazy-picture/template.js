@@ -1,4 +1,4 @@
-import { html } from '@littleq/element-lite';
+import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 // <img class="thumbnail" src$="${self.thumbnail}">
 // <img class="img" src$="${self.src}" alt$="${self.alt}" srcset$="${self.srcset}">

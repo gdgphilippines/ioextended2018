@@ -1,10 +1,10 @@
-import { html } from '@littleq/element-lite';
+import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <h2 class="h2">
     ${self.codelabs && self.codelabs.length ? 'Breakout Sessions / Codelabs' : self.title}
   </h2>
-  ${self.codelabs && self.codelabs.length 
+  ${self.codelabs && self.codelabs.length
     ? html`
       <ul class="codelabs">
         ${self.codelabs.map(item => html`
@@ -17,7 +17,7 @@ const template = (self) => html`
     : html`
       <p class="paragraph">
         ${self.speaker}
-      </p>  
+      </p>
     `
   }
 `;

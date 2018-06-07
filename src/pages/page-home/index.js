@@ -1,4 +1,4 @@
-import { ElementLiteLit, html } from '@littleq/element-lite';
+import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
 import { PageMixin } from '../../mixins/page-mixin/index.js';
 import { template } from './template.js';
 import style from './style.styl';
@@ -9,7 +9,7 @@ import '../../components/section-location/index.js';
 import '../../components/mark-lite/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
-class Page extends PageMixin(ElementLiteLit(HTMLElement)) {
+class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   static get is () { return 'page-home'; }
 
   constructor () {
@@ -62,6 +62,8 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement)) {
     return html`<style>${style.toString()}</style>${template(this)}`;
   }
 }
+
+if (window.ShadyCSS) prepareShadyCSS(style.toString(), Page.is);
 
 if (!customElements.get(Page.is)) {
   customElements.define(Page.is, Page);

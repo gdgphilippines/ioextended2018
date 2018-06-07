@@ -9,6 +9,12 @@
 
 .h1
   h1()
+  color $white
+  padding 0 $large 0 $x-large
+  @media screen and (max-width: 500px)
+    padding 0 $large
+  @media screen and (max-width: 400px)
+    padding 0 $small
 
 .button
   button()

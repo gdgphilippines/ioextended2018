@@ -1,4 +1,4 @@
-import { ElementLiteLit, html } from '@littleq/element-lite';
+import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
 import { template } from './template.js';
 import style from './style.styl';
 const { HTMLElement, customElements, Event, IntersectionObserver } = window;
@@ -141,14 +141,14 @@ class Component extends ElementLiteLit(HTMLElement) {
     if (this.shadowRoot) {
       const picture = this.shadowRoot.querySelector('picture');
       if (this.__data['active']) {
-        if (this.__data['thumbnail'] && !picture.parentNode.contains(this.__thumbnail)) {
-          picture.parentNode.insertBefore(this.__thumbnail, picture);
+        if (this.__data['thumbnail'] && !this.shadowRoot.contains(this.__thumbnail)) {
+          this.shadowRoot.insertBefore(this.__thumbnail, picture);
         }
         setTimeout(() => {
           this.__thumbnail.src = this.__data['thumbnail'];
           this.__img.src = this.__data['src'];
           this.__img.srcset = this.__data['srcset'];
-          if (!picture.contains(this.__img)) setTimeout(() => { picture.appendChild(this.__img); });
+          if (picture && !picture.contains(this.__img)) setTimeout(() => { picture.appendChild(this.__img); });
         });
       }
     }
@@ -166,6 +166,8 @@ class Component extends ElementLiteLit(HTMLElement) {
     this.active = entries[0].intersectionRatio > 0.25;
   }
 }
+
+if (window.ShadyCSS) prepareShadyCSS(style.toString(), Component.is);
 
 if (!customElements.get(Component.is)) {
   customElements.define(Component.is, Component);
