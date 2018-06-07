@@ -531,7 +531,7 @@
             installingWorker.onstatechange = function () {
               switch (installingWorker.state) {
                 case 'installed':
-                  if (!navigator.serviceWorker.controller) {
+                  if ('controller' in navigator.serviceWorker) {
                     console.log('Caching Complete! Future visits will work offline.')
                     // if (App.Shell && App.Shell.showMessage && typeof App.Shell.showMessage === 'function') {
                     //   App.Shell.showMessage('Caching complete! Future visits will work offline.', function() { App.Shell.closeToast() }, 'Close', null, 10000)
