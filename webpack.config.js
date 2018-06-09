@@ -2,8 +2,6 @@ const { resolve } = require('path');
 const merge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
-const packages = require('./package.json');
 const moduleConf = require('./webpack-module.config');
 const nomoduleConf = require('./webpack-nomodule.config');
 const getHtmlOptions = require('./src/utils/html-webpack/get-html-options');
@@ -86,82 +84,6 @@ const shared = env => {
     new CopyWebpackPlugin(copyStatics.copyPolyfills)
   ];
 
-  if (!IS_DEV_SERVER) {
-    plugins.push(new WorkboxPlugin.GenerateSW({
-      cacheId: packages.name,
-      swDest: 'service-worker.js',
-      skipWaiting: true,
-      clientsClaim: true,
-      navigateFallback: '/index.html',
-      navigateFallbackWhitelist: [/^(?!(\/__)|(\/service-worker\.js)|(\/_bundle-sizes\.html)|(\/_statistic\.html)|(\/_statistic\.json))/],
-      // Define runtime caching rules.
-      runtimeCaching: [
-        {
-          // Match any request ends with .png, .jpg, .jpeg or .svg.
-          urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
-
-          // Apply a cache-first strategy.
-          handler: 'cacheFirst',
-
-          options: {
-            cacheName: `${packages.name}-images`,
-            expiration: {
-              maxAgeSeconds: 3600
-            }
-          }
-        },
-        {
-          // Match any request ends with .png, .jpg, .jpeg or .svg.
-          urlPattern: /^https:\/\/fonts.gstatic.com\/.*/,
-
-          // Apply a cache-first strategy.
-          handler: 'cacheFirst',
-
-          options: {
-            cacheName: `${packages.name}-font`,
-            expiration: {
-              maxAgeSeconds: 3600
-            }
-          }
-        },
-        {
-          // Match any request ends with .md, .json.
-          urlPattern: /\.(?:md|json)$/,
-
-          // Apply a cache-first strategy.
-          handler: 'networkFirst',
-
-          options: {
-            cacheName: `${packages.name}-data`,
-            expiration: {
-              maxAgeSeconds: 60
-            }
-          }
-        },
-        {
-          urlPattern: /^https:\/\/www.gstatic.com\/firebasejs\/.*/,
-          handler: 'cacheFirst',
-          options: {
-            cacheName: `${packages.name}-firebase`,
-            expiration: {
-              maxAgeSeconds: 3600
-            }
-          }
-        },
-        {
-          urlPattern: /^https:\/\/www.google-analytics.com\/analytics.js/,
-          handler: 'networkFirst',
-          options: {
-            cacheName: `${packages.name}-analytics`,
-            expiration: {
-              maxAgeSeconds: 60
-            }
-          }
-        }
-      ]
-    }));
-  }
-
   return {
     entry: {
       'core': resolve(__dirname, 'src/index.js')
@@ -233,4 +155,4 @@ const shared = env => {
   };
 };
 
-module.exports = (env = {}) => merge(env.BROWSERS === 'module' ? moduleConf(IS_DEV_SERVER) : nomoduleConf(), shared(env));
+module.exports = (env = {}) => merge(env.BROWSERS === 'module' ? moduleConf(IS_DEV_SERVER) : nomoduleConf(IS_DEV_SERVER), shared(env));

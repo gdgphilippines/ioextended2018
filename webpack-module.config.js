@@ -1,6 +1,6 @@
 'use strict';
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (IS_DEV_SERVER) => {
   return {
@@ -33,9 +33,6 @@ module.exports = (IS_DEV_SERVER) => {
           }
         }
       ]
-    },
-    plugins: IS_DEV_SERVER ? [] : [
-      new CleanWebpackPlugin(['public'], {verbose: true})
-    ]
+    }
   };
 };
