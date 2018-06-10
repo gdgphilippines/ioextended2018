@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="<%= app.twitter %>" />
-    <meta name="twitter:creator" content="<%= app.twitter %>" />
+    <meta name="twitter:creator" content="<%= app.twitterCreator %>" />
     <meta name="twitter:title" content="<%= app.title %>" />
     <meta name="twitter:description" content="<%= app.description %>" />
     <meta name="twitter:image" content="<%= app.image %>" />
@@ -26,7 +26,7 @@
     -->
     <base href="<%= app.baseHref %>">
 
-    <link rel="icon" href="/assets/images/favicon.ico">
+    <link rel="icon" href="<%= theme.favicon %>">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
@@ -48,14 +48,12 @@
     <link rel="apple-touch-icon" <% if (theme.icons[i].sizes) { %> sizes="<%= theme.icons[i].sizes %>"<% } %> href="images/manifest/<%= theme.icons[i].src %>"><% } %>
     <% for (let i in theme.icons) {%><% if (theme.icons[i].tileImage) { %>
     <meta name="msapplication-TileImage" content="images/manifest/<%= theme.icons[i].src %>"><% }} %>
-    <meta name="msapplication-TileColor" content="<%= theme.webApp.themeColor %>">
+    <meta name="msapplication-TileColor" content="<%= theme.themeColor %>">
     <meta name="msapplication-tap-highlight" content="<%= theme.webApp.tapHighlight %>">
 
     <style>
       <%= require('./index.styl') %>
     </style>
-
-
   </head>
   <body>
     <project-header></project-header>
@@ -108,6 +106,41 @@
     </section>
 
     <script>
+      // Adding Namespace
+      window.SPALite = {};
+
+      // Error catcher
+      window.onerror = function (message, source, lineno, colno, err) {
+        try {
+          if (window.ga) {
+            ga('send', 'exception', {
+              exDescription: message,
+              exFatal: true
+            })
+          }
+          if (!window.Raven && window.RavenErrorList) {
+            window.RavenErrorList.push(err || new Error(message, source, lineno));
+          }
+
+          if (document.querySelector('.core-lite-loader').style.opacity !== 0) {
+            document.querySelector('.loader-text').innerHTML =
+              "There's seems to be an error in processing the core script." +
+              "This will not work on IE 11 below, Safari 9 below, Chrome 58 below, and browsers from Android 6 (Lollipop) below." +
+              " If you are using such browsers, please upgrade to your latest browsers now." +
+              "<br><br>If you are still having some problems, please file an issue at " +
+              "<a href=\"<%= package.bugs.url %>/new?labels=bug\">here</a>." +
+              "<br><br>Just in case, here's the list of registration places you can go to.";
+
+            document.querySelector('.loader-text-list-script').className = 'loader-text-list-script';
+          }
+        } catch (e) {
+          console.error(err)
+          console.error(e)
+        }
+      }
+    </script>
+
+    <script>
       (function () {
         var icon = document.querySelector('.loader-icon');
         var text = document.querySelector('.loader-text')
@@ -148,148 +181,6 @@
       })();
     </script>
     <% } %>
-
-    <script>
-      // polyfill detector
-      /*! modernizr 3.6.0 (Custom Build) | MIT *
-      * https://modernizr.com/download/?-es5array-es5date-es5function-es5object-es5string-es6array-es6collections-es6math-es6number-es6object-es6string-objectfit-promises-setclasses !*/
-      !function(e,t,r){function n(e,t){return typeof e===t}function o(){var e,t,r,o,i,s,a;for(var p in v)if(v.hasOwnProperty(p)){if(e=[],t=v[p],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(r=0;r<t.options.aliases.length;r++)e.push(t.options.aliases[r].toLowerCase());for(o=n(t.fn,"function")?t.fn():t.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),b.push((o?"":"no-")+a.join("-"))}}function i(e){var t=A.className,r=Modernizr._config.classPrefix||"";if(O&&(t=t.baseVal),Modernizr._config.enableJSClass){var n=new RegExp("(^|\\s)"+r+"no-js(\\s|$)");t=t.replace(n,"$1"+r+"js$2")}Modernizr._config.enableClasses&&(t+=" "+r+e.join(" "+r),O?A.className.baseVal=t:A.className=t)}function s(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,r){return t+r.toUpperCase()}).replace(/^-/,"")}function a(e,t){return!!~(""+e).indexOf(t)}function p(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):O?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function u(e,t){return function(){return e.apply(t,arguments)}}function l(e,t,r){var o;for(var i in e)if(e[i]in t)return r===!1?e[i]:(o=t[e[i]],n(o,"function")?u(o,r||t):o);return!1}function f(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function c(t,r,n){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,t,r);var i=e.console;if(null!==o)n&&(o=o.getPropertyValue(n));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!r&&t.currentStyle&&t.currentStyle[n];return o}function d(){var e=t.body;return e||(e=p(O?"svg":"body"),e.fake=!0),e}function y(e,r,n,o){var i,s,a,u,l="modernizr",f=p("div"),c=d();if(parseInt(n,10))for(;n--;)a=p("div"),a.id=o?o[n]:l+(n+1),f.appendChild(a);return i=p("style"),i.type="text/css",i.id="s"+l,(c.fake?c:f).appendChild(i),c.appendChild(f),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),f.id=l,c.fake&&(c.style.background="",c.style.overflow="hidden",u=A.style.overflow,A.style.overflow="hidden",A.appendChild(c)),s=r(f,e),c.fake?(c.parentNode.removeChild(c),A.style.overflow=u,A.offsetHeight):f.parentNode.removeChild(f),!!s}function m(t,n){var o=t.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(f(t[o]),n))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+f(t[o])+":"+n+")");return i=i.join(" or "),y("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==c(e,null,"position")})}return r}function h(e,t,o,i){function u(){f&&(delete P.style,delete P.modElem)}if(i=n(i,"undefined")?!1:i,!n(o,"undefined")){var l=m(e,o);if(!n(l,"undefined"))return l}for(var f,c,d,y,h,g=["modernizr","tspan","samp"];!P.style&&g.length;)f=!0,P.modElem=p(g.shift()),P.style=P.modElem.style;for(d=e.length,c=0;d>c;c++)if(y=e[c],h=P.style[y],a(y,"-")&&(y=s(y)),P.style[y]!==r){if(i||n(o,"undefined"))return u(),"pfx"==t?y:!0;try{P.style[y]=o}catch(b){}if(P.style[y]!=h)return u(),"pfx"==t?y:!0}return u(),!1}function g(e,t,r,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+j.join(s+" ")+s).split(" ");return n(t,"string")||n(t,"undefined")?h(a,t,o,i):(a=(e+" "+x.join(s+" ")+s).split(" "),l(a,t,r))}var b=[],v=[],S={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var r=this;setTimeout(function(){t(r[e])},0)},addTest:function(e,t,r){v.push({name:e,fn:t,options:r})},addAsyncTest:function(e){v.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=S,Modernizr=new Modernizr,Modernizr.addTest("es5array",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest("es5date",function(){var e="2013-04-12T06:06:37.307Z",t=!1;try{t=!!Date.parse(e)}catch(r){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&t)}),Modernizr.addTest("es5function",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest("es5object",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest("es5string",function(){return!(!String.prototype||!String.prototype.trim)}),Modernizr.addTest("es6array",!!(Array.prototype&&Array.prototype.copyWithin&&Array.prototype.fill&&Array.prototype.find&&Array.prototype.findIndex&&Array.prototype.keys&&Array.prototype.entries&&Array.prototype.values&&Array.from&&Array.of)),Modernizr.addTest("es6collections",!!(e.Map&&e.Set&&e.WeakMap&&e.WeakSet)),Modernizr.addTest("es6math",!!(Math&&Math.clz32&&Math.cbrt&&Math.imul&&Math.sign&&Math.log10&&Math.log2&&Math.log1p&&Math.expm1&&Math.cosh&&Math.sinh&&Math.tanh&&Math.acosh&&Math.asinh&&Math.atanh&&Math.hypot&&Math.trunc&&Math.fround)),Modernizr.addTest("es6number",!!(Number.isFinite&&Number.isInteger&&Number.isSafeInteger&&Number.isNaN&&Number.parseInt&&Number.parseFloat&&Number.isInteger(Number.MAX_SAFE_INTEGER)&&Number.isInteger(Number.MIN_SAFE_INTEGER)&&Number.isFinite(Number.EPSILON))),Modernizr.addTest("es6object",!!(Object.assign&&Object.is&&Object.setPrototypeOf)),Modernizr.addTest("promises",function(){return"Promise"in e&&"resolve"in e.Promise&&"reject"in e.Promise&&"all"in e.Promise&&"race"in e.Promise&&function(){var t;return new e.Promise(function(e){t=e}),"function"==typeof t}()}),Modernizr.addTest("es6string",!!(String.fromCodePoint&&String.raw&&String.prototype.codePointAt&&String.prototype.repeat&&String.prototype.startsWith&&String.prototype.endsWith&&String.prototype.includes));var A=t.documentElement,O="svg"===A.nodeName.toLowerCase(),C="Moz O ms Webkit",j=S._config.usePrefixes?C.split(" "):[];S._cssomPrefixes=j;var N=function(t){var n,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return r;if(!t)return!1;if(t=t.replace(/^@/,""),n=t.replace(/-/g,"_").toUpperCase()+"_RULE",n in i)return"@"+t;for(var s=0;o>s;s++){var a=prefixes[s],p=a.toUpperCase()+"_"+n;if(p in i)return"@-"+a.toLowerCase()+"-"+t}return!1};S.atRule=N;var x=S._config.usePrefixes?C.toLowerCase().split(" "):[];S._domPrefixes=x;var w={elem:p("modernizr")};Modernizr._q.push(function(){delete w.elem});var P={style:w.elem.style};Modernizr._q.unshift(function(){delete P.style}),S.testAllProps=g;var _=S.prefixed=function(e,t,r){return 0===e.indexOf("@")?N(e):(-1!=e.indexOf("-")&&(e=s(e)),t?g(e,t,r):g(e,"pfx"))};Modernizr.addTest("objectfit",!!_("objectFit"),{aliases:["object-fit"]}),o(),i(b),delete S.addTest,delete S.addAsyncTest;for(var M=0;M<Modernizr._q.length;M++)Modernizr._q[M]();e.Modernizr=Modernizr}(window,document);
-      (function() {
-        var refScript = document.body.getElementsByTagName('script')[0] || document.body.getElementsByTagName('style')[0];
-
-        window.addEventListener('es6-loaded', function () {
-          window.Es6Loaded = true;
-        });
-
-        // loads shadydom polyfil if it doesn't have the native attachShadow method
-        if (!('attachShadow' in Element.prototype && 'getRootNode' in Element.prototype) ||
-          (window.ShadyDOM && window.ShadyDOM.force)) {
-          window.addEventListener('es6-loaded', function() {
-            function shadyFunction () {
-              var shady = document.createElement('script');
-              shady.src = '/vendor/scoping-shim.js';
-              refScript.parentNode.insertBefore(shady, refScript);
-            }
-          });
-        }
-
-        // loads es6 polyfils if it doesn't have the following
-        // es6 set and collections, math, number, object, and string methods
-        if (!Modernizr.es6collections || !Modernizr.es6math || !Modernizr.es6number || !Modernizr.es6object || !Modernizr.es6string) {
-          window.addEventListener('es5-loaded', function() {
-            var es6shim = document.createElement('script');
-            es6shim.src = '/vendor/es6-shim.js';
-            es6shim.addEventListener('load', function () {
-              var es6sham = document.createElement('script');
-              es6sham.src = '/vendor/es6-sham.js';
-              es6sham.addEventListener('load', function () {
-                var weakMap = document.createElement('script');
-                weakMap.src = '/vendor/weakmap-polyfill.js';
-                weakMap.addEventListener('load', function () {
-                  window.dispatchEvent(new window.CustomEvent('es6-loaded'));
-                });
-                refScript.parentNode.insertBefore(weakMap, refScript);
-                //
-              });
-              refScript.parentNode.insertBefore(es6sham, refScript);
-            });
-            refScript.parentNode.insertBefore(es6shim, refScript);
-          });
-        } else {
-          window.dispatchEvent(new window.CustomEvent('es6-loaded'));
-        }
-
-        // loads es5 polyfills if it doesn't have the following
-        // es5 array, date, functions, object, and string methods
-        if (!Modernizr.es5array || !Modernizr.es5date || !Modernizr.es5function || !Modernizr.es5object || !Modernizr.es5string) {
-          var es5shim = document.createElement('script');
-          es5shim.src = '/vendor/es5-shim.js';
-          es5shim.addEventListener('load', function() {
-            var es5sham = document.createElement('script');
-            es5sham.src = '/vendor/es5-sham.js';
-            es5sham.addEventListener('load', function() {
-              window.dispatchEvent(new window.CustomEvent('es5-loaded'));
-            });
-            refScript.parentNode.insertBefore(es5sham, refScript);
-          });
-          refScript.parentNode.insertBefore(es5shim, refScript);
-        } else {
-          window.dispatchEvent(new window.CustomEvent('es5-loaded'));
-        }
-
-
-        // loads promise polyfil if it doesn't have the native promise
-        if (!Modernizr.promises) {
-          var promise = document.createElement('script');
-          promise.src = '/vendor/es6-promise.js';
-          refScript.parentNode.insertBefore(promise, refScript);
-        }
-
-        // loads intersection observer polyfil if it doesn't have the native intersection observer
-        if (!window.IntersectionObserver) {
-          var io = document.createElement('script');
-          io.src = '/vendor/intersection-observer.js';
-          refScript.parentNode.insertBefore(io, refScript);
-        }
-
-        if (!window.fetch || !window.Headers) {
-          var fetchPoly = document.createElement('script')
-          fetchPoly.src = '/vendor/fetch.js'
-          refScript.parentNode.insertBefore(fetchPoly, refScript)
-        }
-
-        if (!Modernizr.objectfit || 'objectFit' in document.documentElement.style === false) {
-          var ofi = document.createElement('script')
-          ofi.src = '/vendor/ofi.js'
-          refScript.parentNode.insertBefore(ofi, refScript)
-        }
-
-        window.onerror = function (message, source, lineno, colno, err) {
-          try {
-            if (window.ga) {
-              ga('send', 'exception', {
-                exDescription: message,
-                exFatal: true
-              })
-            }
-            if (!window.Raven && window.RavenErrorList) {
-              window.RavenErrorList.push(err || new Error(message, source, lineno));
-            }
-
-            if (document.querySelector('.core-lite-loader').style.opacity !== 0) {
-              document.querySelector('.loader-text').innerHTML =
-                "There's seems to be an error in processing the core script." +
-                "This will not work on IE 11 below, Safari 9 below, Chrome 58 below, and browsers from Android 6 (Lollipop) below." +
-                " If you are using such browsers, please upgrade to your latest browsers now." +
-                "<br><br>If you are still having some problems, please file an issue at " +
-                "<a href=\"<%= package.bugs.url %>/new?labels=bug\">here</a>." +
-                "<br><br>Just in case, here's the list of registration places you can go to.";
-
-              document.querySelector('.loader-text-list-script').className = 'loader-text-list-script';
-            }
-          } catch (e) {
-            console.error(err)
-            console.error(e)
-          }
-        }
-      })();
-    </script>
-
-    <!--
-      Feature detect Custom Elements support. If the browser DOES support Custom
-      Elements then we need to load the custom-elements-es5-adapter because
-      our project code has been transpiled from ES2015 to ES5 and native Custom
-      Elements expect elements will be registered as classes.
-    -->
-    <div id="ce-es5-shim">
-      <script type="text/javascript">
-        if (!window.customElements) {
-          var ceShimContainer = document.querySelector('#ce-es5-shim');
-          ceShimContainer.parentElement.removeChild(ceShimContainer);
-        }
-      </script>
-      <script type="text/javascript" src="/vendor/custom-elements-es5-adapter.js" async nomodule></script>
-    </div>
 
     <!--
       Use the webcomponents-loader script which will feature detect which Web
@@ -333,226 +224,312 @@
     </script>
 
     <script>
-      /**
-       * @license
-       * Copyright (c) 2018 The Polymer Project Authors. All rights reserved.
-       * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-       * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-       * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-       * Code distributed by Google as part of the polymer project is also
-       * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
-       */
-
+      // polyfill detector
+      /*! modernizr 3.6.0 (Custom Build) | MIT *
+      * https://modernizr.com/download/?-es5array-es5date-es5function-es5object-es5string-es6array-es6collections-es6math-es6number-es6object-es6string-objectfit-promises-setclasses !*/
+      !function(e,t,r){function n(e,t){return typeof e===t}function o(){var e,t,r,o,i,s,a;for(var p in v)if(v.hasOwnProperty(p)){if(e=[],t=v[p],t.name&&(e.push(t.name.toLowerCase()),t.options&&t.options.aliases&&t.options.aliases.length))for(r=0;r<t.options.aliases.length;r++)e.push(t.options.aliases[r].toLowerCase());for(o=n(t.fn,"function")?t.fn():t.fn,i=0;i<e.length;i++)s=e[i],a=s.split("."),1===a.length?Modernizr[a[0]]=o:(!Modernizr[a[0]]||Modernizr[a[0]]instanceof Boolean||(Modernizr[a[0]]=new Boolean(Modernizr[a[0]])),Modernizr[a[0]][a[1]]=o),b.push((o?"":"no-")+a.join("-"))}}function i(e){var t=A.className,r=Modernizr._config.classPrefix||"";if(O&&(t=t.baseVal),Modernizr._config.enableJSClass){var n=new RegExp("(^|\\s)"+r+"no-js(\\s|$)");t=t.replace(n,"$1"+r+"js$2")}Modernizr._config.enableClasses&&(t+=" "+r+e.join(" "+r),O?A.className.baseVal=t:A.className=t)}function s(e){return e.replace(/([a-z])-([a-z])/g,function(e,t,r){return t+r.toUpperCase()}).replace(/^-/,"")}function a(e,t){return!!~(""+e).indexOf(t)}function p(){return"function"!=typeof t.createElement?t.createElement(arguments[0]):O?t.createElementNS.call(t,"http://www.w3.org/2000/svg",arguments[0]):t.createElement.apply(t,arguments)}function u(e,t){return function(){return e.apply(t,arguments)}}function l(e,t,r){var o;for(var i in e)if(e[i]in t)return r===!1?e[i]:(o=t[e[i]],n(o,"function")?u(o,r||t):o);return!1}function f(e){return e.replace(/([A-Z])/g,function(e,t){return"-"+t.toLowerCase()}).replace(/^ms-/,"-ms-")}function c(t,r,n){var o;if("getComputedStyle"in e){o=getComputedStyle.call(e,t,r);var i=e.console;if(null!==o)n&&(o=o.getPropertyValue(n));else if(i){var s=i.error?"error":"log";i[s].call(i,"getComputedStyle returning null, its possible modernizr test results are inaccurate")}}else o=!r&&t.currentStyle&&t.currentStyle[n];return o}function d(){var e=t.body;return e||(e=p(O?"svg":"body"),e.fake=!0),e}function y(e,r,n,o){var i,s,a,u,l="modernizr",f=p("div"),c=d();if(parseInt(n,10))for(;n--;)a=p("div"),a.id=o?o[n]:l+(n+1),f.appendChild(a);return i=p("style"),i.type="text/css",i.id="s"+l,(c.fake?c:f).appendChild(i),c.appendChild(f),i.styleSheet?i.styleSheet.cssText=e:i.appendChild(t.createTextNode(e)),f.id=l,c.fake&&(c.style.background="",c.style.overflow="hidden",u=A.style.overflow,A.style.overflow="hidden",A.appendChild(c)),s=r(f,e),c.fake?(c.parentNode.removeChild(c),A.style.overflow=u,A.offsetHeight):f.parentNode.removeChild(f),!!s}function m(t,n){var o=t.length;if("CSS"in e&&"supports"in e.CSS){for(;o--;)if(e.CSS.supports(f(t[o]),n))return!0;return!1}if("CSSSupportsRule"in e){for(var i=[];o--;)i.push("("+f(t[o])+":"+n+")");return i=i.join(" or "),y("@supports ("+i+") { #modernizr { position: absolute; } }",function(e){return"absolute"==c(e,null,"position")})}return r}function h(e,t,o,i){function u(){f&&(delete P.style,delete P.modElem)}if(i=n(i,"undefined")?!1:i,!n(o,"undefined")){var l=m(e,o);if(!n(l,"undefined"))return l}for(var f,c,d,y,h,g=["modernizr","tspan","samp"];!P.style&&g.length;)f=!0,P.modElem=p(g.shift()),P.style=P.modElem.style;for(d=e.length,c=0;d>c;c++)if(y=e[c],h=P.style[y],a(y,"-")&&(y=s(y)),P.style[y]!==r){if(i||n(o,"undefined"))return u(),"pfx"==t?y:!0;try{P.style[y]=o}catch(b){}if(P.style[y]!=h)return u(),"pfx"==t?y:!0}return u(),!1}function g(e,t,r,o,i){var s=e.charAt(0).toUpperCase()+e.slice(1),a=(e+" "+j.join(s+" ")+s).split(" ");return n(t,"string")||n(t,"undefined")?h(a,t,o,i):(a=(e+" "+x.join(s+" ")+s).split(" "),l(a,t,r))}var b=[],v=[],S={_version:"3.6.0",_config:{classPrefix:"",enableClasses:!0,enableJSClass:!0,usePrefixes:!0},_q:[],on:function(e,t){var r=this;setTimeout(function(){t(r[e])},0)},addTest:function(e,t,r){v.push({name:e,fn:t,options:r})},addAsyncTest:function(e){v.push({name:null,fn:e})}},Modernizr=function(){};Modernizr.prototype=S,Modernizr=new Modernizr,Modernizr.addTest("es5array",function(){return!!(Array.prototype&&Array.prototype.every&&Array.prototype.filter&&Array.prototype.forEach&&Array.prototype.indexOf&&Array.prototype.lastIndexOf&&Array.prototype.map&&Array.prototype.some&&Array.prototype.reduce&&Array.prototype.reduceRight&&Array.isArray)}),Modernizr.addTest("es5date",function(){var e="2013-04-12T06:06:37.307Z",t=!1;try{t=!!Date.parse(e)}catch(r){}return!!(Date.now&&Date.prototype&&Date.prototype.toISOString&&Date.prototype.toJSON&&t)}),Modernizr.addTest("es5function",function(){return!(!Function.prototype||!Function.prototype.bind)}),Modernizr.addTest("es5object",function(){return!!(Object.keys&&Object.create&&Object.getPrototypeOf&&Object.getOwnPropertyNames&&Object.isSealed&&Object.isFrozen&&Object.isExtensible&&Object.getOwnPropertyDescriptor&&Object.defineProperty&&Object.defineProperties&&Object.seal&&Object.freeze&&Object.preventExtensions)}),Modernizr.addTest("es5string",function(){return!(!String.prototype||!String.prototype.trim)}),Modernizr.addTest("es6array",!!(Array.prototype&&Array.prototype.copyWithin&&Array.prototype.fill&&Array.prototype.find&&Array.prototype.findIndex&&Array.prototype.keys&&Array.prototype.entries&&Array.prototype.values&&Array.from&&Array.of)),Modernizr.addTest("es6collections",!!(e.Map&&e.Set&&e.WeakMap&&e.WeakSet)),Modernizr.addTest("es6math",!!(Math&&Math.clz32&&Math.cbrt&&Math.imul&&Math.sign&&Math.log10&&Math.log2&&Math.log1p&&Math.expm1&&Math.cosh&&Math.sinh&&Math.tanh&&Math.acosh&&Math.asinh&&Math.atanh&&Math.hypot&&Math.trunc&&Math.fround)),Modernizr.addTest("es6number",!!(Number.isFinite&&Number.isInteger&&Number.isSafeInteger&&Number.isNaN&&Number.parseInt&&Number.parseFloat&&Number.isInteger(Number.MAX_SAFE_INTEGER)&&Number.isInteger(Number.MIN_SAFE_INTEGER)&&Number.isFinite(Number.EPSILON))),Modernizr.addTest("es6object",!!(Object.assign&&Object.is&&Object.setPrototypeOf)),Modernizr.addTest("promises",function(){return"Promise"in e&&"resolve"in e.Promise&&"reject"in e.Promise&&"all"in e.Promise&&"race"in e.Promise&&function(){var t;return new e.Promise(function(e){t=e}),"function"==typeof t}()}),Modernizr.addTest("es6string",!!(String.fromCodePoint&&String.raw&&String.prototype.codePointAt&&String.prototype.repeat&&String.prototype.startsWith&&String.prototype.endsWith&&String.prototype.includes));var A=t.documentElement,O="svg"===A.nodeName.toLowerCase(),C="Moz O ms Webkit",j=S._config.usePrefixes?C.split(" "):[];S._cssomPrefixes=j;var N=function(t){var n,o=prefixes.length,i=e.CSSRule;if("undefined"==typeof i)return r;if(!t)return!1;if(t=t.replace(/^@/,""),n=t.replace(/-/g,"_").toUpperCase()+"_RULE",n in i)return"@"+t;for(var s=0;o>s;s++){var a=prefixes[s],p=a.toUpperCase()+"_"+n;if(p in i)return"@-"+a.toLowerCase()+"-"+t}return!1};S.atRule=N;var x=S._config.usePrefixes?C.toLowerCase().split(" "):[];S._domPrefixes=x;var w={elem:p("modernizr")};Modernizr._q.push(function(){delete w.elem});var P={style:w.elem.style};Modernizr._q.unshift(function(){delete P.style}),S.testAllProps=g;var _=S.prefixed=function(e,t,r){return 0===e.indexOf("@")?N(e):(-1!=e.indexOf("-")&&(e=s(e)),t?g(e,t,r):g(e,"pfx"))};Modernizr.addTest("objectfit",!!_("objectFit"),{aliases:["object-fit"]}),o(),i(b),delete S.addTest,delete S.addAsyncTest;for(var M=0;M<Modernizr._q.length;M++)Modernizr._q[M]();e.Modernizr=Modernizr}(window,document);
       (function() {
-        'use strict';
+        var refScript = document.body.getElementsByTagName('script')[0] || document.body.getElementsByTagName('style')[0];
 
-        /**
-         * Basic flow of the loader process
-         *
-         * There are 4 flows the loader can take when booting up
-         *
-         * - Synchronous script, no polyfills needed
-         *   - wait for `DOMContentLoaded`
-         *   - run callbacks passed to `waitFor`
-         *   - fire WCR event
-         *
-         * - Synchronous script, polyfills needed
-         *   - document.write the polyfill bundle
-         *   - wait on the `load` event of the bundle to batch Custom Element upgrades
-         *   - wait for `DOMContentLoaded`
-         *   - run callbacks passed to `waitFor`
-         *   - fire WCR event
-         *
-         * - Asynchronous script, no polyfills needed
-         *   - fire WCR event, as there could not be any callbacks passed to `waitFor`
-         *
-         * - Asynchronous script, polyfills needed
-         *   - Append the polyfill bundle script
-         *   - wait for `load` event of the bundle
-         *   - batch Custom Element Upgrades
-         *   - run callbacks pass to `waitFor`
-         *   - fire WCR event
-         */
-
-        var polyfillsLoaded = false;
-        var whenLoadedFns = [];
-        var allowUpgrades = false;
-        var flushFn;
-        var timeout = null;
-
-        function fireEvent() {
-          window.WebComponents.ready = true;
-          document.dispatchEvent(new CustomEvent('WebComponentsReady', { bubbles: true }));
+        function es5Loaded () {
+          window.SPALite.Es5Loaded = true;
+          window.dispatchEvent(new window.CustomEvent('spa-lite-es5-loaded'));
+          // load es6
+          checkEs6Polyfills();
         }
 
-        function batchCustomElements() {
-          if (window.customElements && customElements.polyfillWrapFlushCallback) {
-            customElements.polyfillWrapFlushCallback(function (flushCallback) {
-              flushFn = flushCallback;
-              if (allowUpgrades) {
-                flushFn();
-              }
+        function es6Loaded () {
+          window.SPALite.Es6Loaded = true;
+          window.dispatchEvent(new window.CustomEvent('spa-lite-es6-loaded'));
+          checkCustomElementsEs5Adapter();
+        }
+
+        // es5 polyfill loaders
+        function loadEs5shim (callback) {
+          var es5shim = document.createElement('script');
+          es5shim.src = '/vendor/es5-shim.js';
+          es5shim.addEventListener('load', function() { callback() });
+          es5shim.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(es5shim, refScript);
+        }
+
+        function loadEs5Sham (callback) {
+          var es5sham = document.createElement('script');
+          es5sham.src = '/vendor/es5-sham.js';
+          es5sham.addEventListener('load', function() { callback() });
+          es5sham.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(es5sham, refScript);
+        }
+
+        // es6 polyfill loaders
+        function loadEs6Shim (callback) {
+          var es6shim = document.createElement('script');
+          es6shim.src = '/vendor/es6-shim.js';
+          es6shim.addEventListener('load', function() { callback() });
+          es6shim.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(es6shim, refScript);
+        }
+
+        function loadEs6Sham (callback) {
+          var es6sham = document.createElement('script');
+          es6sham.src = '/vendor/es6-sham.js';
+          es6sham.addEventListener('load', function() { callback() });
+          es6sham.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(es6sham, refScript);
+        }
+
+        function loadWeakMap (callback) {
+          var weakMap = document.createElement('script');
+          weakMap.src = '/vendor/weakmap-polyfill.js';
+          weakMap.addEventListener('load', function() { callback() });
+          weakMap.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(weakMap, refScript);
+        }
+
+        // Feature detect Custom Elements support. If the browser DOES support Custom
+        // Elements then we need to load the custom-elements-es5-adapter because
+        // our project code has been transpiled from ES2015 to ES5 and native Custom
+        // Elements expect elements will be registered as classes.
+        function loadCustomElementsEs5Adapter (callback) {
+          var customElementsEs5Adapter = document.createElement('script');
+          customElementsEs5Adapter.src = '/vendor/custom-elements-es5-adapter.js';
+          customElementsEs5Adapter.setAttribute('nomodule', '');
+          customElementsEs5Adapter.setAttribute('async', '');
+          customElementsEs5Adapter.addEventListener('load', function() { callback() });
+          customElementsEs5Adapter.addEventListener('error', callback);
+          refScript.parentNode.insertBefore(customElementsEs5Adapter, refScript);
+        }
+
+        // load es5 polyfills
+        function checkEs5Polyfills () {
+
+          // loads es5 polyfills if it doesn't have the following
+          // es5 array, date, functions, object, and string methods
+          if (!Modernizr.es5array ||
+              !Modernizr.es5date ||
+              !Modernizr.es5function ||
+              !Modernizr.es5object ||
+              !Modernizr.es5string) {
+
+              // Aaahh!! Callback horror!!
+              loadEs5Shim(function (error) {
+                if (error) throw error;
+                loadEs5Sham(function (error) {
+                  if (error) throw error;
+                  es5Loaded();
+                });
+              });
+          } else {
+            es5Loaded();
+          }
+        }
+
+        // load es6 polyfills
+        function checkEs6Polyfills () {
+          var es6Promises = [];
+
+          // loads es6 polyfils if it doesn't have the following
+          // es6 set and collections, math, number, object, and string methods
+          if (!Modernizr.es6collections ||
+              !Modernizr.es6math ||
+              !Modernizr.es6number ||
+              !Modernizr.es6object ||
+              !Modernizr.es6string) {
+
+            // Aaahh!! Callback horror!!
+            loadEs6Shim(function (error) {
+              if (error) throw error;
+              loadEs6Sham(function (error) {
+                if (error) throw error;
+                loadWeakMap(function (error) {
+                  if (error) throw error;
+                  es6Loaded();
+                });
+              });
+            });
+          } else {
+            es6Loaded();
+          }
+        }
+
+        function checkCustomElementsEs5Adapter () {
+          try {
+            // danger
+            eval('(function(){ class x extends window.HTMLElement {} window.customElements.define("spa-lite-es5-test-component", x); })();');
+            loadWebComponentsPolyfills();
+          } catch (error) {
+            console.log(error);
+            loadCustomElementsEs5Adapter(function (error) {
+              if (error) throw error;
+              loadWebComponentsPolyfills();
             });
           }
         }
 
-        function asyncReady() {
-          batchCustomElements();
-          ready();
-        }
+        // copied from webcomponents-loader.js
+        function loadWebComponentsPolyfills () {
+          console.log('Loading web components');
+          var polyfillsLoaded = false;
+          var whenLoadedFns = [];
+          var allowUpgrades = false;
+          var flushFn;
+          var timeout = null;
 
-        function ready() {
-          // bootstrap <template> elements before custom elements
-          if (window.HTMLTemplateElement && HTMLTemplateElement.bootstrap) {
-            HTMLTemplateElement.bootstrap(window.document);
+          function fireEvent() {
+            window.WebComponents.ready = true;
+            document.dispatchEvent(new CustomEvent('WebComponentsReady', { bubbles: true }));
           }
-          polyfillsLoaded = true;
-          if (!Modernizr.es6collections || !Modernizr.es6math || !Modernizr.es6number || !Modernizr.es6object || !Modernizr.es6string) {
-            if (!window.Es6Loaded) {
-              window.addEventListener('es6-loaded', coreReady);
-            } else {
-              coreReady();
+
+          function batchCustomElements() {
+            if (window.customElements && customElements.polyfillWrapFlushCallback) {
+              customElements.polyfillWrapFlushCallback(function (flushCallback) {
+                flushFn = flushCallback;
+                if (allowUpgrades) {
+                  flushFn();
+                }
+              });
             }
-          } else {
-            coreReady();
           }
-        }
 
-        function coreReady () {
-          runWhenLoadedFns().then(fireEvent);
-        }
+          function asyncReady() {
+            batchCustomElements();
+            ready();
+          }
 
-        function runWhenLoadedFns() {
-          allowUpgrades = false;
-          var done = function() {
-            allowUpgrades = true;
-            whenLoadedFns.length = 0;
-            flushFn && flushFn();
+          function ready() {
+            // bootstrap <template> elements before custom elements
+            if (window.HTMLTemplateElement && HTMLTemplateElement.bootstrap) {
+              HTMLTemplateElement.bootstrap(window.document);
+            }
+            polyfillsLoaded = true;
+            runWhenLoadedFns().then(fireEvent);
+          }
+
+          function runWhenLoadedFns() {
+            allowUpgrades = false;
+            var done = function() {
+              allowUpgrades = true;
+              whenLoadedFns.length = 0;
+              flushFn && flushFn();
+            };
+            return Promise.all(whenLoadedFns.map(function(fn) {
+              return fn instanceof Function ? fn() : fn;
+            })).then(function() {
+              done();
+            }).catch(function(err) {
+              console.error(err);
+            });
+          }
+
+          window.WebComponents = window.WebComponents || {
+            ready: false,
+            _batchCustomElements: batchCustomElements,
+            waitFor: function(waitFn) {
+              if (!waitFn) {
+                return;
+              }
+              whenLoadedFns.push(waitFn);
+              if (polyfillsLoaded) {
+                runWhenLoadedFns();
+              }
+            }
           };
-          return Promise.all(whenLoadedFns.map(function(fn) {
-            return fn instanceof Function ? fn() : fn;
-          })).then(function() {
-            done();
-          }).catch(function(err) {
-            console.error(err);
-          });
-        }
 
-        window.WebComponents = window.WebComponents || {
-          ready: false,
-          _batchCustomElements: batchCustomElements,
-          waitFor: function(waitFn) {
-            if (!waitFn) {
-              return;
+          // Feature detect which polyfill needs to be imported.
+          var polyfills = [];
+          if (!('attachShadow' in Element.prototype && 'getRootNode' in Element.prototype) ||
+            (window.ShadyDOM && window.ShadyDOM.force)) {
+            polyfills.push('sd');
+          }
+          if (!window.customElements || window.customElements.forcePolyfill) {
+            polyfills.push('ce');
+          }
+
+          var needsTemplate = (function() {
+            // no real <template> because no `content` property (IE and older browsers)
+            var t = document.createElement('template');
+            if (!('content' in t)) {
+              return true;
             }
-            whenLoadedFns.push(waitFn);
-            if (polyfillsLoaded) {
-              runWhenLoadedFns();
+            // broken doc fragment (older Edge)
+            if (!(t.content.cloneNode() instanceof DocumentFragment)) {
+              return true;
             }
+            // broken <template> cloning (Edge up to at least version 17)
+            var t2 = document.createElement('template');
+            t2.content.appendChild(document.createElement('div'));
+            t.content.appendChild(t2);
+            var clone = t.cloneNode(true);
+            return (clone.content.childNodes.length === 0 ||
+                clone.content.firstChild.content.childNodes.length === 0);
+          })();
+
+          // NOTE: any browser that does not have template or ES6 features
+          // must load the full suite of polyfills.
+          if (!window.Promise || !Array.from || !window.URL || !window.Symbol || needsTemplate) {
+            polyfills = ['sd-ce-pf'];
           }
-        };
 
-        var name = 'webcomponents-loader.js';
-        // Feature detect which polyfill needs to be imported.
-        var polyfills = [];
-        if (!('attachShadow' in Element.prototype && 'getRootNode' in Element.prototype) ||
-          (window.ShadyDOM && window.ShadyDOM.force)) {
-          polyfills.push('sd');
-        }
-        if (!window.customElements || window.customElements.forcePolyfill) {
-          polyfills.push('ce');
-        }
-
-        var needsTemplate = (function() {
-          // no real <template> because no `content` property (IE and older browsers)
-          var t = document.createElement('template');
-          if (!('content' in t)) {
-            return true;
-          }
-          // broken doc fragment (older Edge)
-          if (!(t.content.cloneNode() instanceof DocumentFragment)) {
-            return true;
-          }
-          // broken <template> cloning (Edge up to at least version 17)
-          var t2 = document.createElement('template');
-          t2.content.appendChild(document.createElement('div'));
-          t.content.appendChild(t2);
-          var clone = t.cloneNode(true);
-          return (clone.content.childNodes.length === 0 ||
-              clone.content.firstChild.content.childNodes.length === 0);
-        })();
-
-        // NOTE: any browser that does not have template or ES6 features
-        // must load the full suite of polyfills.
-        if (!window.Promise || !Array.from || !window.URL || !window.Symbol || needsTemplate) {
-          polyfills = ['sd-ce-pf'];
-        }
-
-        if (polyfills.length) {
-          var newScript = document.createElement('script');
-          // Load it from the right place.
-          var replacement = '/vendor/bundles/webcomponents-' + polyfills.join('-') + '.js';
-          newScript.src = replacement;
-          // if readyState is 'loading', this script is synchronous
-          if (document.readyState === 'loading') {
-            // make sure custom elements are batched whenever parser gets to the injected script
-            if (window.Es6Loaded) {
+          if (polyfills.length) {
+            var newScript = document.createElement('script');
+            // Load it from the right place.
+            newScript.src = '/vendor/bundles/webcomponents-' + polyfills.join('-') + '.js';
+            // if readyState is 'loading', this script is synchronous
+            if (document.readyState === 'loading') {
+              // make sure custom elements are batched whenever parser gets to the injected script
               newScript.setAttribute('onload', 'window.WebComponents._batchCustomElements()');
               document.write(newScript.outerHTML);
               document.addEventListener('DOMContentLoaded', ready);
             } else {
-              window.addEventListener('es6-loaded', function() {
-                newScript.addEventListener('load', function () {
-                  asyncReady();
-                });
-                newScript.addEventListener('error', function () {
-                  throw new Error('Could not load polyfill bundle' + url);
-                });
-                console.log('es6 loaded... loading addtional polyfills')
-                document.head.appendChild(newScript);
+              newScript.addEventListener('load', function () {
+                asyncReady();
               });
-            }
-
-          } else {
-            newScript.addEventListener('load', function () {
-              asyncReady();
-            });
-            newScript.addEventListener('error', function () {
-              throw new Error('Could not load polyfill bundle' + url);
-            });
-            if (!Modernizr.es6collections || !Modernizr.es6math || !Modernizr.es6number || !Modernizr.es6object || !Modernizr.es6string) {
-              if (!window.Es6Loaded) {
-                window.addEventListener('es6-loaded', function() {
-                  console.log('es6 loaded... loading addtional polyfills')
-                  document.head.appendChild(newScript);
-                });
-              } else {
-                setTimeout(function () {
-                  console.log('after waiting... loading additional polyfills');
-                  document.head.appendChild(newScript);
-                }, 3000);
-              }
-            } else {
-              console.log('loading addtional polyfills')
+              newScript.addEventListener('error', function () {
+                throw new Error('Could not load polyfill bundle' + url);
+              });
               document.head.appendChild(newScript);
             }
-          }
-        } else {
-          polyfillsLoaded = true;
-          if (document.readyState === 'complete') {
-            fireEvent()
           } else {
-            // this script may come between DCL and load, so listen for both, and cancel load listener if DCL fires
-            window.addEventListener('load', ready);
-            window.addEventListener('DOMContentLoaded', function() {
-              window.removeEventListener('load', ready);
-              ready();
-            })
-            // window.addEventListener('es6-load', ready);
+            polyfillsLoaded = true;
+            if (document.readyState === 'complete') {
+              fireEvent()
+            } else {
+              // this script may come between DCL and load, so listen for both, and cancel load listener if DCL fires
+              window.addEventListener('load', ready);
+              window.addEventListener('DOMContentLoaded', function() {
+                window.removeEventListener('load', ready);
+                ready();
+              });
+            }
           }
         }
+
+        checkEs5Polyfills();
+
+        // loads optional dependencies
+        // loads intersection observer polyfil if it doesn't have the native intersection observer
+        if (!window.IntersectionObserver) {
+          var io = document.createElement('script');
+          io.src = '/vendor/intersection-observer.js';
+          refScript.parentNode.insertBefore(io, refScript);
+        }
+
+        if (!window.fetch || !window.Headers) {
+          var fetchPoly = document.createElement('script')
+          fetchPoly.src = '/vendor/fetch.js'
+          refScript.parentNode.insertBefore(fetchPoly, refScript)
+        }
+
+        if (!Modernizr.objectfit || 'objectFit' in document.documentElement.style === false) {
+          var ofi = document.createElement('script')
+          ofi.src = '/vendor/ofi.js'
+          refScript.parentNode.insertBefore(ofi, refScript)
+        }
+
+
       })();
     </script>
+
 
     <script>
       (function(){
