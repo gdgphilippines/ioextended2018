@@ -20,6 +20,9 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   }
 
   set thumbnail (thumbnail) {
+    if (this.baseLocation && thumbnail && thumbnail.indexOf(this.baseLocation) !== 0) {
+      thumbnail = this.baseLocation + thumbnail;
+    }
     this.__data['thumbnail'] = thumbnail;
     this.invalidate();
   }
@@ -29,6 +32,9 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   }
 
   set src (src) {
+    if (this.baseLocation && src && src.indexOf(this.baseLocation) !== 0) {
+      src = this.baseLocation + src;
+    }
     this.__data['src'] = src;
     this.invalidate();
   }
@@ -65,12 +71,44 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   }
 
   set sources (sources) {
+    if (this.baseLocation) {
+      for (let i in sources) {
+        if (sources[i].srcset && sources.srcset.indexOf(this.baseLocation) !== 0) {
+          sources[i].srcset = this.baseLocation + sources[i].srcset;
+        }
+      }
+    }
     this.__data['sources'] = sources;
     this.invalidate();
   }
 
   get sources () {
     return this.__data['sources'];
+  }
+
+  set baseLocation (baseLocation) {
+
+    this.__data['baseLocation'] = baseLocation;
+
+    if (this.__data['src'] && this.__data['src'].indexOf(baseLocation) !== 0) {
+      this.__data['src'] = baseLocation + this.__data['src'];
+    }
+
+    if (this.__data['thumbnail'] && this.__data['thumbnail'].indexOf(baseLocation) !== 0) {
+      this.__data['thumbnail'] = baseLocation + this.__data['thumbnail'];
+    }
+
+    for (let i in this.__data['sources']) {
+      if (this.__data['sources'][i].srcset && this.__data['sources'][i].srcset.indexOf(baseLocation) !== 0) {
+        this.__data['sources'][i].srcset = baseLocation + this.__data['sources'][i].srcset;
+      }
+    }
+
+    this.invalidate();
+  }
+
+  get baseLocation () {
+    return this.__data['baseLocation'];
   }
 
   render () {
