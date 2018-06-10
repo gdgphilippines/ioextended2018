@@ -15,7 +15,7 @@
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="<%= app.twitter %>" />
-    <meta name="twitter:creator" content="<%= app.twitter %>" />
+    <meta name="twitter:creator" content="<%= app.twitterCreator %>" />
     <meta name="twitter:title" content="<%= app.title %>" />
     <meta name="twitter:description" content="<%= app.description %>" />
     <meta name="twitter:image" content="<%= app.image %>" />
@@ -26,7 +26,7 @@
     -->
     <base href="<%= app.baseHref %>">
 
-    <link rel="icon" href="/assets/images/favicon.ico">
+    <link rel="icon" href="<%= theme.favicon %>">
 
     <!-- See https://goo.gl/OOhYW5 -->
     <link rel="manifest" href="manifest.json">
@@ -48,7 +48,7 @@
     <link rel="apple-touch-icon" <% if (theme.icons[i].sizes) { %> sizes="<%= theme.icons[i].sizes %>"<% } %> href="images/manifest/<%= theme.icons[i].src %>"><% } %>
     <% for (let i in theme.icons) {%><% if (theme.icons[i].tileImage) { %>
     <meta name="msapplication-TileImage" content="images/manifest/<%= theme.icons[i].src %>"><% }} %>
-    <meta name="msapplication-TileColor" content="<%= theme.webApp.themeColor %>">
+    <meta name="msapplication-TileColor" content="<%= theme.themeColor %>">
     <meta name="msapplication-tap-highlight" content="<%= theme.webApp.tapHighlight %>">
 
     <style>
