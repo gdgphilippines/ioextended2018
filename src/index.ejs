@@ -235,13 +235,13 @@
           window.SPALite.Es5Loaded = true;
           window.dispatchEvent(new window.CustomEvent('spa-lite-es5-loaded'));
           // load es6
-          loadEs6Polyfills();
+          checkEs6Polyfills();
         }
 
         function es6Loaded () {
           window.SPALite.Es6Loaded = true;
           window.dispatchEvent(new window.CustomEvent('spa-lite-es6-loaded'));
-          loadCustomElementsEs5Adapter();
+          checkCustomElementsEs5Adapter();
         }
 
         // es5 polyfill loaders
@@ -262,7 +262,7 @@
         }
 
         // es6 polyfill loaders
-        function loadEs6shim (callback) {
+        function loadEs6Shim (callback) {
           var es6shim = document.createElement('script');
           es6shim.src = '/vendor/es6-shim.js';
           es6shim.addEventListener('load', function() { callback() });
@@ -292,7 +292,7 @@
         // Elements expect elements will be registered as classes.
         function loadCustomElementsEs5Adapter (callback) {
           var customElementsEs5Adapter = document.createElement('script');
-          customElementsEs5Adapter.src = '/vendor//custom-elements-es5-adapter.js.js';
+          customElementsEs5Adapter.src = '/vendor/custom-elements-es5-adapter.js';
           customElementsEs5Adapter.setAttribute('nomodule', '');
           customElementsEs5Adapter.setAttribute('async', '');
           customElementsEs5Adapter.addEventListener('load', function() { callback() });
@@ -325,7 +325,7 @@
         }
 
         // load es6 polyfills
-        function loadEs6Polyfills () {
+        function checkEs6Polyfills () {
           var es6Promises = [];
 
           // loads es6 polyfils if it doesn't have the following
@@ -352,7 +352,7 @@
           }
         }
 
-        function loadCustomElementsEs5Adapter () {
+        function checkCustomElementsEs5Adapter () {
           try {
             // danger
             eval('(function(){ class x extends window.HTMLElement {} window.customElements.define("spa-lite-es5-test-component", x); })();');
