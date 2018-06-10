@@ -45,6 +45,8 @@ import('./components/project-header/index.js').then(() => {
   header.addEventListener('click', closeSidebar);
 });
 
+// throw new Error();
+
 // service worker
 const snacker = document.querySelector('.snackbar-lite');
 let text;
