@@ -21,6 +21,15 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     return this.__data['date'];
   }
 
+  set dateLink (dateLink) {
+    this.__data['dateLink'] = dateLink;
+    this.invalidate();
+  }
+
+  get dateLink () {
+    return this.__data['dateLink'];
+  }
+
   set location (location) {
     this.__data['location'] = location;
     this.invalidate();
@@ -28,6 +37,15 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
 
   get location () {
     return this.__data['location'];
+  }
+
+  set locationLink (locationLink) {
+    this.__data['locationLink'] = locationLink;
+    this.invalidate();
+  }
+
+  get locationLink () {
+    return this.__data['locationLink'];
   }
 
   set registerLink (registerLink) {

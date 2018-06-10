@@ -17,12 +17,14 @@ const template = (self) => html`
   <main class="main" role="main">
     <section-location
         date="${self.data.date}"
+        dateLink="${self.data.dateLink}"
         location="${self.data.location}"
+        locationLink="${self.data.locationLink}"
         registerLink="${self.data.registrationLink}"
         registerDisable="${self.data.registrationClosed}">
     </section-location>
 
-    <general-section class="sponsor">
+    <general-section class="location">
       <div class="section-text">
         <h1>
           Schedule

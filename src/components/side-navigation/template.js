@@ -5,7 +5,7 @@ const template = (self) => html`
     <ul class="side-navigation-list">
       ${self.navigation.map(i => html`
         <li class="side-navigation-item" on-click=${self.closeSidebar.bind(self)}>
-          <a href="${i.href}" class="navigation-anchor">
+          <a href="${i.href}" class="side-navigation-anchor">
             ${i.label}
           </a>
         </li>

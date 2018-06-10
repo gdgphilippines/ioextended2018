@@ -1,7 +1,7 @@
 import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
-  <h2 class="h2">
+  <h2 class$="h2 ${self.codelabs && self.codelabs.length ? 'with-codelabs' : ''}">
     ${self.codelabs && self.codelabs.length ? 'Breakout Sessions / Codelabs' : self.title}
   </h2>
   ${self.codelabs && self.codelabs.length
@@ -14,11 +14,13 @@ const template = (self) => html`
         `)}
       </ul>
     `
-    : html`
+    : html`${self.speaker
+      ? html`
       <p class="paragraph">
         ${self.speaker}
-      </p>
-    `
+      </p>`
+      : ''
+    }`
   }
 `;
 
