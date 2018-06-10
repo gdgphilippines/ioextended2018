@@ -231,13 +231,6 @@
       (function() {
         var refScript = document.body.getElementsByTagName('script')[0] || document.body.getElementsByTagName('style')[0];
 
-        function promiseLoaded () {
-          window.SPALite.PromiseLoaded = true;
-          window.dispatchEvent(new window.CustomEvent('spa-lite-promise-loaded'));
-          // load es5
-          loadEs5Polyfills();
-        }
-
         function es5Loaded () {
           window.SPALite.Es5Loaded = true;
           window.dispatchEvent(new window.CustomEvent('spa-lite-es5-loaded'));
@@ -252,44 +245,44 @@
         }
 
         // es5 polyfill loaders
-        function loadEs5shimPromise (resolve, reject) {
+        function loadEs5shim (callback) {
           var es5shim = document.createElement('script');
           es5shim.src = '/vendor/es5-shim.js';
-          es5shim.addEventListener('load', resolve);
-          es5shim.addEventListener('error', reject);
+          es5shim.addEventListener('load', function() { callback() });
+          es5shim.addEventListener('error', callback);
           refScript.parentNode.insertBefore(es5shim, refScript);
         }
 
-        function loadEs5ShamPromise (resolve, reject) {
+        function loadEs5Sham (callback) {
           var es5sham = document.createElement('script');
           es5sham.src = '/vendor/es5-sham.js';
-          es5sham.addEventListener('load', resolve);
-          es5sham.addEventListener('error', reject);
+          es5sham.addEventListener('load', function() { callback() });
+          es5sham.addEventListener('error', callback);
           refScript.parentNode.insertBefore(es5sham, refScript);
         }
 
         // es6 polyfill loaders
-        function loadEs6shimPromise (resolve, reject) {
+        function loadEs6shim (callback) {
           var es6shim = document.createElement('script');
           es6shim.src = '/vendor/es6-shim.js';
-          es6shim.addEventListener('load', resolve);
-          es6shim.addEventListener('error', reject);
+          es6shim.addEventListener('load', function() { callback() });
+          es6shim.addEventListener('error', callback);
           refScript.parentNode.insertBefore(es6shim, refScript);
         }
 
-        function loadEs6ShamPromise (resolve, reject) {
+        function loadEs6Sham (callback) {
           var es6sham = document.createElement('script');
           es6sham.src = '/vendor/es6-sham.js';
-          es6sham.addEventListener('load', resolve);
-          es6sham.addEventListener('error', reject);
+          es6sham.addEventListener('load', function() { callback() });
+          es6sham.addEventListener('error', callback);
           refScript.parentNode.insertBefore(es6sham, refScript);
         }
 
-        function loadWeakMapPromise (resolve, reject) {
+        function loadWeakMap (callback) {
           var weakMap = document.createElement('script');
           weakMap.src = '/vendor/weakmap-polyfill.js';
-          weakMap.addEventListener('load', resolve);
-          weakMap.addEventListener('error', reject);
+          weakMap.addEventListener('load', function() { callback() });
+          weakMap.addEventListener('error', callback);
           refScript.parentNode.insertBefore(weakMap, refScript);
         }
 
@@ -297,19 +290,18 @@
         // Elements then we need to load the custom-elements-es5-adapter because
         // our project code has been transpiled from ES2015 to ES5 and native Custom
         // Elements expect elements will be registered as classes.
-        function loadCustomElementsEs5AdapterPromise (resolve, reject) {
+        function loadCustomElementsEs5Adapter (callback) {
           var customElementsEs5Adapter = document.createElement('script');
           customElementsEs5Adapter.src = '/vendor//custom-elements-es5-adapter.js.js';
           customElementsEs5Adapter.setAttribute('nomodule', '');
           customElementsEs5Adapter.setAttribute('async', '');
-          customElementsEs5Adapter.addEventListener('load', resolve);
-          customElementsEs5Adapter.addEventListener('error', reject);
+          customElementsEs5Adapter.addEventListener('load', function() { callback() });
+          customElementsEs5Adapter.addEventListener('error', callback);
           refScript.parentNode.insertBefore(customElementsEs5Adapter, refScript);
         }
 
         // load es5 polyfills
-        function loadEs5Polyfills () {
-          var es5Promises = [];
+        function checkEs5Polyfills () {
 
           // loads es5 polyfills if it doesn't have the following
           // es5 array, date, functions, object, and string methods
@@ -319,17 +311,13 @@
               !Modernizr.es5object ||
               !Modernizr.es5string) {
 
-            es5Promises.push(new Promise(loadEs5shimPromise));
-            es5Promises.push(new Promise(loadEs5ShamPromise));
-          }
-
-          if (es5Promises.length) {
-            Promise
-              .all(es5Promises)
-              .then(es5Loaded)
-              .catch(function (error) {
-                console.error(error);
-                throw error;
+              // Aaahh!! Callback horror!!
+              loadEs5Shim(function (error) {
+                if (error) throw error;
+                loadEs5Sham(function (error) {
+                  if (error) throw error;
+                  es5Loaded();
+                });
               });
           } else {
             es5Loaded();
@@ -348,19 +336,17 @@
               !Modernizr.es6object ||
               !Modernizr.es6string) {
 
-            es6Promises.push(new Promise(loadEs6shimPromise));
-            es6Promises.push(new Promise(loadEs6ShamPromise));
-            es6Promises.push(new Promise(loadWeakMapPromise));
-          }
-
-          if (es6Promises.length) {
-            Promise
-              .all(es6Promises)
-              .then(es6Loaded)
-              .catch(function (error) {
-                console.error(error);
-                throw error;
+            // Aaahh!! Callback horror!!
+            loadEs6Shim(function (error) {
+              if (error) throw error;
+              loadEs6Sham(function (error) {
+                if (error) throw error;
+                loadWeakMap(function (error) {
+                  if (error) throw error;
+                  es6Loaded();
+                });
               });
+            });
           } else {
             es6Loaded();
           }
@@ -370,15 +356,13 @@
           try {
             // danger
             eval('(function(){ class x extends window.HTMLElement {} window.customElements.define("spa-lite-es5-test-component", x); })();');
-            loadWebComponentsPolyfills()
+            loadWebComponentsPolyfills();
           } catch (error) {
             console.error(error);
-            new Promise(loadCustomElementsEs5AdapterPromise)
-              .then(loadWebComponentsPolyfills)
-              .catch(function (error) {
-                console.error(error);
-                throw error;
-              });
+            loadCustomElementsEs5Adapter(function (error) {
+              if (error) throw error;
+              loadWebComponentsPolyfills();
+            });
           }
         }
 
@@ -519,15 +503,7 @@
           }
         }
 
-        // Priority 1: loads promise polyfil if it doesn't have the native promise
-        if (!Modernizr.promises) {
-          var promise = document.createElement('script');
-          promise.src = '/vendor/es6-promise.js';
-          promise.addEventListener('load', promiseLoaded);
-          refScript.parentNode.insertBefore(promise, refScript);
-        } else {
-          promiseLoaded();
-        }
+        checkEs5Polyfills();
 
         // loads optional dependencies
         // loads intersection observer polyfil if it doesn't have the native intersection observer
