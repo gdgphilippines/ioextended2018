@@ -25,6 +25,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
         schedule: []
       }
     };
+    this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
     this.__boundFetchPageData = this.fetchPageData.bind(this);
   }
 
@@ -39,7 +40,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   }
 
   async fetchPageData ({ id }) {
-    const location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
+    const location = this.location
     if (id) this.data = await fetch(`${location}/data/locations/${id}.json`).then(result => result.json());
   }
 

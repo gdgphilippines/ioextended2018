@@ -23,11 +23,12 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
         }
       }
     };
+    this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
   }
 
   connectedCallback () {
     super.connectedCallback();
-    const location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
+    const location = this.location
     this.fetchAbout(location);
     this.fetchLanding(location);
   }
