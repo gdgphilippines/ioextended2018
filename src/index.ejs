@@ -358,7 +358,7 @@
             eval('(function(){ class x extends window.HTMLElement {} window.customElements.define("spa-lite-es5-test-component", x); })();');
             loadWebComponentsPolyfills();
           } catch (error) {
-            console.error(error);
+            console.log(error);
             loadCustomElementsEs5Adapter(function (error) {
               if (error) throw error;
               loadWebComponentsPolyfills();
@@ -368,6 +368,7 @@
 
         // copied from webcomponents-loader.js
         function loadWebComponentsPolyfills () {
+          console.log('Loading web components');
           var polyfillsLoaded = false;
           var whenLoadedFns = [];
           var allowUpgrades = false;
