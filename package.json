@@ -10,7 +10,7 @@
     "serve": "node server",
     "start": "npm run dev",
     "workbox": "./node_modules/.bin/workbox generateSW workbox.config.js",
-    "prod": "NODE_ENV=production && node compiler && ./node_modules/.bin/webpack --mode=production && ./node_modules/.bin/webpack --mode=production --env.BROWSERS=module && npm run workbox"
+    "prod": "NODE_ENV=production && node compiler && ./node_modules/.bin/webpack --mode=production && ./node_modules/.bin/webpack --mode=production --env.BROWSERS=module && node compiler && npm run workbox"
   },
   "repository": {
     "type": "git",

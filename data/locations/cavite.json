@@ -1,13 +1,13 @@
 {
   "date": "June 23, 2018",
-  "dateLink": "",
+  "dateLink": "https://calendar.google.com/calendar/r/eventedit?text=Google+I/O+Extended+2018+Cavite&dates=20180622T233000Z/20180623T100000Z&details=For+details,+link+here:+http://ioextended.gdgph.org/location/cavite&location=De%20La%20Salle%20University-Dasmari%C3%B1as,%20Bagong%20Bayan%20Dasmarias%20Cavite,%20Dasmari%C3%B1as,%20Cavite,%20Philippines&sf=true&output=xml",
   "location": "De La Salle University - Dasmarinas, Cavite",
-  "locationLink": "",
+  "locationLink": "https://www.google.com/maps/place/De+La+Salle+University-Dasmari%C3%B1as/@14.3206907,120.9601794,17z/data=!3m1!4b1!4m5!3m4!1s0x3397d5c001e2b4e1:0xf85e8a96a5ee85a3!8m2!3d14.3206907!4d120.9623734",
   "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSeG_Mi5lrJ7FZOehcZRiivLDUNQDZhbWJm0rt0_SeBfSgHZGA/viewform",
   "registrationClosed": false,
   "banner": {
     "bitmap": "/data/images/cavite-bitmap.jpg",
-    "src": "/data/images/cavite-small.jpg",
+    "src": "/data/images/cavite-small-2.jpg",
     "alt": "Image of the Google I/O Extended Roadshow last year",
     "source": [
       {

@@ -27,9 +27,12 @@
   padding-right $large
   @media screen and (max-width: 500px)
     padding-right $medium
+  @media screen and (max-width: 400px)
+    margin 0
+    padding-right $small
 
 .schedule-item
-  margin 0
+  margin 0 !important
   list-style-type none
   display flex
   padding 2rem 0
@@ -38,7 +41,12 @@
   .time
     time()
     width 10rem
+    margin-top: 6px
+    @media screen and (max-width: 500px)
+      width 7rem
 
   .schedule-topic
     flex 1
     margin-left 2rem
+    @media screen and (max-width: 500px)
+      margin-left 1rem
