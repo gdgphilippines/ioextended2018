@@ -38,6 +38,10 @@ const copyStatics = {
       to: 'vendor/es6-sham.js'
     },
     {
+      from: resolve(__dirname, './node_modules/weakmap-polyfill/weakmap-polyfill.min.js'),
+      to: 'vendor/weakmap-polyfill.js'
+    },
+    {
       from: resolve(__dirname, './node_modules/es6-promise/dist/es6-promise.min.js'),
       to: 'vendor/es6-promise.js'
     },

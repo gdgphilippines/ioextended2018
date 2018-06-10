@@ -157,7 +157,7 @@
       (function() {
         var refScript = document.body.getElementsByTagName('script')[0] || document.body.getElementsByTagName('style')[0];
 
-        window.addEventListener('es6-load', function () {
+        window.addEventListener('es6-loaded', function () {
           window.Es6Loaded = true;
         });
 
@@ -183,7 +183,13 @@
               var es6sham = document.createElement('script');
               es6sham.src = '/vendor/es6-sham.js';
               es6sham.addEventListener('load', function () {
-                window.dispatchEvent(new window.CustomEvent('es6-loaded'));
+                var weakMap = document.createElement('script');
+                weakMap.src = '/vendor/weakmap-polyfill.js';
+                weakMap.addEventListener('load', function () {
+                  window.dispatchEvent(new window.CustomEvent('es6-loaded'));
+                });
+                refScript.parentNode.insertBefore(weakMap, refScript);
+                //
               });
               refScript.parentNode.insertBefore(es6sham, refScript);
             });
@@ -402,21 +408,17 @@
           }
           polyfillsLoaded = true;
           if (!Modernizr.es6collections || !Modernizr.es6math || !Modernizr.es6number || !Modernizr.es6object || !Modernizr.es6string) {
-            window.addEventListener('es6-load', coreReady);
-            timeout = setTimeout(function () {
-              window.removeEventListener('es6-load', coreReady);
+            if (!window.Es6Loaded) {
+              window.addEventListener('es6-loaded', coreReady);
+            } else {
               coreReady();
-            }, 5000);
+            }
           } else {
             coreReady();
           }
         }
 
         function coreReady () {
-          if (timeout) {
-            clearTimeout(timeout);
-            timeout = null;
-          }
           runWhenLoadedFns().then(fireEvent);
         }
 
@@ -494,9 +496,23 @@
           // if readyState is 'loading', this script is synchronous
           if (document.readyState === 'loading') {
             // make sure custom elements are batched whenever parser gets to the injected script
-            newScript.setAttribute('onload', 'window.WebComponents._batchCustomElements()');
-            document.write(newScript.outerHTML);
-            document.addEventListener('DOMContentLoaded', ready);
+            if (window.Es6Loaded) {
+              newScript.setAttribute('onload', 'window.WebComponents._batchCustomElements()');
+              document.write(newScript.outerHTML);
+              document.addEventListener('DOMContentLoaded', ready);
+            } else {
+              window.addEventListener('es6-loaded', function() {
+                newScript.addEventListener('load', function () {
+                  asyncReady();
+                });
+                newScript.addEventListener('error', function () {
+                  throw new Error('Could not load polyfill bundle' + url);
+                });
+                console.log('es6 loaded... loading addtional polyfills')
+                document.head.appendChild(newScript);
+              });
+            }
+
           } else {
             newScript.addEventListener('load', function () {
               asyncReady();
@@ -506,13 +522,18 @@
             });
             if (!Modernizr.es6collections || !Modernizr.es6math || !Modernizr.es6number || !Modernizr.es6object || !Modernizr.es6string) {
               if (!window.Es6Loaded) {
-                window.addEventListener('es6-load', function() {
+                window.addEventListener('es6-loaded', function() {
+                  console.log('es6 loaded... loading addtional polyfills')
                   document.head.appendChild(newScript);
                 });
               } else {
-                document.head.appendChild(newScript);
+                setTimeout(function () {
+                  console.log('after waiting... loading additional polyfills');
+                  document.head.appendChild(newScript);
+                }, 3000);
               }
             } else {
+              console.log('loading addtional polyfills')
               document.head.appendChild(newScript);
             }
           }
