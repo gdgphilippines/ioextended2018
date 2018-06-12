@@ -10,7 +10,7 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   constructor () {
     super();
     this.__data = {};
-    this.__boundSetActive = this.setActive.bind(this);
+    this.__boundSetActive = this._setActive.bind(this);
   }
 
   connectedCallback () {
@@ -23,6 +23,15 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     unsubscribe('routeParamObject', this.__boundSetActive);
   }
 
+  set locationId (id) {
+    this.__data['locationId'] = id;
+    this.invalidate();
+  }
+
+  get locationId () {
+    return this.__data['locationId'];
+  }
+
   set navigation (navigation) {
     this.__data['navigation'] = navigation;
     this.invalidate();
@@ -32,14 +41,12 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     return this.__data['navigation'];
   }
 
-  setActive ({ id }) {
-    this.shadowRoot.querySelectorAll('.navigation-anchor').forEach((el, index) => {
-      return (el.name == id) ? el.classList.add('active') : el.classList.remove('active')
-    })
-  }
-
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
+  }
+
+  _setActive ({ id }) {
+    this.locationId = id;
   }
 }
 
