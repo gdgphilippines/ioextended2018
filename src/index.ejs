@@ -58,11 +58,11 @@
     <!-- Use preload: https://developers.google.com/web/updates/2016/03/link-rel-preload -->
     <% for (let i in compilation.assets) { %>
     <% if (i.indexOf('worker') >= 0)  { %>
-    <link rel="preload" href="/<%= i %>" as="script">
+    <link rel="prefetch" href="/<%= i %>" as="script">
     <% }} %>
 
     <% for (let i of htmlWebpackPlugin.options.preload) { %>
-    <link rel="preload" href="/<%= i %>" as="script">
+    <link rel="prefetch" href="/<%= i %>" as="script">
     <% } %>
 
     <!-- Use preconnect: https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect -->
