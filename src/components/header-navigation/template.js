@@ -5,7 +5,7 @@ const template = (self) => html`
     <ul class="navigation-list">
       ${self.navigation.map(i => html`
         <li class="navigation-item">
-          <a href="${i.href}" class="navigation-anchor">
+          <a href="${i.href}" class$="navigation-anchor ${self.locationId === i.label.toLowerCase() ? 'active': ''}">
             ${i.label}
           </a>
         </li>

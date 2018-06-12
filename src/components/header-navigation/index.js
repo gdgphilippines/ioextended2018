@@ -1,4 +1,5 @@
 import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
+import { subscribe, unsubscribe } from '../../utils/ui-state.js';
 import { template } from './template.js';
 import style from './style.styl';
 const { HTMLElement, customElements } = window;
@@ -9,6 +10,26 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   constructor () {
     super();
     this.__data = {};
+    this.__boundSetActive = this._setActive.bind(this);
+  }
+
+  connectedCallback () {
+    super.connectedCallback();
+    subscribe('routeParamObject', this.__boundSetActive);
+  }
+
+  disconnectedCallback () {
+    if (super.disconnectedCallback) super.disconnectedCallback();
+    unsubscribe('routeParamObject', this.__boundSetActive);
+  }
+
+  set locationId (id) {
+    this.__data['locationId'] = id;
+    this.invalidate();
+  }
+
+  get locationId () {
+    return this.__data['locationId'];
   }
 
   set navigation (navigation) {
@@ -22,6 +43,10 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
 
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
+  }
+
+  _setActive ({ id }) {
+    this.locationId = id;
   }
 }
 

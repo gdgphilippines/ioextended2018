@@ -9,6 +9,17 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   constructor () {
     super();
     this.__data = {};
+    this.__boundSetActive = this._setActive.bind(this);
+  }
+
+  connectedCallback () {
+    super.connectedCallback();
+    subscribe('routeParamObject', this.__boundSetActive);
+  }
+
+  disconnectedCallback () {
+    if (super.disconnectedCallback) super.disconnectedCallback();
+    unsubscribe('routeParamObject', this.__boundSetActive);
   }
 
   set navigation (navigation) {
@@ -20,12 +31,25 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     return this.__data['navigation'];
   }
 
+  set locationId (id) {
+    this.__data['locationId'] = id;
+    this.invalidate();
+  }
+
+  get locationId () {
+    return this.__data['locationId'];
+  }
+
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
   }
 
   closeSidebar () {
     this.dispatchEvent(new CustomEvent('close-sidebar'));
+  }
+
+  _setActive ({ id }) {
+    this.locationId = id;
   }
 }
 
