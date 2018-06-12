@@ -1,7 +1,7 @@
 import { ElementLiteStatic } from '@littleq/element-lite/element-lite-static.js';
 const { HTMLElement, customElements } = window;
 
-class Page extends ElementLiteStatic(HTMLElement) {
+class Component extends ElementLiteStatic(HTMLElement) {
   static get is () { return 'navigation-loader'; }
 
   static get properties () {
@@ -27,12 +27,12 @@ class Page extends ElementLiteStatic(HTMLElement) {
             href: '/location/palawan'
           },
           {
-            label: 'Naga',
-            href: '/location/naga'
-          },
-          {
             label: 'Albay',
             href: '/location/albay'
+          },
+          {
+            label: 'Naga',
+            href: '/location/naga'
           }
         ]
       }
@@ -51,8 +51,8 @@ class Page extends ElementLiteStatic(HTMLElement) {
   }
 }
 
-if (!customElements.get(Page.is)) {
-  customElements.define(Page.is, Page);
+if (!customElements.get(Component.is)) {
+  customElements.define(Component.is, Component);
 } else {
-  console.warn(`${Page.is} is already defined somewhere. Please check your code.`);
+  console.warn(`${Component.is} is already defined somewhere. Please check your code.`);
 }
