@@ -5,61 +5,66 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const moduleConf = require('./webpack-module.config');
 const nomoduleConf = require('./webpack-nomodule.config');
 const getHtmlOptions = require('./src/utils/html-webpack/get-html-options');
+const package = require('./package.json');
 const IS_DEV_SERVER = !!process.argv.find(arg => arg.includes('--mode=development'));
 
 const copyStatics = {
   copyPolyfills: [
     {
       from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/*.js'),
-      to: 'vendor/[name].[ext]'
+      to: 'vendor/[name].' + package.version + '.[ext]'
     },
     {
       from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/bundles/*.js'),
-      to: 'vendor/bundles/[name].[ext]'
+      to: 'vendor/bundles/[name].' + package.version + '.[ext]'
     },
     {
       from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/*.map'),
-      to: 'vendor/[name].[ext]'
+      to: 'vendor/[name].' + package.version + '.[ext]'
     },
     {
       from: resolve(__dirname, './node_modules/es5-shim/es5-shim.min.js'),
-      to: 'vendor/es5-shim.js'
+      to: 'vendor/es5-shim.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/es5-shim/es5-sham.min.js'),
-      to: 'vendor/es5-sham.js'
+      to: 'vendor/es5-sham.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/es6-shim/es6-shim.min.js'),
-      to: 'vendor/es6-shim.js'
+      to: 'vendor/es6-shim.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/es6-shim/es6-sham.min.js'),
-      to: 'vendor/es6-sham.js'
+      to: 'vendor/es6-sham.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/weakmap-polyfill/weakmap-polyfill.min.js'),
-      to: 'vendor/weakmap-polyfill.js'
+      to: 'vendor/weakmap-polyfill.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/es6-promise/dist/es6-promise.min.js'),
-      to: 'vendor/es6-promise.js'
+      to: 'vendor/es6-promise.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/intersection-observer/intersection-observer.js'),
-      to: 'vendor/intersection-observer.js'
+      to: 'vendor/intersection-observer.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/@webcomponents/shadycss/scoping-shim.min.js'),
-      to: 'vendor/scoping-shim.js'
+      to: 'vendor/scoping-shim.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/whatwg-fetch/fetch.js'),
-      to: 'vendor/fetch.js'
+      to: 'vendor/fetch.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './node_modules/object-fit-images/dist/ofi.min.js'),
-      to: 'vendor/ofi.js'
+      to: 'vendor/ofi.' + package.version + '.js'
+    },
+    {
+      from: resolve(__dirname, './node_modules/raven-js/dist/raven.min.js'),
+      to: 'vendor/raven.' + package.version + '.js'
     },
     {
       from: resolve(__dirname, './src/assets'),
@@ -95,7 +100,7 @@ const shared = env => {
     output: {
       path: resolve(__dirname, 'public'),
       chunkFilename: IS_MODULE_BUILD ? 'module.[chunkhash].fragment.js' : '[chunkhash].fragment.js',
-      filename: IS_MODULE_BUILD ? 'module.[name].js' : '[name].js',
+      filename: IS_MODULE_BUILD ? 'module.[name].' + package.version + '.js' : '[name].' + package.version + '.js',
       publicPath: '/'
     },
     resolve: {

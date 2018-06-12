@@ -10,7 +10,7 @@
     "serve": "node server",
     "start": "npm run dev",
     "workbox": "./node_modules/.bin/workbox generateSW workbox.config.js",
-    "prod": "NODE_ENV=production && node compiler && ./node_modules/.bin/webpack --mode=production && ./node_modules/.bin/webpack --mode=production --env.BROWSERS=module && node compiler && npm run workbox"
+    "prod": "NODE_ENV=production && node compiler && ./node_modules/.bin/webpack --mode=production && ./node_modules/.bin/webpack --mode=production --env.BROWSERS=module && node compiler && rm -r public/data && npm run workbox"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "localforage": "^1.7.1",
     "marked": "^0.4.0",
     "object-fit-images": "^3.2.3",
+    "raven-js": "^3.26.2",
     "weakmap-polyfill": "^2.0.0",
     "whatwg-fetch": "^2.0.3"
   },

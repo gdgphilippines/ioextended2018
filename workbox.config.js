@@ -7,6 +7,7 @@ module.exports = {
     '**/*.{html,json,js,css,map,svg,jpg,png,tff,woff,woff2}'
   ],
   swDest: 'public/service-worker.js',
+  importWorkboxFrom: 'local',
   skipWaiting: true,
   clientsClaim: true,
   navigateFallback: '/index.html',

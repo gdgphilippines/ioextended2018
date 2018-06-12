@@ -73,7 +73,7 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   set sources (sources) {
     if (this.baseLocation) {
       for (let i in sources) {
-        if (sources[i].srcset && sources.srcset.indexOf(this.baseLocation) !== 0) {
+        if (sources[i].srcset && sources[i].srcset.indexOf(this.baseLocation) !== 0) {
           sources[i].srcset = this.baseLocation + sources[i].srcset;
         }
       }
