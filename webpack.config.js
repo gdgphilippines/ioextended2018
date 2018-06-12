@@ -11,16 +11,8 @@ const IS_DEV_SERVER = !!process.argv.find(arg => arg.includes('--mode=developmen
 const copyStatics = {
   copyPolyfills: [
     {
-      from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/*.js'),
-      to: 'vendor/[name].' + package.version + '.[ext]'
-    },
-    {
       from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/bundles/*.js'),
       to: 'vendor/bundles/[name].' + package.version + '.[ext]'
-    },
-    {
-      from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/*.map'),
-      to: 'vendor/[name].' + package.version + '.[ext]'
     },
     {
       from: resolve(__dirname, './node_modules/es5-shim/es5-shim.min.js'),

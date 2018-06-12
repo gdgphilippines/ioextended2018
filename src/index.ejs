@@ -61,7 +61,7 @@
     <link rel="preload" href="/<%= i %>" as="script">
     <% }} %>
 
-    <% for (let i in htmlWebpackPlugin.options.preload) { %>
+    <% for (let i of htmlWebpackPlugin.options.preload) { %>
     <link rel="preload" href="/<%= i %>" as="script">
     <% } %>
 
