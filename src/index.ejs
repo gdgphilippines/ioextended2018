@@ -132,71 +132,80 @@
         var snacker = document.querySelector('.snackbar-lite');
         var text;
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/service-worker.js', {
-            scope: '/'
-          }).then(function (registration) {
-            registration.onupdatefound = function () {
-              var installingWorker = registration.installing;
-              if (installingWorker) {
-                installingWorker.onstatechange = function () {
-                  text = null;
-                  switch (installingWorker.state) {
-                    case 'installed':
-                      if ('controller' in navigator.serviceWorker) {
-                        text = 'Caching Complete! Future visits will work offline.';
+          window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/service-worker.js', {
+              scope: '/'
+            })
+            .then(function (registration) {
+              registration.onupdatefound = function () {
+                var installingWorker = registration.installing;
+                if (installingWorker) {
+                  installingWorker.onstatechange = function () {
+                    text = null;
+                    switch (installingWorker.state) {
+                      case 'installed':
+                        if ('controller' in navigator.serviceWorker) {
+                          text = 'Caching Complete! Future visits will work offline.';
+                        }
+                        break;
+                      case 'redundant':
+                        text = 'Service worker already installed.';
+                        console.log('The installing service worker became redundant.');
+                    }
+                    if (text) {
+                      if (snacker.show) {
+                        snacker.auto = true;
+                        snacker.textContent = text;
+                        snacker.show();
+                      } else {
+                        window.SnackerMessages.push({
+                          auto: true,
+                          textContent: text
+                        });
                       }
-                      break;
-                    case 'redundant':
-                      text = 'Service worker already installed.';
-                      console.log('The installing service worker became redundant.');
-                  }
-                  if (text) {
-                    if (snacker.show) {
-                      snacker.auto = true;
-                      snacker.textContent = text;
-                      snacker.show();
-                    } else {
-                      window.SnackerMessages.push({
-                        auto: true,
-                        textContent: text
-                      });
+                    }
+                  };
+                }
+              };
+              text = 'controller' in navigator.serviceWorker
+                ? 'This will now work offline.'
+                : 'Please reload this page to allow the service worker to handle network operations.';
+              console.log(text);
+
+              // Check to see if the service worker controlling the page at initial load
+              // has become redundant, since this implies there's a new service worker with fresh content.
+              if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+                navigator.serviceWorker.controller.onstatechange = function (event) {
+                  if (event.target.state === 'redundant') {
+                    // Define a handler that will be used for the next io-toast tap, at which point it
+                    // be automatically removed.
+
+                    if ('controller' in navigator.serviceWorker) {
+                      text = 'Reloading Web App to accommodate updates...'
+                      if (snacker.show) {
+                        snacker.auto = true;
+                        snacker.textContent = text;
+                        snacker.show();
+                      } else {
+                        window.SnackerMessages.push({
+                          auto: true,
+                          textContent: text
+                        });
+                      }
+                      setTimeout(function () {
+                        window.location.reload();
+                      }, snacker.timeout + 1000);
                     }
                   }
                 };
               }
-            };
-            text = 'controller' in navigator.serviceWorker
-              ? 'This will now work offline.'
-              : 'Please reload this page to allow the service worker to handle network operations.';
-            console.log(text);
-          });
-          // Check to see if the service worker controlling the page at initial load
-          // has become redundant, since this implies there's a new service worker with fresh content.
-          if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-            navigator.serviceWorker.controller.onstatechange = function (event) {
-              if (event.target.state === 'redundant') {
-                // Define a handler that will be used for the next io-toast tap, at which point it
-                // be automatically removed.
+            }, function (err) {
+              console.error(err);
+              throw err;
+            });
+          })
 
-                if ('controller' in navigator.serviceWorker) {
-                  text = 'Reloading Web App to accommodate updates...'
-                  if (snacker.show) {
-                    snacker.auto = true;
-                    snacker.textContent = text;
-                    snacker.show();
-                  } else {
-                    window.SnackerMessages.push({
-                      auto: true,
-                      textContent: text
-                    });
-                  }
-                  setTimeout(function () {
-                    window.location.reload();
-                  }, snacker.timeout + 1000);
-                }
-              }
-            };
-          }
+
         }
       })();
     </script>
