@@ -61,8 +61,15 @@
     <link rel="preload" href="/<%= i %>" as="script">
     <% }} %>
 
+    <% for (let i in htmlWebpackPlugin.options.preload) { %>
+    <link rel="preload" href="/<%= i %>" as="script">
+    <% } %>
+
     <!-- Use preconnect: https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect -->
     <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   </head>
   <body>
     <header>

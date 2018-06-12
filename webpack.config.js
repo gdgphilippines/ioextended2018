@@ -88,8 +88,8 @@ const shared = env => {
   const IS_MODULE_BUILD = env.BROWSERS === 'module';
 
   const plugins = [
-    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, 'index')),
-    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, '404')),
+    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, IS_MODULE_BUILD, 'index')),
+    new HTMLWebpackPlugin(getHtmlOptions(IS_DEV_SERVER, IS_MODULE_BUILD, '404')),
     new CopyWebpackPlugin(copyStatics.copyPolyfills)
   ];
 
@@ -120,11 +120,13 @@ const shared = env => {
           use: [
 
             {
-              loader: 'worker-loader'
+              loader: 'worker-loader',
+              options: {
+                name: IS_MODULE_BUILD ? 'module.[hash].worker.' + package.version + '.js' : '[hash].worker.' + package.version + '.js'
+              }
             },
             {
               loader: 'babel-loader',
-              name: IS_MODULE_BUILD ? 'module.[hash].worker.' + package.version + '.js' : '[hash].worker.' + package.version + '.js',
               options: {
                 presets: [[
                   'env'

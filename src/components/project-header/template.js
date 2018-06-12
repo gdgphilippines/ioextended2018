@@ -2,7 +2,7 @@ import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <header class="header">
-    <button class="button mobile-only" on-click=${self.openSidebar}>
+    <button class="button mobile-only" on-click=${self.openSidebar} aria-label="Open Sidebar">
       <svg class="icon" viewBox="0 0 24 24">
         <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
       </svg>
