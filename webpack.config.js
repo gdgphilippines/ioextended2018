@@ -124,6 +124,7 @@ const shared = env => {
             },
             {
               loader: 'babel-loader',
+              name: IS_MODULE_BUILD ? 'module.[hash].worker.' + package.version + '.js' : '[hash].worker.' + package.version + '.js',
               options: {
                 presets: [[
                   'env'

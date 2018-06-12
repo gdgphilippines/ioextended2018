@@ -45,4 +45,14 @@ import('./components/project-header/index.js').then(() => {
   header.addEventListener('click', closeSidebar);
 });
 
+if (window.SnackerMessages && window.SnackerMessages.length) {
+  const snacker = document.querySelector('.snackbar-lite');
+  for (let message of window.SnackerMessages) {
+    const { auto, textContent } = message;
+    snacker.auto = auto;
+    snacker.textContent = textContent;
+    snacker.show();
+  }
+}
+
 // throw new Error();
