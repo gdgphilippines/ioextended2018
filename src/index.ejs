@@ -59,6 +59,7 @@
     <% for (let i in compilation.assets) { %>
     <% if (i.indexOf('worker') >= 0)  { %>
     <link rel="preload" href="/<%= i %>" as="script">
+    <link rel="preload" href="/module.<%= i %>" as="script">
     <% }} %>
 
     <!-- Use preconnect: https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect -->
