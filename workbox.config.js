@@ -24,7 +24,7 @@ module.exports = {
       options: {
         cacheName: `${packages.name}-images`,
         expiration: {
-          maxAgeSeconds: 3600
+          maxAgeSeconds: 2592000
         }
       }
     },
@@ -38,7 +38,7 @@ module.exports = {
       options: {
         cacheName: `${packages.name}-font`,
         expiration: {
-          maxAgeSeconds: 3600
+          maxAgeSeconds: 2592000
         }
       }
     },
