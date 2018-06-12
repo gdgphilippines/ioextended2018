@@ -70,60 +70,6 @@
     <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  </head>
-  <body>
-    <header>
-      <project-header></project-header>
-      <project-sidebar></project-sidebar>
-    </header>
-
-    <main role="main">
-      <core-lite>
-        <router-lite><% for (let i in routes) {%>
-          <route-data-lite route="<%= routes[i].route %>"></route-data-lite><% } %>
-        </router-lite>
-        <template-loader-lite><% for (var i in routes) {%>
-          <template pattern="<%= routes[i].route %>">
-            <<%= routes[i].page %>></<%= routes[i].page %>>
-          </template><% } %>
-        </template-loader-lite>
-      </core-lite>
-    </main>
-
-    <snackbar-lite class="snackbar-lite">
-    </snackbar-lite>
-
-    <section class="core-lite-loader">
-      <div class="loader-center">
-        <img class="loader-icon" src="/assets/images/io18.svg">
-        <p class="loader-text">
-        </p>
-        <noscript>
-          <p class="loader-text-no-script">
-            Google I/O Extended 2018 Philippines Web App is a Single Page Application.
-            Thus, it needs you to turn on Javascript. If you just need to register, you can register here:
-          </p>
-          <ul class="loader-text-list-no-script">
-            <% for (let reg of registration) { %>
-            <li>
-              <a href="<%= reg.registrationLink %>">
-                <%= reg.date %> - <%= reg.location %>
-              </a>
-            </li>
-            <% } %>
-          </ul>
-        </noscript>
-        <ul class="loader-text-list-script hide">
-          <% for (let reg of registration) { %>
-          <li>
-            <a href="<%= reg.registrationLink %>">
-              <%= reg.date %> - <%= reg.location %>
-            </a>
-          </li>
-          <% } %>
-        </ul>
-      </div>
-    </section>
 
     <script>
       (function () {
@@ -209,6 +155,62 @@
         }
       })();
     </script>
+  </head>
+  <body>
+    <header>
+      <project-header></project-header>
+      <project-sidebar></project-sidebar>
+    </header>
+
+    <main role="main">
+      <core-lite>
+        <router-lite><% for (let i in routes) {%>
+          <route-data-lite route="<%= routes[i].route %>"></route-data-lite><% } %>
+        </router-lite>
+        <template-loader-lite><% for (var i in routes) {%>
+          <template pattern="<%= routes[i].route %>">
+            <<%= routes[i].page %>></<%= routes[i].page %>>
+          </template><% } %>
+        </template-loader-lite>
+      </core-lite>
+    </main>
+
+    <snackbar-lite class="snackbar-lite">
+    </snackbar-lite>
+
+    <section class="core-lite-loader">
+      <div class="loader-center">
+        <img class="loader-icon" src="/assets/images/io18.svg">
+        <p class="loader-text">
+        </p>
+        <noscript>
+          <p class="loader-text-no-script">
+            Google I/O Extended 2018 Philippines Web App is a Single Page Application.
+            Thus, it needs you to turn on Javascript. If you just need to register, you can register here:
+          </p>
+          <ul class="loader-text-list-no-script">
+            <% for (let reg of registration) { %>
+            <li>
+              <a href="<%= reg.registrationLink %>">
+                <%= reg.date %> - <%= reg.location %>
+              </a>
+            </li>
+            <% } %>
+          </ul>
+        </noscript>
+        <ul class="loader-text-list-script hide">
+          <% for (let reg of registration) { %>
+          <li>
+            <a href="<%= reg.registrationLink %>">
+              <%= reg.date %> - <%= reg.location %>
+            </a>
+          </li>
+          <% } %>
+        </ul>
+      </div>
+    </section>
+
+
 
     <script>
       // Adding Namespace
