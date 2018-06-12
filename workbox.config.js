@@ -7,6 +7,7 @@ module.exports = {
     '**/*.{html,json,js,css,map,svg,jpg,png,tff,woff,woff2}'
   ],
   swDest: 'public/service-worker.js',
+  importWorkboxFrom: 'local',
   skipWaiting: true,
   clientsClaim: true,
   navigateFallback: '/index.html',
@@ -23,7 +24,7 @@ module.exports = {
       options: {
         cacheName: `${packages.name}-images`,
         expiration: {
-          maxAgeSeconds: 3600
+          maxAgeSeconds: 31536000
         }
       }
     },
@@ -37,7 +38,7 @@ module.exports = {
       options: {
         cacheName: `${packages.name}-font`,
         expiration: {
-          maxAgeSeconds: 3600
+          maxAgeSeconds: 31536000
         }
       }
     },

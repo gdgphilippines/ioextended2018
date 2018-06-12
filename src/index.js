@@ -45,64 +45,14 @@ import('./components/project-header/index.js').then(() => {
   header.addEventListener('click', closeSidebar);
 });
 
-// throw new Error();
-
-// service worker
-const snacker = document.querySelector('.snackbar-lite');
-let text;
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js', {
-    scope: '/'
-  }).then(function (registration) {
-    registration.onupdatefound = function () {
-      var installingWorker = registration.installing;
-      if (installingWorker) {
-        installingWorker.onstatechange = function () {
-          text = null;
-          switch (installingWorker.state) {
-            case 'installed':
-              if ('controller' in navigator.serviceWorker) {
-                text = 'Caching Complete! Future visits will work offline.';
-              }
-              break;
-            case 'redundant':
-              text = 'Service worker already installed.';
-              console.log('The installing service worker became redundant.');
-          }
-          if (text) {
-            snacker.auto = true;
-            snacker.textContent = text;
-            snacker.show();
-          }
-        };
-      }
-    };
-    text = 'controller' in navigator.serviceWorker
-      ? 'This will now work offline.'
-      : 'Please reload this page to allow the service worker to handle network operations.';
-    console.log(text);
-    // snacker.auto = true;
-    // snacker.textContent = text;
-    // snacker.show();
-  });
-  // Check to see if the service worker controlling the page at initial load
-  // has become redundant, since this implies there's a new service worker with fresh content.
-  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-    navigator.serviceWorker.controller.onstatechange = function (event) {
-      if (event.target.state === 'redundant') {
-        // Define a handler that will be used for the next io-toast tap, at which point it
-        // be automatically removed.
-
-        if ('controller' in navigator.serviceWorker) {
-          snacker.auto = true;
-          snacker.textContent = 'Reloading Web App to accommodate updates...';
-          snacker.show();
-
-          setTimeout(() => {
-            window.location.reload();
-          }, snacker.timeout + 1000);
-        }
-      }
-    };
+if (window.SnackerMessages && window.SnackerMessages.length) {
+  const snacker = document.querySelector('.snackbar-lite');
+  for (let message of window.SnackerMessages) {
+    const { auto, textContent } = message;
+    snacker.auto = auto;
+    snacker.textContent = textContent;
+    snacker.show();
   }
 }
+
+// throw new Error();

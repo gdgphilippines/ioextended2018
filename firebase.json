@@ -8,7 +8,15 @@
     ],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/location/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/design-guide",
         "destination": "/index.html"
       }
     ],
@@ -18,7 +26,7 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=7200"
+            "value": "max-age=31536000"
           }
         ]
       },
@@ -27,16 +35,20 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=7200"
+            "value": "max-age=31536000"
           }
         ]
       },
       {
-        "source" : "**/*.@(js)",
+        "source" : "**/*.js",
         "headers" : [
           {
             "key" : "Access-Control-Allow-Origin",
             "value" : "*"
+          },
+          {
+            "key": "Cache-Control",
+            "value": "private, max-age=31536000"
           }
         ]
       },
