@@ -54,6 +54,15 @@
     <style>
       <%= require('./index.styl') %>
     </style>
+
+    <!-- Use preload: https://developers.google.com/web/updates/2016/03/link-rel-preload -->
+    <% for (let i in compilation.assets) { %>
+    <% if (i.indexOf('worker') >= 0)  { %>
+    <link rel="preload" href="/<%= i %>" as="script">
+    <% }} %>
+
+    <!-- Use preconnect: https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect -->
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
   </head>
   <body>
     <header>
@@ -545,7 +554,7 @@
     </script>
 
 
-    <script>
+    <!-- <script>
       (function(){
         setTimeout(function(){
           var font = document.createElement('link');
@@ -558,11 +567,7 @@
     </script>
     <noscript>
       <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    </noscript>
-    <% for (let i in compilation.assets) { %>
-    <% if (i.indexOf('worker') >= 0)  { %>
-    <link rel="preload" href="/<%= i %>" as="script">
-    <% }} %>
+    </noscript> -->
 
     <script>
       (function () {
@@ -614,7 +619,7 @@
                   snacker.textContent = 'Reloading Web App to accommodate updates...';
                   snacker.show();
 
-                  setTimeout(() => {
+                  setTimeout(function () {
                     window.location.reload();
                   }, snacker.timeout + 1000);
                 }
