@@ -15,6 +15,10 @@ const copyStatics = {
       to: 'vendor/bundles/[name].' + package.version + '.[ext]'
     },
     {
+      from: resolve(__dirname, './node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'),
+      to: 'vendor/custom-elements-es5-adapter.' + package.version + '.js'
+    },
+    {
       from: resolve(__dirname, './node_modules/es5-shim/es5-shim.min.js'),
       to: 'vendor/es5-shim.' + package.version + '.js'
     },
