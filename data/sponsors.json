@@ -1,0 +1,152 @@
+[
+  {
+    "group": "Powered By",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/google.jpg",
+        "href": "https://google.com",
+        "alt": "Google"
+      }
+    ]
+  },
+  {
+    "group": "Co-Presented By",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/jobstreet.jpg",
+        "href": "https://jobstreet.com",
+        "alt": "Jobstreet.com"
+      },
+      {
+        "src": "/data/sponsors/accenture.jpg",
+        "href": "https://accenture.com",
+        "alt": "Accenture"
+      },
+      {
+        "src": "/data/sponsors/gardenia_fun_bun.jpg",
+        "href": "https://www.gardenia.com.ph/products/21",
+        "alt": "Gardenia Fun Bun"
+      },
+      {
+        "src": "/data/sponsors/gardenia_cream_roll.jpg",
+        "href": "https://www.gardenia.com.ph/products/21",
+        "alt": "Gardenia Cream Roll"
+      },
+      {
+        "src": "/data/sponsors/cbtl.jpg",
+        "href": "https://www.coffeebean.com.ph/index.php",
+        "alt": "The Coffee Bean & Tea Leaf"
+      },
+      {
+        "src": "/data/sponsors/jergens.jpg",
+        "href": "http://www.jergens.com.ph/",
+        "alt": "Jergens Skincare"
+      },
+      {
+        "src": "/data/sponsors/megrhythm.jpg",
+        "href": "https://web.kao.com/sg/megrhythm/",
+        "alt": "MegRhythm Steam Eye Mask"
+      },
+      {
+        "src": "/data/sponsors/bdj.jpg",
+        "href": "https://ilovebdj.com/",
+        "alt": "Belle De Jour Power Planner"
+      }
+    ]
+  },
+  {
+    "group": "Also Brought To You By",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/myra.jpg",
+        "href": "https://www.myra.com.ph/",
+        "alt": "Myra"
+      }
+    ]
+  },
+  {
+    "group": "Official Telco Partner",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/pldtinnolab.jpg",
+        "href": "https://pldtinnolab.com/",
+        "alt": "PLDT Innolab"
+      }
+    ]
+  },
+  {
+    "group": "Offical Media Partners",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/inquirer.jpg",
+        "href": "http://inquirer.net/",
+        "alt": "Inquirer.net"
+      },
+      {
+        "src": "/data/sponsors/inqpop.jpg",
+        "href": "http://pop.inquirer.net/",
+        "alt": "Inq Pop"
+      },
+      {
+        "src": "/data/sponsors/when_in_manila.jpg",
+        "href": "https://www.wheninmanila.com/",
+        "alt": "When In Manila"
+      },
+      {
+        "src": "/data/sponsors/manilascope.jpg",
+        "href": "https://manilascope.com/",
+        "alt": "Manilascope"
+      },
+      {
+        "src": "/data/sponsors/adobo.jpg",
+        "href": "http://adobomagazine.com/",
+        "alt": "Adobo Magazine"
+      },
+      {
+        "src": "/data/sponsors/snippet.jpg",
+        "href": "http://www.snippetmedia.com/",
+        "alt": "Snippet Media"
+      }
+    ]
+  },
+  {
+    "group": "Special Thanks To",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/citibank.jpg",
+        "href": "https://www.citibank.com.ph/portal/citiph_home.htm",
+        "alt": "Citibank"
+      },
+      {
+        "src": "/data/sponsors/oreo.jpg",
+        "href": "https://twitter.com/oreoph?lang=en",
+        "alt": "Oreo"
+      },
+      {
+        "src": "/data/sponsors/oishi.jpg",
+        "href": "https://www.oishi.com.ph/",
+        "alt": "Oishi"
+      },
+      {
+        "src": "/data/sponsors/naturespring.jpg",
+        "href": "http://www.naturespring.com.ph/",
+        "alt": "Nature's Spring"
+      },
+      {
+        "src": "/data/sponsors/bioessence.jpg",
+        "href": "http://bioessence.ph/",
+        "alt": "Bioessence"
+      },
+      {
+        "src": "/data/sponsors/silka.jpg",
+        "href": "http://www.snippetmedia.com/",
+        "alt": "Silka"
+      },
+      {
+        "src": "/data/sponsors/zalora.jpg",
+        "href": "https://www.zalora.com.ph/",
+        "alt": "Zalora"
+      }
+    ]
+  }
+]

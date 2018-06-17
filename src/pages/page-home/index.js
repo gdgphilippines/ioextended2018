@@ -7,6 +7,7 @@ import '../../components/general-section/index.js';
 import '../../components/footer-section/index.js';
 import '../../components/section-location/index.js';
 import '../../components/mark-lite/index.js';
+import '../../components/lazy-picture/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
 class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
@@ -21,7 +22,8 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
         banner: {
           source: []
         }
-      }
+      },
+      sponsors: []
     };
     this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
   }
@@ -31,10 +33,15 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     const location = this.location
     this.fetchAbout(location);
     this.fetchLanding(location);
+    this.fetchSponsors(location);
   }
 
   async fetchAbout (location) {
     this.about = await fetch(`${location}/data/about.md`).then(result => result.text());
+  }
+
+  async fetchSponsors (location) {
+    this.sponsors = await fetch(`${location}/data/sponsors.json`).then(result => result.json());
   }
 
   async fetchLanding (location) {
@@ -48,6 +55,15 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
 
   get about () {
     return this.__data['about'];
+  }
+
+  set sponsors (sponsors) {
+    this.__data['sponsors'] = sponsors;
+    this.invalidate();
+  }
+
+  get sponsors () {
+    return this.__data['sponsors'];
   }
 
   set landing (landing) {
