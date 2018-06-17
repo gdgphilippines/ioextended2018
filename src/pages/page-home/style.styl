@@ -16,9 +16,43 @@
   @media screen and (max-width: 400px)
     padding 0 $small
 
+.h2
+  h2()
+  font-size 2rem
+
 .button
   button()
   margin 0 $small
 
 .sponsor
   padding-top: $rem-large
+
+.sponsor-group
+  margin $large 0
+
+.sponsors
+  display flex
+  align-items center
+  flex-wrap wrap
+
+  @media screen and (max-width: 500px)
+    display block
+
+.sponsor-anchor
+  text-decoration none
+  color none
+  display block
+  max-width 250px
+
+  @media screen and (max-width: 500px)
+    max-width 200px
+
+
+.sponsor-image
+  max-width 250px
+  margin 0 $large
+
+  @media screen and (max-width: 500px)
+    max-width 200px
+    margin $small 0
+

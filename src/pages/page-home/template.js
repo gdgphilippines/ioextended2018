@@ -20,22 +20,31 @@ const template = (self) => html`
     <general-section>
       <mark-lite class="section-text" text="${self.about}"></mark-lite>
     </general-section>
-    ${ false ? `
-      <banner-section img="${'/assets/images/pix.jpg'}">
-        <h1 class="h1">
-          What happened last year? <a class="button" href="" target="_blank" rel="noopener">View Photos</a>
+    <general-section class="sponsor">
+      <div class="section-text">
+        <h1>
+          Sponsor
         </h1>
-      </banner-section>
-    ` : ''}
-    ${ false ? `
-      <general-section class="sponsor">
-        <div class="section-text">
-          <h1>
-            Sponsor <a class="button" href="" target="_blank" rel="noopener">Be a Sponsor</a>
-          </h1>
-        </div>
-      </general-section>
-    ` : ''}
+        ${ self.sponsors.map(sponsorGroup => html`
+          <section class="sponsor-group">
+            <h2 class="h2">
+              ${sponsorGroup.group}
+            </h2>
+            <div class="sponsors">
+              ${sponsorGroup.sponsors.map(sponsor => html`
+                <a class="sponsor-anchor" href="${sponsor.href}" title="${sponsor.alt}" target="_blank" rel="noopener">
+                  <lazy-picture
+                      class="sponsor-image"
+                      src="${self.location}${sponsor.src}"
+                      alt="${sponsor.alt}">
+                  </lazy-picture>
+                </a>
+              `)}
+            </div>
+          </section>
+        `)}
+      </div>
+    </general-section>
   </main>
   <footer-section>
   </footer-section>
