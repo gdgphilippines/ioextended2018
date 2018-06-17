@@ -53,7 +53,7 @@
     },
     {
       "time": "1030",
-      "session": "ml"
+      "session": "ml-cavite"
     },
     {
       "time": "1045",
@@ -73,10 +73,6 @@
     },
     {
       "time": "1145",
-      "session": "cloud"
-    },
-    {
-      "time": "1200",
       "title": "Lunch Break"
     },
     {
@@ -94,7 +90,7 @@
         "polymer",
         "kotlin",
         "firebase",
-        "tensorflow"
+        "tensorflow-cavite"
       ]
     },
     {
