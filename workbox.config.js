@@ -30,7 +30,7 @@ module.exports = {
     },
     {
       // Match any request ends with .png, .jpg, .jpeg or .svg.
-      urlPattern: /^https:\/\/fonts.gstatic.com\/.*/,
+      urlPattern: /^https:\/\/fonts\.gstatic\.com\/\.*/,
 
       // Apply a cache-first strategy.
       handler: 'cacheFirst',
@@ -44,7 +44,7 @@ module.exports = {
     },
     {
       // Match any request ends with .md, .json.
-      urlPattern: /\.(?:md|json)$/,
+      urlPattern: /^https:\/\/raw\.githubusercontent\.com\/\.*/,
 
       // Apply a cache-first strategy.
       handler: 'networkFirst',
