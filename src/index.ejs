@@ -198,17 +198,21 @@
     <script>
       // Adding Namespace
       window.SPALite = {};
+      window.RavenErrorList = [];
+      window.GtagErrorList = [];
 
       // Error catcher
       window.onerror = function (message, source, lineno, colno, err) {
         try {
-          if (window.ga) {
-            ga('send', 'exception', {
-              exDescription: message,
-              exFatal: true
-            })
+          if (window.gtag) {
+            gtag('event', 'exception', {
+              'description': message,
+              'fatal': false   // set to true if the error is fatal
+            });
+          } else {
+            window.GtagErrorList.push(message);
           }
-          if (!window.Raven && window.RavenErrorList) {
+          if (!window.Raven) {
             window.RavenErrorList.push(err || new Error(message, source, lineno));
           }
 
@@ -255,7 +259,6 @@
         raven.src = '/vendor/raven.<%= package.version %>.js';
         raven.crossOrigin = 'anonymous';
         raven.async = 'true';
-        window.RavenErrorList = [];
         raven.addEventListener('load', function() {
           if (window.Raven) {
             window.Raven.config('<%= app.sentry %>').install();
@@ -692,6 +695,18 @@
       gtag('js', new Date());
       gtag('config', '<%= app.gaId %>');
       window.gaId = '<%= app.gaId %>';
+      (function () {
+        if (window.GtagErrorList) {
+          for (var gtagErrorIndex = 0; gtagErrorIndex < window.GtagErrorList.length; gtagErrorIndex++) {
+            console.log(window.GtagErrorList[gtagErrorIndex])
+            window.gtag('event', 'exception', {
+              'description': window.GtagErrorList[gtagErrorIndex],
+              'fatal': true   // set to true if the error is fatal
+            });
+          }
+        }
+      })();
+
     </script>
     <% } %>
   </body>
