@@ -32,6 +32,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   connectedCallback () {
     super.connectedCallback();
     subscribe('routeParamObject', this.__boundFetchPageData);
+
   }
 
   disconnectedCallback () {
@@ -40,6 +41,9 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   }
 
   async fetchPageData ({ id }) {
+    if (window.gtag) {
+      window.gtag('config', window.gaId, {'page_path': '/location/' + id});
+    }
     const location = this.location
     if (id) this.data = await fetch(`${location}/data/locations/${id}.json`).then(result => result.json());
   }

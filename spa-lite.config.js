@@ -10,7 +10,8 @@ const app = {
   scope: '/',
   twitter: '@gdgphilippines',
   twitterCreator: '@tjmonsi',
-  image: 'https://ioextended.gdgph.org/data/images/landing-large.jpg'
+  image: 'https://ioextended.gdgph.org/data/images/landing-large.jpg',
+  gaId: 'UA-121115629-1'
 };
 
 const theme = {

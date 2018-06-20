@@ -35,6 +35,9 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     this.fetchAbout(location);
     this.fetchLanding(location);
     this.fetchSponsors(location);
+    if (window.gtag) {
+      window.gtag('config', window.gaId, {'page_path': '/'});
+    }
   }
 
   async fetchAbout (location) {
