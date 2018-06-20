@@ -31,7 +31,7 @@ const template = (self) => html`
     <a class="location icon-text" href="${self.locationLink}" target="_blank" rel="noopener">${self.location}</a>
   </p>
   ${self.registerLink ? html`
-    <a class="button" target="_blank" rel="noopener" href="${self.registerLink}">
+    <a class="button" target="_blank" rel="noopener" href="${self.registerLink}" on-click="${self.trackOutbound.bind(self)}">
       Register
     </a>
     ${self.registerDisable ? html`

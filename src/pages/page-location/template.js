@@ -22,7 +22,8 @@ const template = (self) => html`
         location="${self.data.location}"
         locationLink="${self.data.locationLink}"
         registerLink="${self.data.registrationLink}"
-        registerDisable="${self.data.registrationClosed}">
+        registerDisable="${self.data.registrationClosed}"
+        locationId="${self.locationId}">
     </section-location>
 
     <general-section class="location">

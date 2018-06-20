@@ -44,8 +44,20 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     if (window.gtag) {
       window.gtag('config', window.gaId, {'page_path': '/location/' + id});
     }
-    const location = this.location
-    if (id) this.data = await fetch(`${location}/data/locations/${id}.json`).then(result => result.json());
+    const location = this.location;
+    if (id) {
+      this.data = await fetch(`${location}/data/locations/${id}.json`).then(result => result.json());
+      this.locationId = id;
+    };
+  }
+
+  set locationId (id) {
+    this.__data['locationId'] = id;
+    this.invalidate();
+  }
+
+  get locationId () {
+    return this.__data['locationId'];
   }
 
   set data (data) {
