@@ -24,20 +24,20 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   }
 
   _setActive (progress) {
-      this._progress = this.shadowRoot.querySelector('.progress-bar-container > .progress-bar')
-      return (progress === 'loaded') ? this._hide() : this._show()
+    this._progress = this.shadowRoot.querySelector('.progress-bar-container > .progress-bar')
+    return (progress === 'loaded') ? this._hide() : this._show()
   }
 
   _show () {
-    this._progress.classList.remove('done')
+    this._progress.classList.remove('done');
   }
 
   _hide () {
     setTimeout(() => {
-        this._progress.classList.add('done')
+      this._progress.classList.add('done');
     },1100)
   }
-  
+
 
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
