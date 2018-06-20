@@ -42,7 +42,10 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
 
   async fetchPageData ({ id }) {
     if (window.gtag) {
-      window.gtag('config', window.gaId, {'page_path': '/location/' + id});
+      window.gtag('config', window.gaId, {
+        'page_title' : 'Location: ' + id,
+        'page_path': '/location/' + id
+      });
     }
     const location = this.location;
     if (id) {

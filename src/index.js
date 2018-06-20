@@ -55,4 +55,19 @@ if (window.SnackerMessages && window.SnackerMessages.length) {
   }
 }
 
+if (window.gtag) {
+  if (window.performance) {
+    // Gets the number of milliseconds since page load
+    // (and rounds the result since the value must be an integer).
+    var timeSincePageLoad = Math.round(performance.now());
+
+    // Sends the timing event to Google Analytics.
+    window.gtag('event', 'timing_complete', {
+      'name': 'load',
+      'value': timeSincePageLoad,
+      'event_category': 'Core dependency'
+    });
+  }
+}
+
 // throw new Error();

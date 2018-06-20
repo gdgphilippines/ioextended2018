@@ -36,7 +36,10 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     this.fetchLanding(location);
     this.fetchSponsors(location);
     if (window.gtag) {
-      window.gtag('config', window.gaId, {'page_path': '/'});
+      window.gtag('config', window.gaId, {
+        'page_title' : 'Homepage',
+        'page_path': '/'
+      });
     }
   }
 
