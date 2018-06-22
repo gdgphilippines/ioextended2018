@@ -29,11 +29,7 @@
     },
     {
       "time": "830",
-      "title": "Opening Remarks and House Rules"
-    },
-    {
-      "time": "840",
-      "title": "Program Agenda"
+      "title": "Doxology, What is GDG? and House Rules"
     },
     {
       "time": "845",
@@ -61,19 +57,19 @@
     },
     {
       "time": "1100",
-      "title": "Sponsor's talk"
+      "session": "firebase"
     },
     {
       "time": "1115",
-      "session": "iot"
-    },
-    {
-      "time": "1130",
       "session": "ml"
     },
     {
-      "time": "1145",
+      "time": "1130",
       "session": "assistant"
+    },
+    {
+      "time": "1145",
+      "session": "cloud"
     },
     {
       "time": "1200",
@@ -85,14 +81,6 @@
     },
     {
       "time": "1315",
-      "session": "firebase"
-    },
-    {
-      "time": "1330",
-      "session": "cloud"
-    },
-    {
-      "time": "1345",
       "title": "Break / Instructions to go to Codelabs"
     },
     {
