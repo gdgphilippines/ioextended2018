@@ -151,6 +151,11 @@
         "src": "/data/sponsors/zalora.jpg",
         "href": "https://www.zalora.com.ph/",
         "alt": "Zalora"
+      },
+      {
+        "src": "/data/sponsors/hawk_bag.jpg",
+        "href": "https://www.hawkbag.com/",
+        "alt": "Hawk Bag"
       }
     ]
   }
