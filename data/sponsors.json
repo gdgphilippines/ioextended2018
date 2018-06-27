@@ -83,9 +83,14 @@
     "group": "Offical Media Partners",
     "sponsors": [
       {
+        "src": "/data/sponsors/gma.jpg",
+        "href": "http://www.gmanetwork.com/news/",
+        "alt": "Inquirer.net"
+      },
+      {
         "src": "/data/sponsors/inquirer.jpg",
         "href": "http://inquirer.net/",
-        "alt": "Inquirer.net"
+        "alt": "GMA"
       },
       {
         "src": "/data/sponsors/inqpop.jpg",
