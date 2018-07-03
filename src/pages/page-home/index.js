@@ -1,4 +1,5 @@
 import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
+import { updateState } from '../../utils/ui-state.js';
 import { PageMixin } from '../../mixins/page-mixin/index.js';
 import { template } from './template.js';
 import style from './style.styl';
@@ -34,6 +35,12 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     this.fetchAbout(location);
     this.fetchLanding(location);
     this.fetchSponsors(location);
+    if (window.gtag) {
+      window.gtag('config', window.gaId, {
+        'page_title' : 'Homepage',
+        'page_path': '/'
+      });
+    }
   }
 
   async fetchAbout (location) {
@@ -54,6 +61,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   }
 
   get about () {
+    updateState('currentProgress', 'loaded');
     return this.__data['about'];
   }
 
@@ -72,6 +80,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   }
 
   get landing () {
+    updateState('currentProgress', 'loaded');
     return this.__data['landing'];
   }
 

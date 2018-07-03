@@ -66,8 +66,28 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     return this.__data['registerDisable'];
   }
 
+  set locationId (id) {
+    this.__data['locationId'] = id;
+    this.invalidate();
+  }
+
+  get locationId () {
+    return this.__data['locationId'];
+  }
+
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;
+  }
+
+  trackOutbound ({ target: el }) {
+    const { href } = el;
+    if (window.gtag) {
+      window.gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': `${this.locationId}: ${href}`,
+        'transport_type': 'beacon'
+      });
+    }
   }
 }
 

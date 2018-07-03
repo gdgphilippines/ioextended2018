@@ -1,6 +1,7 @@
 import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
+  <progress-bar class="header-progress-bar"></progress-bar>
   <header class="header">
     <button class="button mobile-only" on-click=${self.openSidebar} aria-label="Open Sidebar">
       <svg class="icon" viewBox="0 0 24 24">

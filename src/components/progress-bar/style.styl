@@ -1,0 +1,48 @@
+@import '../../styles/general/color.styl'
+
+:host
+  position: fixed
+  width: 100%
+  height: 0.5rem
+  z-index: 2
+
+  .progress-bar-container
+    position: relative
+    width: 100%
+    height: 100%
+
+    .progress-bar
+      position: absolute
+      background: $blue
+      width: 60%
+      height: 100%
+      right: 100%
+      opacity: 0
+      animation: progress 1.5s ease-in-out infinite
+
+      &.done
+        animation: progress-done 1s ease-in-out
+
+@keyframes progress
+  0%
+    right: 105%
+    opacity: 1
+
+  10%
+    right: 70%
+
+  50%
+    right: 60%
+
+  100%
+    right: -100%
+    opacity: 0.9
+
+@keyframes progress-done
+  0%
+    right: 110%
+    opacity: 0
+
+  100%
+    right: -100%
+    opacity: 1

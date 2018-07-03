@@ -1,4 +1,5 @@
 import { ElementLiteLit, html, prepareShadyCSS } from '@littleq/element-lite/element-lite-lit.js';
+import { updateState } from '../../utils/ui-state.js';
 import { template } from './template.js';
 import style from './style.styl';
 const { HTMLElement, customElements, fetch } = window;
@@ -13,6 +14,7 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
 
   set codelabs (codelabs) {
     this.__data['codelabs'] = codelabs;
+    updateState('currentProgress', 'loaded');
     this.invalidate();
   }
 
