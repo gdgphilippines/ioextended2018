@@ -41,7 +41,7 @@
     },
     {
       "time": "1000",
-      "session": "kotlin"
+      "session": "android-things"
     },
     {
       "time": "1015",
@@ -65,11 +65,11 @@
     },
     {
       "time": "1130",
-      "session": "firebase"
+      "session": "firebase-palawan"
     },
     {
       "time": "1145",
-      "session": "cloud"
+      "session": "cloud-mnl"
     },
     {
       "time": "1200",
@@ -88,8 +88,8 @@
       "codelabs": [
         "actions",
         "polymer",
-        "kotlin",
-        "firebase",
+        "kotlin-palawan",
+        "firebase-palawan",
         "tensorflow"
       ]
     },
