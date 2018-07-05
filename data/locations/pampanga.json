@@ -37,7 +37,7 @@
     },
     {
       "time": "900",
-      "title": "Keynote"
+      "session": "keynote-pampanga"
     },
     {
       "time": "1000",
@@ -65,11 +65,11 @@
     },
     {
       "time": "1130",
-      "session": "firebase"
+      "session": "firebase-pampanga"
     },
     {
       "time": "1145",
-      "session": "cloud"
+      "session": "cloud-pampanga"
     },
     {
       "time": "1200",
@@ -89,7 +89,6 @@
         "actions",
         "polymer",
         "kotlin",
-        "firebase",
         "tensorflow"
       ]
     },
