@@ -38,6 +38,11 @@
         "alt": "The Coffee Bean & Tea Leaf"
       },
       {
+        "src": "/data/sponsors/cocoline_naturals.jpg",
+        "href": "http://cocolinenaturals.com/",
+        "alt": "Cocoline Naturals"
+      },
+      {
         "src": "/data/sponsors/jergens.jpg",
         "href": "http://www.jergens.com.ph/",
         "alt": "Jergens Skincare"
@@ -55,7 +60,7 @@
     ]
   },
   {
-    "group": "Also Brought To You By",
+    "group": "In Cooperation With",
     "sponsors": [
       {
         "src": "/data/sponsors/myra.jpg",
@@ -65,18 +70,13 @@
     ]
   },
   {
-    "group": "Official Telco Partner",
+    "group": "Official Media Partners",
     "sponsors": [
       {
-        "src": "/data/sponsors/pldtinnolab.jpg",
-        "href": "https://pldtinnolab.com/",
-        "alt": "PLDT Innolab"
-      }
-    ]
-  },
-  {
-    "group": "Offical Media Partners",
-    "sponsors": [
+        "src": "/data/sponsors/gma.jpg",
+        "href": "http://www.gmanetwork.com/news/",
+        "alt": "GMA News"
+      },
       {
         "src": "/data/sponsors/inquirer.jpg",
         "href": "http://inquirer.net/",
@@ -128,11 +128,6 @@
         "alt": "Oishi"
       },
       {
-        "src": "/data/sponsors/naturespring.jpg",
-        "href": "http://www.naturespring.com.ph/",
-        "alt": "Nature's Spring"
-      },
-      {
         "src": "/data/sponsors/bioessence.jpg",
         "href": "http://bioessence.ph/",
         "alt": "Bioessence"
@@ -146,6 +141,11 @@
         "src": "/data/sponsors/zalora.jpg",
         "href": "https://www.zalora.com.ph/",
         "alt": "Zalora"
+      },
+      {
+        "src": "/data/sponsors/hawk_bag.jpg",
+        "href": "https://www.hawkbag.com/",
+        "alt": "Hawk Bag"
       }
     ]
   }

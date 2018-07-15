@@ -3,6 +3,7 @@ import { template } from './template.js';
 import style from './style.styl';
 import '../../smart-components/navigation-loader/index.js';
 import '../../components/header-navigation/index.js';
+import '../../components/progress-bar/index.js';
 const { HTMLElement, customElements } = window;
 
 class Component extends ElementLiteLit(HTMLElement, style.toString()) {
