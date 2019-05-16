@@ -6,7 +6,6 @@ import style from './style.styl';
 import '../../components/banner-section/index.js';
 import '../../components/general-section/index.js';
 import '../../components/footer-section/index.js';
-import '../../components/section-location/index.js';
 import '../../components/schedule-topic/index.js';
 const { HTMLElement, customElements, fetch } = window;
 

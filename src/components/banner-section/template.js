@@ -13,11 +13,14 @@ const template = (self) => html`
         cover>
     </lazy-picture>
   </div>
+  <lazy-picture class="header_asset"
+      class="asset"
+      src="/assets/images/header_asset.svg">
+  </lazy-picture>
   <div class="banner-title-container">
     <div class="banner-title">
       <slot></slot>
     </div>
-    <div class="banner-dots"></div>
   </div>
 `;
 

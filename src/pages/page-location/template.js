@@ -16,15 +16,6 @@ const template = (self) => html`
     </banner-section>
   </header>
   <main class="main" role="main">
-    <section-location
-        date="${self.data.date}"
-        dateLink="${self.data.dateLink}"
-        location="${self.data.location}"
-        locationLink="${self.data.locationLink}"
-        registerLink="${self.data.registrationLink}"
-        registerDisable="${self.data.registrationClosed}"
-        locationId="${self.locationId}">
-    </section-location>
 
     <general-section class="location">
       <div class="section-text">

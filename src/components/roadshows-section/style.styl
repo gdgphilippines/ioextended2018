@@ -1,0 +1,78 @@
+@import '../../styles/general/spacing.styl'
+@import '../../styles/general/typography.styl'
+@import '../../styles/general/section-text.styl'
+
+:host
+  display block
+  color: #737373
+
+
+.scrolling-wrapper
+  display flex
+  flex-wrap nowrap
+  overflow-x auto
+  margin-top: 4rem
+  margin-bottom: 4rem
+
+.scrolling-wrapper__extra-space
+  opacity 0
+
+.roadshow:first-child
+  margin-left: 10vw
+  background-color: #4285f4
+
+.roadshow:nth-child(2)
+  background-color: #e5443f
+
+.roadshow:nth-child(3)
+  background-color: #fbbc04
+
+.roadshow:nth-child(4)
+  background-color: #34a853
+
+.roadshow
+  padding 2rem
+  productSans()
+  background-color cornflowerblue 
+  border-radius 1rem
+  flex 0 0 auto
+  display flex
+  flex-direction column
+  color: white
+  width: 22.5rem
+  max-width: 60vw
+  margin-right: 2rem
+
+.roadshow__logo
+  font-size: 1.5rem
+
+
+.roadshow__location
+  font-size: 2.25rem
+  font-weight: normal
+  margin-bottom: 0
+  margin-top: 3rem
+
+.roadshow__date
+  font-size: 1.5rem
+  margin-bottom: 3rem
+
+.roadshow__registerBtn
+  background-color: white
+  border: none
+  padding: 1rem 2rem 0.75rem 2rem
+  font-size: 1.5rem
+  border-radius: 0.5rem
+  font-family: inherit
+  line-height: unset
+  color: #555555
+  align-self: flex-start
+  cursor pointer
+  transition: 0.2s background-color
+  outline: none
+
+.roadshow__registerBtn:hover
+  background-color: #eee
+
+.roadshow__registerBtn:active
+  background-color: #ddd
