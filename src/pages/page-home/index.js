@@ -6,9 +6,10 @@ import style from './style.styl';
 import '../../components/banner-section/index.js';
 import '../../components/general-section/index.js';
 import '../../components/footer-section/index.js';
-import '../../components/section-location/index.js';
 import '../../components/mark-lite/index.js';
 import '../../components/lazy-picture/index.js';
+import '../../components/about-section/index.js';
+import '../../components/roadshows-section/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
 class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
@@ -31,20 +32,30 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
 
   connectedCallback () {
     super.connectedCallback();
-    const location = this.location
-    this.fetchAbout(location);
+    const location = this.location;
+    this.fetchAboutGoogleIO(location);
+    this.fetchUpcomingRoadshow(location);
+    this.fetchWhatToExpect(location);
     this.fetchLanding(location);
     this.fetchSponsors(location);
     if (window.gtag) {
       window.gtag('config', window.gaId, {
-        'page_title' : 'Homepage',
+        'page_title': 'Homepage',
         'page_path': '/'
       });
     }
   }
 
-  async fetchAbout (location) {
-    this.about = await fetch(`${location}/data/about.md`).then(result => result.text());
+  async fetchAboutGoogleIO (location) {
+    this.aboutGoogleIO = await fetch(`${location}/data/about-google-io.md`).then(result => result.text());
+  }
+
+  async fetchUpcomingRoadshow (location) {
+    this.upcomingRoadshow = await fetch(`${location}/data/upcoming-roadshow.md`).then(result => result.text());
+  }
+
+  async fetchWhatToExpect (location) {
+    this.whatToExpect = await fetch(`${location}/data/what-to-expect.md`).then(result => result.text());
   }
 
   async fetchSponsors (location) {
@@ -55,14 +66,34 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     this.landing = await fetch(`${location}/data/landing.json`).then(result => result.json());
   }
 
-  set about (about) {
-    this.__data['about'] = about;
+  set aboutGoogleIO (aboutGoogleIO) {
+    this.__data['aboutGoogleIO'] = aboutGoogleIO;
     this.invalidate();
   }
 
-  get about () {
+  get aboutGoogleIO () {
     updateState('currentProgress', 'loaded');
-    return this.__data['about'];
+    return this.__data['aboutGoogleIO'];
+  }
+
+  set upcomingRoadshow (upcomingRoadshow) {
+    this.__data['upcomingRoadshow'] = upcomingRoadshow;
+    this.invalidate();
+  }
+
+  get upcomingRoadshow () {
+    updateState('currentProgress', 'loaded');
+    return this.__data['upcomingRoadshow'];
+  }
+
+  set whatToExpect (whatToExpect) {
+    this.__data['whatToExpect'] = whatToExpect;
+    this.invalidate();
+  }
+
+  get whatToExpect () {
+    updateState('currentProgress', 'loaded');
+    return this.__data['whatToExpect'];
   }
 
   set sponsors (sponsors) {

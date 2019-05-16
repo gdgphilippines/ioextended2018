@@ -11,21 +11,26 @@ const template = (self) => html`
         alt="${self.landing.banner.alt}"
         sources="${self.landing.banner.source}">
       <h1 class="h1">
-        Bringing you the IO Experience, one city at a time
+        Bringing you the IO Experience,
+        one city at a time
       </h1>
     </banner-section>
   </header>
   <main class="main" role="main">
-    <section-location date="${self.landing.date}" location="${self.landing.location}"></section-location>
     <general-section>
-      <mark-lite class="section-text" text="${self.about}"></mark-lite>
+      <about-section>
+        <mark-lite class="section-text" text="${self.aboutGoogleIO}"></mark-lite>
+      </about-section>
+      <mark-lite class="section-text" text="${self.upcomingRoadshow}"></mark-lite>
+      <roadshows-section></roadshows-section>
+      <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
     <general-section class="sponsor">
       <div class="section-text">
         <h1>
           Sponsor
         </h1>
-        ${ self.sponsors.map(sponsorGroup => html`
+        ${self.sponsors.map(sponsorGroup => html`
           <section class="sponsor-group">
             <h2 class="h2">
               ${sponsorGroup.group}

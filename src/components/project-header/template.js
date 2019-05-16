@@ -10,7 +10,7 @@ const template = (self) => html`
     </button>
     <h1 class="title">
       <a class="logo-anchor" href="/" aria-label="Go to I/O 2018 Philippines Homepage">
-        <img class="logo" alt="I/O 18 Logo" src="/assets/images/io18-2.svg">
+        <img class="logo" alt="I/O 18 Logo" src="/assets/images/io19.svg">
       </a>
     </h1>
     <div class="spacer">
