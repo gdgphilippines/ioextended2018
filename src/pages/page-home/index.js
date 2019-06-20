@@ -28,7 +28,6 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
       sponsors: []
     };
     this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
-    this.location = window.location.hostname === '192.168.43.1' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
   }
 
   connectedCallback () {
@@ -39,6 +38,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     this.fetchWhatToExpect(location);
     this.fetchLanding(location);
     this.fetchSponsors(location);
+    this.fetchRoadshow(location);
     if (window.gtag) {
       window.gtag('config', window.gaId, {
         'page_title': 'Homepage',
@@ -61,6 +61,10 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
 
   async fetchSponsors (location) {
     this.sponsors = await fetch(`${location}/data/sponsors.json`).then(result => result.json());
+  }
+
+  async fetchRoadshow (location) {
+    this.roadshow = await fetch(`${location}/data/roadshows.json`).then(result => result.json());
   }
 
   async fetchLanding (location) {
@@ -104,6 +108,15 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
 
   get sponsors () {
     return this.__data['sponsors'];
+  }
+
+  set roadshow (roadshow) {
+    this.__data['roadshow'] = roadshow;
+    this.invalidate();
+  }
+
+  get roadshow () {
+    return this.__data['roadshow'];
   }
 
   set landing (landing) {

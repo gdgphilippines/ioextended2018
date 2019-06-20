@@ -7,7 +7,20 @@ const { HTMLElement, customElements } = window;
 class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   static get is () { return 'roadshows-section'; }
 
-  
+
+  constructor() {
+    super();
+    this.__data = {};
+  }
+
+  get roadshow () {
+    return this.__data['roadshow'];
+  }
+
+  set roadshow (roadshow) {
+    this.__data['roadshow'] = roadshow;
+    this.invalidate();
+  }
 
   render () {
     return html`<style>${style.toString()}</style>${template(this)}`;

@@ -22,7 +22,7 @@ const template = (self) => html`
         <mark-lite class="section-text" text="${self.aboutGoogleIO}"></mark-lite>
       </about-section>
       <mark-lite class="section-text" text="${self.upcomingRoadshow}"></mark-lite>
-      <roadshows-section></roadshows-section>
+      <roadshows-section roadshow="${self.roadshow}"></roadshows-section>
       <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
     <general-section class="sponsor">
