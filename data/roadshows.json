@@ -1,7 +1,22 @@
 [
  {
-  "location":"Somewhere Over the Rainbow",
-  "date":"January 2019",
+  "location":"Live Viewing Party",
+  "date":"May 7-8, 2019",
+  "url":"https://google.com"
+ },
+ {
+  "location":"Pampanga",
+  "date":"July 6, 2019",
+  "url":"https://google.com"
+ },
+ {
+  "location":"Bonifacio Global City",
+  "date":"July 13, 2019",
+  "url":"https://google.com"
+ },
+ {
+  "location":"Makati",
+  "date":"July 20, 2019",
   "url":"https://google.com"
  }
 ]
