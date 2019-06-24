@@ -23,6 +23,10 @@ const template = (self) => html`
       </about-section>
       <mark-lite class="section-text" text="${self.upcomingRoadshow}"></mark-lite>
       <roadshows-section roadshow="${self.roadshow}"></roadshows-section>
+      <lazy-picture
+        class="session4"
+        src="/assets/images/event_placeholder_session4.svg">
+      </lazy-picture>
       <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
     <general-section class="sponsor">
