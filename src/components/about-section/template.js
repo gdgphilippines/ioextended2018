@@ -8,7 +8,7 @@ const template = (self) => html`
         <div class="about__leftSection">
           <lazy-picture
             class="logo"
-            src="/assets/images/google-io.svg"
+            src="/assets/images/Google_IO_19_logo.svg"
             alt="Google IO Extended Logo">
           </lazy-picture>
           <lazy-picture class="home_asset"
