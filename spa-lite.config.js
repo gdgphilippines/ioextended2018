@@ -1,6 +1,6 @@
 const app = {
-  title: 'Google I/O Extended Roadshow 2018 Philippines',
-  shortName: 'I/O 18 PH', // 12 characters max
+  title: 'Google I/O Extended Roadshow 2019 Philippines',
+  shortName: 'I/O 19 PH', // 12 characters max
   description: 'Google I/O is an annual software developer-focused conference which features a keynote on the latest updates and announcements by Google. The conference hosts in-depth sessions focused on building web, mobile, and enterprise applications.',
   sentry: 'https://c330f89cdbf7417baf2524b458312070@sentry.io/1221172',
   baseHref: '/',
