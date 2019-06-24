@@ -11,7 +11,7 @@ const template = (self) => html`
         alt="${self.landing.banner.alt}"
         sources="${self.landing.banner.source}">
       <h1 class="h1">
-        Bringing you the IO Experience,
+        Bringing you the I/O Experience,
         one city at a time
       </h1>
     </banner-section>
