@@ -13,8 +13,7 @@ const template = (self) => html`
         cover>
     </lazy-picture>
   </div>
-  <lazy-picture class="header_asset"
-      class="asset"
+  <lazy-picture class="header_asset asset"
       src="/assets/images/header_asset.svg">
   </lazy-picture>
   <div class="banner-title-container">

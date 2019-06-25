@@ -21,11 +21,19 @@ const template = (self) => html`
       <about-section>
         <mark-lite class="section-text" text="${self.aboutGoogleIO}"></mark-lite>
       </about-section>
+      <lazy-picture
+        class="group43"
+        src="/assets/images/Group_43.svg">
+      </lazy-picture>
       <mark-lite class="section-text" text="${self.upcomingRoadshow}"></mark-lite>
       <roadshows-section roadshow="${self.roadshow}"></roadshows-section>
       <lazy-picture
         class="session4"
         src="/assets/images/event_placeholder_session4.svg">
+      </lazy-picture>
+      <lazy-picture
+        class="group52"
+        src="/assets/images/Group_52.svg">
       </lazy-picture>
       <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
