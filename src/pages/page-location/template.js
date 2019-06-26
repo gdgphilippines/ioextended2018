@@ -23,6 +23,21 @@ const template = (self) => html`
           Schedule
         </h1>
 
+      <lazy-picture
+        class="group43"
+        src="/assets/images/Group_43.svg">
+      </lazy-picture>
+
+
+      <lazy-picture
+        class="session4"
+        src="/assets/images/event_placeholder_session4.svg">
+      </lazy-picture>
+      <lazy-picture
+        class="group52"
+        src="/assets/images/Group_52.svg">
+      </lazy-picture>
+
         <ul class="schedule">
           ${self.data.schedule.map(item => html`
             <li class="schedule-item">
