@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="181.018" height="37.26" viewBox="0 0 181.018 37.26">
+  <g id="IO_Extended_logo" data-name="IO Extended logo" transform="translate(-98.5 -1465.89)">
+    <g id="event_narrow_afterhours" transform="translate(99 1466)">
+      <path id="path" d="M11.44,32.194H24.06V6.17H11.44Z" transform="translate(-11.44 -1.48)" fill="none" stroke="#fff" stroke-width="1"/>
+      <path id="path_1" d="M24.476,4.8,16.12,41.835" transform="translate(-0.158 -4.795)" fill="none" stroke="#fff" stroke-width="1"/>
+      <path id="path_2" d="M32.2,6.24a13.094,13.094,0,1,1-7.7,2.5,13.109,13.109,0,0,1,7.7-2.5" transform="translate(7.025 -1.312)" fill="none" stroke="#fff" stroke-width="1"/>
+    </g>
+    <text id="Extended" transform="translate(163.518 1492)" fill="#fff" font-size="27" font-family="GoogleSans-Regular, Google Sans"><tspan x="0" y="0">Extended</tspan></text>
+  </g>
+</svg>
