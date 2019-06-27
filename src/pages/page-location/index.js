@@ -25,7 +25,6 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
       }
     };
     this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
-    this.location = window.location.hostname === '192.168.43.1' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
     this.__boundFetchPageData = this.fetchPageData.bind(this);
   }
 

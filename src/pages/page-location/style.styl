@@ -8,6 +8,13 @@
 :host
   display block
 
+.h
+  padding 0 $large 0 $x-large
+  margin-top 0
+  margin-bottom 0
+  color white
+  font-size 1.8rem
+
 .h1
   h1()
   color $white
@@ -56,7 +63,7 @@
   width 10%
   top 3rem
   right 0
-  @media screen and (max-width: 1023)
+  @media screen and (max-width: 1023px)
     display none
 
 
@@ -76,3 +83,26 @@
   left: 0
   @media screen and (max-width: 1023px)
     display none
+
+.regButton
+  position absolute
+  background-color white
+  color grey
+  border 0
+  text-outline none
+  text-decoration none
+  font-size 1.5rem
+  padding 1rem 2rem 1rem 2rem
+  border-radius 5px
+  @media screen and (min-width: 1023px)
+    right 3rem
+  @media screen and (max-width: 1023px)
+    margin 2rem $large 0 $x-large
+
+.header
+  width 100%
+  background-color #4285f4
+  @media screen and (min-width: 1023px)
+    height 45vh
+  @media screen and (max-width: 1023px)
+    height 55vh

@@ -2,19 +2,20 @@ import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <header>
-    <banner-section
-        class="banner"
-        baseLocation="${self.location}"
-        thumbnail="${self.data.banner.bitmap}"
-        src="${self.data.banner.src}"
-        srcset="${self.data.banner.srcset}"
-        alt="${self.data.banner.alt}"
-        sources="${self.data.banner.source}">
-      <h1 class="h1">
-        ${self.data.short_name}
-      </h1>
-      <p>${self.data.date}</p>
-    </banner-section>
+    <div class="header">
+      <lazy-picture src="/assets/images/IO_Extended_logo.svg" style="position: absolute; left: 5rem; top: 14rem"></lazy-picture>
+      <h1 class="h1" style="positon: absolute; margin-top:0; padding-top: 12rem; margin-bottom:2rem">${self.data.short_name}</h1>
+      <p class="h">
+        <lazy-picture src="/assets/images/calendar_icon.svg"></lazy-picture>
+        ${self.data.date}
+      </p>
+      <p class="h">
+        <lazy-picture src="/assets/images/location_icon.svg"></lazy-picture>
+        ${self.data.location}
+      </p>
+
+      <a class="regButton" href="${self.data.registrationLink}">Register</a>
+    </div>
   </header>
   <main class="main" role="main">
 

@@ -3,9 +3,8 @@
 @import '../../styles/general/spacing.styl'
 
 .banner-img-container
-  height 50vh
+  height 80vh
   position relative
-  background-color red
 
 .banner-img
   height 80vh
@@ -14,7 +13,7 @@
 .banner-title-container
   display flex
   position: absolute
-  top: 50%
+  top: 60%
   left: 40%
   transform: translate(-45%, -50%)
   width: 100%
@@ -22,3 +21,15 @@
 .banner-title
   flex 9
 
+.banner-dots
+  flex 3
+  background-image url('/assets/images/dot-3.svg')
+  background-size $small
+
+.header_asset
+  position: absolute
+  top: 15rem
+  right: 0
+  width: 20% !important
+  @media screen and (max-width: 1023px)
+    display: none
