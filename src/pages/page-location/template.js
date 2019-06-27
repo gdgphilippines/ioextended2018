@@ -11,8 +11,9 @@ const template = (self) => html`
         alt="${self.data.banner.alt}"
         sources="${self.data.banner.source}">
       <h1 class="h1">
-        Bringing you the IO Experience, one city at a time
+        ${self.data.short_name}
       </h1>
+      <p>${self.data.date}</p>
     </banner-section>
   </header>
   <main class="main" role="main">
