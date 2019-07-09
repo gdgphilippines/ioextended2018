@@ -8,7 +8,7 @@ const template = (self) => html`
         <div class="roadshow__logo">I/O Extended</div>
         <h2 class="roadshow__location">${item.location}</h2>
         <span class="roadshow__date">${item.date}</span>
-        <button onclick="window.location.replace('${item.url}')" class="roadshow__registerBtn">Register</button>
+        ${item.allow_registration ? html`<a class="roadshow__registerBtn" href="${item.url}">Register</a>` : html`<a></a>`}
       </div>
     `)}
   </section>
