@@ -1,26 +1,14 @@
 [
  {
-  "location":"Live Viewing Party",
-  "date":"May 7-8, 2019",
-  "url":"https://google.com",
-  "allow_registration":false
+  "location":"Manila",
+  "date":"August 10, 2019",
+  "url":"https://bit.ly/2XexRH8",
+  "allow_registration":true
  },
  {
   "location":"Pampanga",
-  "date":"July 6, 2019",
-  "url":"https://google.com",
-  "allow_registration":true
- },
- {
-  "location":"Bonifacio Global City",
-  "date":"July 13, 2019",
-  "url":"https://google.com",
-  "allow_registration":true
- },
- {
-  "location":"Makati",
-  "date":"July 20, 2019",
-  "url":"https://google.com",
+  "date":"August 17, 2019",
+  "url":"https://forms.gle/d96YfmYWCDjknvoV6",
   "allow_registration":true
  }
 ]
