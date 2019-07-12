@@ -37,7 +37,7 @@ const template = (self) => html`
       </lazy-picture>
       <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
-    <general-section class="sponsor">
+    <!--general-section class="sponsor">
       <div class="section-text">
         <h1>
           Sponsor
@@ -61,7 +61,7 @@ const template = (self) => html`
           </section>
         `)}
       </div>
-    </general-section>
+    </general-section-->
   </main>
   <footer-section>
   </footer-section>
