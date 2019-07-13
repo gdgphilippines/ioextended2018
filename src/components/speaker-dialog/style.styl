@@ -1,0 +1,77 @@
+@import '../../styles/general/spacing.styl'
+@import '../../styles/general/section-text.styl'
+
+:host
+  display block
+  color: #737373
+
+dialog
+    border-radius 20px
+    position fixed
+    width 100vw
+    max-height 100vh
+    max-width 30rem
+    left 50%
+    top 50%
+    transform translate(-50%,-50%)
+    opacity 1
+    transition 0.3s transform, 0.3s opacity
+    will-change transform, opacity
+    background-color white
+    z-index 100
+    box-shadow 0px 0.5rem 2rem #00000044
+    color #333
+    overflow auto
+    display flex
+    flex-direction column
+    border 0
+    padding 0
+    margin 0
+
+dialog.hidden
+    opacity 0
+    transform translate(-50%,50%)
+    will-change transform, opacity
+    pointer-events none
+
+.header-container
+    padding 1.3rem
+    background-color #4285F4
+    position sticky
+    top 0
+
+.avatar
+    width 8rem
+    height 8rem
+    background-color #ddd
+    border-radius 50%
+    margin auto
+    overflow hidden
+    
+.avatar > img
+    width 8rem !important
+
+.header-container > h1.name
+    color white
+    margin-top 0.5rem
+    text-align center
+    margin-bottom 0
+
+.header-container > h2.position
+    color white
+    font-weight lighter
+    text-align center
+    margin-top 0
+
+section.article-container
+    padding-top 40px
+    padding-bottom 40px
+    padding-left 25px
+    padding-right 25px
+
+section.article-container > article
+    font-size 1.5rem
+
+div.close-button
+    position absolute
+    right 1rem

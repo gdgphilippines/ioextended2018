@@ -4,17 +4,16 @@
   "location": "Cavite, Manila, Pampanga, Palawan, Albay, and Naga",
   "locationLink": "",
   "banner": {
-    "bitmap": "/data/images/landing-bitmap-2.jpg",
-    "src": "/data/images/landing-small-2.jpg",
+    "src": "/data/images/header_image.png",
     "alt": "Image of the Google I/O Extended Roadshow last year",
     "source": [
       {
-        "srcset": "/data/images/landing-large.jpg",
+        "srcset": "/data/images/header_image.png",
         "type": "image/jpeg",
         "media": "(min-width: 1200px)"
       },
       {
-        "srcset": "/data/images/landing-medium.jpg",
+        "srcset": "/data/images/header_image.png",
         "type": "image/jpeg",
         "media": "(min-width: 600px) and (max-width: 1119px)"
       }

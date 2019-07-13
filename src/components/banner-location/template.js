@@ -21,6 +21,8 @@ const template = (self) => html`
       <slot></slot>
     </div>
   </div>
+
+  <h1>HELLO WORLD</h1>
 `;
 
 export { template };

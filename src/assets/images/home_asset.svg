@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="382.793" height="435.481" viewBox="0 0 382.793 435.481">
+  <g id="home_asset" transform="translate(-140.5 -1128)">
+    <g id="event_header_office_hours" transform="translate(-23.5 1127.84)">
+      <path id="path_3" d="M164,126v74H268a2.089,2.089,0,0,0,1.87-2.84L244.25,126Z" fill="#ceead6"/>
+      <path id="path_4" d="M328.4,125.88,270.47.16H164.01V128.45H326.77a1.806,1.806,0,0,0,1.64-2.56" fill="#34a853"/>
+    </g>
+    <g id="event_placeholder_session1" transform="translate(270 1573.5)">
+      <path id="path" d="M150-182.5V-49.055a2.029,2.029,0,0,0,3.331,1.532L311.066-178.968Z" transform="translate(-57.773)" fill="#fde293"/>
+      <path id="path_1" d="M135.063,88.969a50.761,50.761,0,1,0-101.356,0" transform="translate(-4.832 -99.103)" fill="none" stroke="#ee675c" stroke-width="3.96"/>
+      <path id="path_2" d="M23,0V31.888H64.973V58.871" transform="translate(-145 -168.02)" fill="none" stroke="#4285f4" stroke-width="3.96"/>
+    </g>
+  </g>
+</svg>

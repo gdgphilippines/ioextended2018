@@ -22,7 +22,7 @@ export const PageMixin = (superClass) => {
     }
 
     __imageActivate (entries) {
-      if (entries[0].intersectionRatio > 0.1) entries[0].target.style.backgroundImage = 'url(/assets/images/map.svg)';
+      // if (entries[0].intersectionRatio > 0.1) entries[0].target.style.backgroundImage = 'url(/assets/images/map.svg)';
     }
   };
 };

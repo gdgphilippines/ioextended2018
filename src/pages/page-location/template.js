@@ -2,35 +2,43 @@ import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <header>
-    <banner-section
-        class="banner"
-        baseLocation="${self.location}"
-        thumbnail="${self.data.banner.bitmap}"
-        src="${self.data.banner.src}"
-        srcset="${self.data.banner.srcset}"
-        alt="${self.data.banner.alt}"
-        sources="${self.data.banner.source}">
-      <h1 class="h1">
-        Bringing you the IO Experience, one city at a time
-      </h1>
-    </banner-section>
+    <div class="header">
+      <lazy-picture src="/assets/images/IO_Extended_logo.svg" style="position: absolute; left: 5rem; top: 14rem"></lazy-picture>
+      <h1 class="h1" style="positon: absolute; margin-top:0; padding-top: 12rem; margin-bottom:2rem">${self.data.short_name}</h1>
+      <p class="h">
+        <lazy-picture src="/assets/images/calendar_icon.svg"></lazy-picture>
+        ${self.data.date}
+      </p>
+      <p class="h">
+        <lazy-picture src="/assets/images/location_icon.svg"></lazy-picture>
+        ${self.data.location}
+      </p>
+
+      <a class="regButton" href="${self.data.registrationLink}">Register</a>
+    </div>
   </header>
   <main class="main" role="main">
-    <section-location
-        date="${self.data.date}"
-        dateLink="${self.data.dateLink}"
-        location="${self.data.location}"
-        locationLink="${self.data.locationLink}"
-        registerLink="${self.data.registrationLink}"
-        registerDisable="${self.data.registrationClosed}"
-        locationId="${self.locationId}">
-    </section-location>
 
     <general-section class="location">
       <div class="section-text">
         <h1>
           Schedule
         </h1>
+
+      <lazy-picture
+        class="group43"
+        src="/assets/images/Group_43.svg">
+      </lazy-picture>
+
+
+      <lazy-picture
+        class="session4"
+        src="/assets/images/event_placeholder_session4.svg">
+      </lazy-picture>
+      <lazy-picture
+        class="group52"
+        src="/assets/images/Group_52.svg">
+      </lazy-picture>
 
         <ul class="schedule">
           ${self.data.schedule.map(item => html`
