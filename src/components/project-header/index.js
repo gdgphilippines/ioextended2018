@@ -19,6 +19,12 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     setTimeout(() => sidebar.open(), 50);
   }
 
+  async test() {
+    window.alert('test');
+    scrollTo(0,500);
+    window.scrollTo(0,500);
+  }
+
   async closeSidebar () {
     await import('../project-sidebar/index.js');
     const sidebar = document.querySelector('project-sidebar');
