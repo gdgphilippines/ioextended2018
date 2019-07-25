@@ -10,6 +10,17 @@
   max-width 45rem
   margin-right: 5rem
 
+.logo::after
+  content: 'Extended'
+  font-size: 3rem
+  position: absolute
+  top: 110px
+  opacity: 0.5
+  @media screen and (max-width: 40rem)
+    top: 17vw
+    font-size: 2rem
+
+
 .grid
   display: grid
   position relative
