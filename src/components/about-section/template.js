@@ -20,7 +20,7 @@ const template = (self) => html`
         <div>
         
           <slot></slot>
-          <iframe class="keynote-video" width="713" height="401" src="https://www.youtube.com/embed/lyRPyRKHO8M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="keynote-video" width="713" height="401" src="https://drive.google.com/file/d/1xp16rl2dhV9Fydl6uF9CvLXthMOkjgto/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>
