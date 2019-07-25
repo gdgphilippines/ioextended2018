@@ -53,7 +53,7 @@
   margin-bottom: 0
   margin-top: 3rem
 
-.roadshow__date
+.roadshow__venue
   font-size: 1.5rem
   margin-bottom: 3rem
 
@@ -71,6 +71,14 @@
   transition: 0.2s background-color
   outline: none
   text-decoration: none
+
+.roadshow__registerBtn[disabled]
+  cursor not-allowed
+  background-color: rgba(0,0,0,0.1)
+  color: rgba(255,255,255,0.7)
+
+  &:hover
+    background-color: rgba(0,0,0,0.1)
 
 .roadshow__registerBtn:hover
   background-color: #eee

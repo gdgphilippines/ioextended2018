@@ -1,12 +1,21 @@
 [
+{
+  "location":"Live Viewing Party",
+  "date":"May 7-8, 2019",
+  "url":"",
+  "venue": "Google PH, BGC",
+  "allow_registration": false
+  },
  {
   "location":"Manila",
   "date":"August 10, 2019",
+  "venue": "Globe Tower, BGC",
   "url":"https://bit.ly/2XexRH8",
-  "allow_registration":true
+  "allow_registration": false
  },
  {
   "location":"Pampanga",
+  "venue": "Venue: TBA",
   "date":"August 17, 2019",
   "url":"https://forms.gle/d96YfmYWCDjknvoV6",
   "allow_registration":true
