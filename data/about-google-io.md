@@ -1,3 +1,3 @@
 Google I/O is an annual software developer-focused conference which features a keynote on the latest updates and announcements by Google. The conference hosts in-depth sessions focused on building web, mobile, and enterprise applications.
 
-Google I/O 2019 was held last May 7-9 at the Shoreline Amphitheatre in Mountain View, California. At its 13th year, Google I/O 2018 gathered more than 7,000 attendees from all over the world. Google Developer Group (GDG) Philippines community leads was present in the event to learn and interact with experts.
+I/O Extended -- GDG Philippines' promise to bring the experience from California to Philippines.

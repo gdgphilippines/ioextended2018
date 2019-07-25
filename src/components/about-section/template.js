@@ -3,6 +3,7 @@ import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 const template = (self) => html`
   <section class="section">
     <div class="section-text">
+      <a id="about"></a>
       <h1>About</h1>
       <div class="grid">
         <div class="about__leftSection">
@@ -17,8 +18,9 @@ const template = (self) => html`
           </lazy-picture>
         </div>
         <div>
+        
           <slot></slot>
-          <iframe class="keynote-video" width="713" height="401" src="https://www.youtube.com/embed/lyRPyRKHO8M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe class="keynote-video" width="713" height="401" src="https://drive.google.com/file/d/1xp16rl2dhV9Fydl6uF9CvLXthMOkjgto/preview" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>

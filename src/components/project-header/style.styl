@@ -1,5 +1,6 @@
 @import '../../styles/general/host-block.styl'
 @import '../../styles/general/spacing.styl'
+@import '../../styles/general/typography.styl'
 
 .header
   display: flex
@@ -61,5 +62,33 @@
   text-decoration none
   color inherit
 
+.logo-anchor::after
+  content: 'Extended'
+  font-family: 'Product Sans'
+  font-weight: normal
+  color: gray
+  font-size: 0.9em
+  opacity: 0.5
+
 .logo
-  height 5rem
+  height 4rem
+
+
+
+// Temporary navigation
+.temporary-navigation
+  list-style-type none
+  padding: 0
+  margin: 0
+  display: flex
+
+  @media screen and (max-width: 800px)
+    display none
+
+  &__link
+    all: unset
+    font-family: 'Product Sans'
+    color: #555555
+    cursor pointer
+    font-size: 18px
+    padding: 16px

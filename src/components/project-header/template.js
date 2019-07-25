@@ -16,8 +16,36 @@ const template = (self) => html`
     <div class="spacer">
     </div>
     <navigation-loader>
+
       <!--header-navigation class="not-mobile">
       </header-navigation-->
+
+      <!--
+        Temporary Navigation
+        Remove this once the header navigation above has been updated.
+        Also remove the temporary-navigation classes on the .styl file in this same folder
+
+        Note: This is a bit hacky but temporary :) Since there's no way to scroll in-page using anchor links
+      -->
+
+        <ul class="temporary-navigation">
+          <li>
+            <a class="temporary-navigation__link" onclick="window.scrollTo(0,self.innerHeight)">About</a>
+          </li>
+          <li>
+          <a class="temporary-navigation__link" onclick="window.scrollTo(0,self.innerHeight + window.document.querySelector('core-lite').shadowRoot.querySelector('page-home').shadowRoot.querySelector('about-section').offsetHeight + 500)">Speakers</a>
+          </li>
+          <li>
+          <a class="temporary-navigation__link" onclick="window.scrollTo(0,self.innerHeight + window.document.querySelector('core-lite').shadowRoot.querySelector('page-home').shadowRoot.querySelector('about-section').offsetHeight + 100)">Register</a>
+          </li>
+        </ul>
+
+
+      <!-- End of Temporary Navigation -->
+
+
+
+
     </navigation-loader>
   </header>
 `;

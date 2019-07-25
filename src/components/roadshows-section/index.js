@@ -7,8 +7,7 @@ const { HTMLElement, customElements } = window;
 class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   static get is () { return 'roadshows-section'; }
 
-
-  constructor() {
+  constructor () {
     super();
     this.__data = {};
   }

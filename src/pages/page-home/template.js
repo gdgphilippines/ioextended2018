@@ -25,7 +25,7 @@ const template = (self) => html`
         class="group43"
         src="/assets/images/Group_43.svg">
       </lazy-picture>
-      <mark-lite class="section-text" text="${self.upcomingRoadshow}"></mark-lite>
+      <mark-lite class="section-text roadshows-text" text="${self.upcomingRoadshow}"></mark-lite>
       <roadshows-section roadshow="${self.roadshow}"></roadshows-section>
       <lazy-picture
         class="session4"
@@ -37,7 +37,7 @@ const template = (self) => html`
       </lazy-picture>
       <mark-lite class="section-text" text="${self.whatToExpect}"></mark-lite>
     </general-section>
-    <!--general-section class="sponsor">
+    <general-section class="sponsor">
       <div class="section-text">
         <h1>
           Sponsor
@@ -59,9 +59,11 @@ const template = (self) => html`
               `)}
             </div>
           </section>
+          <h3>For sponsorships, email us at</h3>
+          <a style="text-decoration: none; color: gray; background-color: #eee; border-radius: 8px; padding: 1rem; " href="mailto:gdgphmarketing@gmail.com">gdgphmarketing@gmail.com</a>
         `)}
       </div>
-    </general-section-->
+    </general-section>
   </main>
   <footer-section>
   </footer-section>
