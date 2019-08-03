@@ -11,28 +11,12 @@ class Component extends ElementLiteStatic(HTMLElement) {
         observer: '_setNavigation',
         value: [
           {
-            label: 'Cavite',
-            href: '/location/cavite'
-          },
-          {
             label: 'Manila',
             href: '/location/manila'
           },
           {
             label: 'Pampanga',
             href: '/location/pampanga'
-          },
-          {
-            label: 'Palawan',
-            href: '/location/palawan'
-          },
-          {
-            label: 'Albay',
-            href: '/location/albay'
-          },
-          {
-            label: 'Naga',
-            href: '/location/naga'
           }
         ]
       }

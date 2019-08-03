@@ -10,6 +10,80 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   constructor () {
     super();
     this.__data = {};
+    this.showModal = function (name, affiliation, bio) {
+      // Dialog
+      var myDialog = document.createElement('dialog');
+      myDialog.style.border = 'none';
+      myDialog.style.borderRadius = '8px';
+      myDialog.style.maxWidth = '50rem';
+      document.body.appendChild(myDialog);
+
+      // Wrapper
+      var wrapper = document.createElement('div');
+      wrapper.style = 'display: flex; flex-direction: column; align-items: center';
+      myDialog.appendChild(wrapper);
+
+      // Close
+      var closebtn = document.createElement('button');
+      closebtn.innerText = 'Close';
+      closebtn.value = 'cancel';
+      closebtn.style = `
+        align-self: flex-end;
+        background-color: transparent;
+        padding: 0.75rem 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        outline: none;
+      `;
+      closebtn.onclick = () => {
+        myDialog.close();
+        document.body.removeChild(myDialog);
+      };
+      wrapper.appendChild(closebtn);
+
+      // Name
+      var nameElement = document.createElement('h1');
+      nameElement.style = `
+        font-family: 'Product Sans';
+        font-size: 2.5rem;
+        font-weight: normal;
+        margin-bottom: 0;
+        color: #555;
+        
+      `;
+      nameElement.innerText = name;
+
+      wrapper.appendChild(nameElement);
+
+      var affElement = document.createElement('h2');
+      affElement.style = `
+        font-family: 'Product Sans';
+        font-size: 2rem;
+        font-weight: normal;
+        margin-top: 0;
+        color: gray;
+      `;
+      affElement.innerText = affiliation;
+      wrapper.appendChild(affElement);
+
+      var bioElement = document.createElement('p');
+      bioElement.style = `
+        font-family: 'Product Sans';
+        font-size: 1.65rem;
+        margin: 1rem 2rem;
+        line-height: 2.25rem;
+        font-weight: normal;
+        color: #555;
+      `;
+      bioElement.innerText = bio;
+
+      wrapper.appendChild(bioElement);
+
+      myDialog.showModal();
+    };
   }
 
   set codelabs (codelabs) {
@@ -29,6 +103,24 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
 
   get speaker () {
     return this.__data['speaker'];
+  }
+
+  set bio (bio) {
+    this.__data['bio'] = bio;
+    this.invalidate();
+  }
+
+  get bio () {
+    return this.__data['bio'];
+  }
+
+  get affiliation () {
+    return this.__data['affiliation'];
+  }
+
+  set affiliation (affiliation) {
+    this.__data['affiliation'] = affiliation;
+    this.invalidate();
   }
 
   set codelab (codelab) {
@@ -64,8 +156,10 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
       const { title, speaker } = await fetch(`${location}/data/${type}/${id}.json`).then(result => result.json());
       this.title = title;
       if (speaker) {
-        const { name } = await fetch(`${location}/data/speakers/${speaker}.json`).then(result => result.json());
+        const { name, affiliation, bio } = await fetch(`${location}/data/speakers/${speaker}.json`).then(result => result.json());
         this.speaker = name;
+        this.affiliation = affiliation.join(' | ');
+        this.bio = bio;
       }
     }
   }

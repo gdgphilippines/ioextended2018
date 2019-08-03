@@ -17,7 +17,9 @@ const template = (self) => html`
     : html`${self.speaker
       ? html`
       <p class="paragraph">
-        ${self.speaker}
+        <span style="${self.bio ? 'cursor: pointer; color: cornflowerblue' : ''}" on-click="${self.bio ? e => self.showModal(self.speaker, self.affiliation, self.bio) : ''}">${self.speaker}</span>
+        <br>
+        <small>${self.affiliation}</small>
       </p>`
       : ''
     }`

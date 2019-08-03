@@ -10,6 +10,10 @@
 
 .h
   padding 0 $large 0 $x-large
+  @media screen and (max-width: 500px)
+    padding 0 $large
+  @media screen and (max-width: 400px)
+    padding 0 $small
   margin-top 0
   margin-bottom 1.5rem
   color white
@@ -94,15 +98,30 @@
   font-size 2rem
   padding 1rem 2rem 1rem 2rem
   border-radius 5px
-  @media screen and (min-width: 1023px)
-    right 3rem
+  right 3rem
   @media screen and (max-width: 1023px)
-    margin 2rem $large 0 $x-large
+    margin 2rem $large 0 $x-
+    
+.regButton[href='#']
+  cursor not-allowed
+  pointer-events: none
+  background-color: rgba(0,0,0,0.1)
+  color: rgba(255,255,255,0.7)
+
+.regButton:not([href='#'])::after
+  content: 'Register'
+
+
+.regButton[href='#']::after
+  content: 'Registration Closed'
+  
 
 .header
   width 100%
-  background-color #4285f4
   @media screen and (min-width: 1023px)
     height 55vh
   @media screen and (max-width: 1023px)
     height 50vh
+
+#hidden
+  display none

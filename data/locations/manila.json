@@ -1,12 +1,12 @@
 {
   "short_name":"Manila",
-  "theme_color":"#4285f4",
-  "date": "July 7, 2018",
+  "theme_color":"#e5443f",
+  "date": "July 10, 2019",
   "dateLink": "",
-  "location": "17th Flr. Gymnasium, Far Easter University - Institute of Technology, P. Paredes St. Sampaloc, Manila",
+  "location": "The Globe Tower, 32nd Street, BGC, Taguig City",
   "locationLink": "",
   "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLSdgU_1raAisTzYtZeUPyamfwF4vwmFyGccrsHyi31qsjQL6Bw/viewform",
-  "registrationClosed": false,
+  "registrationClosed": true,
   "banner": {
     "bitmap": "/data/images/manila-bitmap.jpg",
     "src": "/data/images/manila-small.jpg",
@@ -26,93 +26,53 @@
   },
   "schedule": [
     {
-      "time": "700",
+      "time": "7:00",
       "title": "Check-In"
     },
     {
-      "time": "830",
-      "title": "Doxology, What is GDG? and House Rules"
+      "time": "9:00",
+      "session": "welcome-mnl"
     },
     {
-      "time": "845",
-      "title": "Welcoming Remarks"
-    },
-    {
-      "time": "900",
+      "time": "9:10",
       "session": "keynote-mnl"
     },
     {
-      "time": "1000",
-      "session": "kotlin"
+      "time": "9:25",
+      "session": "knative"
     },
     {
-      "time": "1015",
-      "session": "web"
+      "time": "10:25",
+      "session": "bigquery"
     },
     {
-      "time": "1030",
-      "title": "Sponsor's talk"
+      "time": "11:25",
+      "session": "flutter"
     },
     {
-      "time": "1045",
-      "session": "indie-games-accelerator-mnl"
-    },
-    {
-      "time": "1100",
-      "session": "firebase"
-    },
-    {
-      "time": "1115",
-      "session": "ml-mnl"
-    },
-    {
-      "time": "1130",
-      "session": "assistant"
-    },
-    {
-      "time": "1145",
-      "session": "cloud-mnl"
-    },
-    {
-      "time": "1200",
+      "time": "12:00",
       "title": "Lunch Break"
     },
     {
-      "time": "1300",
-      "title": "Ice breakers"
+      "time": "1:00",
+      "session": "data"
     },
     {
-      "time": "1315",
-      "title": "Break / Instructions to go to Codelabs"
-    },
-    {
-      "time": "1400",
+      "time": "2:00",
       "codelabs": [
-        "actions",
-        "polymer",
-        "angular",
-        "kotlin",
-        "firebase",
-        "tensorflow",
-        "material-mnl",
-        "dt-mnl"
+        "google-material-design",
+        "web-performance",
+        "flutter",
+        "machine-learning"
       ]
     },
     {
-      "time": "1600",
-      "title": "Break"
+      "time": "4:30",
+      "title": "Sponsor's Talk"
     },
     {
-      "time": "1615",
-      "title": "Awarding and Prizes"
-    },
-    {
-      "time": "1645",
-      "title": "Closing Remarks and Group Picture"
-    },
-    {
-      "time": "1700",
-      "title": "Egress"
+      "time": "4:45",
+      "session": "closing"
     }
   ]
 }

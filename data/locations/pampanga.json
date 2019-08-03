@@ -1,11 +1,11 @@
 {
   "short_name":"Pampanga",
-  "theme_color":"#4285f4",
-  "date": "July 13, 2018",
+  "theme_color":"#fbbc04",
+  "date": "July 17, 2019",
   "dateLink": "",
-  "location": "9th floor Peter G. Nepomuceno (PGN) Auditorium, Holy Angel University, Angeles, Pampanga",
+  "location": "Holy Angel University, Angeles, Pampanga",
   "locationLink": "",
-  "registrationLink": "https://docs.google.com/forms/d/e/1FAIpQLScEncnJiQUr5LqSrDXKggucs6OBur7VQwxh4oOnCoO-ISmpjw/viewform",
+  "registrationLink": "https://forms.gle/d96YfmYWCDjknvoV6",
   "registrationClosed": false,
   "banner": {
     "bitmap": "/data/images/pampanga-bitmap.jpg",
@@ -26,89 +26,49 @@
   },
   "schedule": [
     {
-      "time": "700",
+      "time": "7:00",
       "title": "Check-In"
     },
     {
-      "time": "830",
-      "title": "Doxology, What is GDG? and House Rules"
+      "time": "9:00",
+      "session": "welcome-pampanga"
     },
     {
-      "time": "845",
-      "title": "Welcoming Remarks"
-    },
-    {
-      "time": "900",
+      "time": "9:10",
       "session": "keynote-pampanga"
     },
     {
-      "time": "1000",
-      "session": "kotlin"
+      "time": "9:45",
+      "session": "android"
     },
     {
-      "time": "1015",
-      "session": "web"
+      "time": "10:15",
+      "session": "softdev"
     },
     {
-      "time": "1030",
+      "time": "11:00",
+      "session": "cloud"
+    },
+    {
+      "time": "11:30",
       "session": "ml"
     },
     {
-      "time": "1045",
-      "title": "Break"
-    },
-    {
-      "time": "1100",
-      "title": "Sponsor's talk"
-    },
-    {
-      "time": "1115",
-      "session": "assistant"
-    },
-    {
-      "time": "1130",
-      "session": "firebase-pampanga"
-    },
-    {
-      "time": "1145",
-      "session": "cloud-pampanga"
-    },
-    {
-      "time": "1200",
-      "title": "Lunch Break"
-    },
-    {
-      "time": "1300",
-      "title": "Ice breakers"
-    },
-    {
-      "time": "1315",
-      "title": "Break / Instructions to go to Codelabs"
-    },
-    {
-      "time": "1330",
+      "time": "1:00",
       "codelabs": [
-        "actions",
-        "polymer",
-        "kotlin",
-        "tensorflow"
+        "cloud",
+        "ml",
+        "gcp",
+        "agile"
       ]
     },
     {
-      "time": "1600",
-      "title": "Break"
+      "time": "4:00",
+      "title": "Sponsor's Talk"
     },
     {
-      "time": "1615",
-      "title": "Awarding and Prizes"
-    },
-    {
-      "time": "1645",
-      "title": "Closing Remarks and Group Picture"
-    },
-    {
-      "time": "1700",
-      "title": "Egress"
+      "time": "4:15",
+      "session": "closing-pampanga"
     }
   ]
 }
