@@ -1,11 +1,131 @@
 [
   {
+    "group": "Google I/O Extended Manila",
+    "sponsors": [
+    ]
+  },
+  {
     "group": "Powered By",
     "sponsors": [
       {
         "src": "/data/sponsors/google.jpg",
         "href": "https://google.com",
         "alt": "Google"
+      }
+    ]
+  },
+  {
+    "group": "Made Possible by",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/globe.png",
+        "href": "https://www.globe.com.ph/",
+        "alt": "Globe"
+      },
+      {
+        "src": "/data/sponsors/globe-labs-new-positive.png",
+        "href": "https://www.globelabs.com.ph/",
+        "alt": "Globe Labs"
+      }
+    ]
+  },
+  {
+    "group": "Special Thanks to",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/cbtl.png",
+        "href": "https://www.coffeebean.com.ph/",
+        "alt": "Coffee Bean and Tea Leaf"
+      },
+      {
+        "src": "/data/sponsors/natural-health-logo.png",
+        "href": "https://naturalhealth.ph/",
+        "alt": "Natural Health"
+      }
+    ]
+  },
+  {
+    "group": "Official Media Partner",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/when_in_manila.jpg",
+        "href": "https://www.wheninmanila.com/",
+        "alt": "WhenInManila.com"
+      }
+    ]
+  },
+  {
+    "group": "Community Partners",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/logo-dlsu-id-manual-2019.jpg",
+        "href": "https://google.com",
+        "alt": "De La Salle University-Manila"
+      },
+      {
+        "src": "/data/sponsors/acm_chapter.gif",
+        "href": "https://www.acm.org/",
+        "alt": "Association for Computing Machinery"
+      }
+    ]
+  },
+  {
+    "group": "Google I/O Extended Pampanga",
+    "sponsors": [
+    ]
+  },
+  {
+    "group": "In partnership with",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/hau.png",
+        "href": "https://www.hau.edu.ph/",
+        "alt": "Holy Angel University"
+      }
+    ]
+  },
+  {
+    "group": "Powered By",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/google.jpg",
+        "href": "https://google.com",
+        "alt": "Google"
+      }
+    ]
+  },
+  {
+    "group": "Co Presented by",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/cloudstaff.png",
+        "href": "https://www.cloudstaff.com/",
+        "alt": "Cloudstaff"
+      }
+    ]
+  },
+  {
+    "group": "Special Thanks to",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/cbtl.png",
+        "href": "https://www.coffeebean.com.ph/",
+        "alt": "Coffee Bean and Tea Leaf"
+      },
+      {
+        "src": "/data/sponsors/natural-health-logo.png",
+        "href": "https://naturalhealth.ph/",
+        "alt": "Natural Health"
+      }
+    ]
+  },
+  {
+    "group": "Official Media Partner",
+    "sponsors": [
+      {
+        "src": "/data/sponsors/when_in_manila.jpg",
+        "href": "https://www.wheninmanila.com/",
+        "alt": "WhenInManila.com"
       }
     ]
   }
