@@ -10,7 +10,7 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
   constructor () {
     super();
     this.__data = {};
-    this.showModal = function (name, affiliation, bio) {
+    this.showModal = function (photoURL, name, affiliation, bio) {
       // Dialog
       var myDialog = document.createElement('dialog');
       myDialog.style.border = 'none';
@@ -43,6 +43,20 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
         document.body.removeChild(myDialog);
       };
       wrapper.appendChild(closebtn);
+
+      // Photo
+      var photoElement = document.createElement('div');
+      photoElement.style = `
+        width: 10rem;
+        height: 10rem;
+        border-radius: 50%;
+        background-color: #ddd;
+        background-image: url('${photoURL}');
+        background-size: cover;
+        
+        
+      `;
+      wrapper.appendChild(photoElement);
 
       // Name
       var nameElement = document.createElement('h1');
@@ -114,6 +128,15 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
     return this.__data['bio'];
   }
 
+  set photoURL (photoURL) {
+    this.__data['photoURL'] = photoURL;
+    this.invalidate();
+  }
+
+  get photoURL () {
+    return this.__data['photoURL'];
+  }
+
   get affiliation () {
     return this.__data['affiliation'];
   }
@@ -156,7 +179,8 @@ class Component extends ElementLiteLit(HTMLElement, style.toString()) {
       const { title, speaker } = await fetch(`${location}/data/${type}/${id}.json`).then(result => result.json());
       this.title = title;
       if (speaker) {
-        const { name, affiliation, bio } = await fetch(`${location}/data/speakers/${speaker}.json`).then(result => result.json());
+        const { photoURL, name, affiliation, bio } = await fetch(`${location}/data/speakers/${speaker}.json`).then(result => result.json());
+        this.photoURL = photoURL;
         this.speaker = name;
         this.affiliation = affiliation.join(' | ');
         this.bio = bio;
