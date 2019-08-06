@@ -39,8 +39,8 @@ const template = (self) => html`
     </general-section>
     <general-section class="sponsor">
       <div class="section-text">
-        <h1>
-          Sponsor
+        <h1 style="margin-top: 0">
+          Sponsors
         </h1>
         ${self.sponsors.map(sponsorGroup => html`
           <section class="sponsor-group">
@@ -59,9 +59,9 @@ const template = (self) => html`
               `)}
             </div>
           </section>
-          <h3>For sponsorships, email us at</h3>
-          <a style="text-decoration: none; color: gray; background-color: #eee; border-radius: 8px; padding: 1rem; " href="mailto:gdgphmarketing@gmail.com">gdgphmarketing@gmail.com</a>
         `)}
+        <h3>For sponsorships, email us at</h3>
+        <a style="text-decoration: none; color: gray; background-color: #eee; border-radius: 8px; padding: 1rem; " href="mailto:gdgphmarketing@gmail.com">gdgphmarketing@gmail.com</a>
       </div>
     </general-section>
   </main>
