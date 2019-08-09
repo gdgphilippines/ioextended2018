@@ -1,7 +1,9 @@
 {
   "name": "Brian Tan Seng",
-  "affiliation": [],
+  "affiliation": [
+    ""
+  ],
   "session": [
-    "cloud-pampanga"
+    "gcp"  
   ]
 }

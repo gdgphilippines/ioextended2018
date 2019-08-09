@@ -6,7 +6,7 @@
   color: #737373
 
 dialog
-    border-radius 20px
+    border-radius 10px
     position fixed
     width 100vw
     max-height 100vh
@@ -14,9 +14,10 @@ dialog
     left 50%
     top 50%
     transform translate(-50%,-50%)
-    opacity 1
     transition 0.3s transform, 0.3s opacity
     will-change transform, opacity
+    opacity 1
+    
     background-color white
     z-index 100
     box-shadow 0px 0.5rem 2rem #00000044
@@ -27,6 +28,13 @@ dialog
     border 0
     padding 0
     margin 0
+    animation: scale 1s forwards infinite
+
+@keyframes scale
+    from
+        transform: scale(0)
+    to
+        transform: scale(1)
 
 dialog.hidden
     opacity 0

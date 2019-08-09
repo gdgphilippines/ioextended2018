@@ -73,14 +73,20 @@
 .logo
   height 4rem
 
+navigation-loader
+  display: flex
+  align-items: center
 
-
-// Temporary navigation
+// Temporary navigation 
 .temporary-navigation
   list-style-type none
   padding: 0
   margin: 0
   display: flex
+  border-left: 2px solid cornflowerblue
+  padding-left: 2rem
+  margin-left: 2rem
+  margin-right: 2rem
 
   @media screen and (max-width: 800px)
     display none
@@ -88,7 +94,7 @@
   &__link
     all: unset
     font-family: 'Product Sans'
-    color: #555555
+    color: #737373
     cursor pointer
-    font-size: 18px
-    padding: 16px
+    font-size: 2rem
+    padding: 14px

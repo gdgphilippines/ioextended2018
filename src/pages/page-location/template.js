@@ -2,9 +2,9 @@ import { html } from '@littleq/element-lite/lib/lit-html/lib/lit-extended.js';
 
 const template = (self) => html`
   <header>
-    <div class="header">
-      <lazy-picture src="/assets/images/IO_Extended_logo.svg" style="position: absolute; left: 5rem; top: 14rem"></lazy-picture>
-      <h1 class="h1" style="positon: absolute; margin-top:0; padding-top: 12rem; margin-bottom:2rem">${self.data.short_name}</h1>
+    <div class="header" style="background-color: ${self.data.theme_color}">
+      <lazy-picture src="/assets/images/IO_Extended_logo.svg" style="position: absolute; left: 5rem; top: 14rem; display: none"></lazy-picture>
+      <h1 class="h1" style="positon: absolute; margin-top:0; padding-top: 8rem; margin-bottom:2rem">${self.data.short_name}</h1>
       <p class="h">
         <lazy-picture src="/assets/images/calendar_icon.svg"></lazy-picture>
         ${self.data.date}
@@ -14,7 +14,7 @@ const template = (self) => html`
         ${self.data.location}
       </p>
 
-      <a class="regButton" href="${self.data.registrationLink}">Register</a>
+      <a class="regButton" href="${self.data.registrationClosed ? '#' : self.data.registrationLink}" ></a>
     </div>
   </header>
   <main class="main" role="main">
@@ -57,6 +57,8 @@ const template = (self) => html`
         </div>
       </div>
     </general-section>
+
+    
 
 
   </main>

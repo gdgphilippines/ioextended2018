@@ -15,12 +15,20 @@
   padding 0 $micro;
   color $gray-2
   navigation()
+  display: flex
+  align-items: center
 
   &:first-child
     padding 0 $micro 0 0
 
   &:last-child
     padding 0 0 0 $micro
+
+.navigation-item + .navigation-item::before
+  content: '⚫'
+  padding-right: 2rem
+  color: #ddd
+  font-size: 1rem
 
 .navigation-anchor
   font-size: 2rem

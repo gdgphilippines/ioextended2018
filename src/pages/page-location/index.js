@@ -7,6 +7,7 @@ import '../../components/banner-section/index.js';
 import '../../components/general-section/index.js';
 import '../../components/footer-section/index.js';
 import '../../components/schedule-topic/index.js';
+import '../../components/speaker-dialog/index.js';
 const { HTMLElement, customElements, fetch } = window;
 
 class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
@@ -22,6 +23,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
           source: []
         },
         schedule: []
+
       }
     };
     this.location = window.location.hostname === 'localhost' ? '' : 'https://raw.githubusercontent.com/gdgphilippines/ioextended2018/master';
@@ -31,7 +33,6 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   connectedCallback () {
     super.connectedCallback();
     subscribe('routeParamObject', this.__boundFetchPageData);
-
   }
 
   disconnectedCallback () {
@@ -42,7 +43,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
   async fetchPageData ({ id }) {
     if (window.gtag) {
       window.gtag('config', window.gaId, {
-        'page_title' : 'Location: ' + id,
+        'page_title': 'Location: ' + id,
         'page_path': '/location/' + id
       });
     }
@@ -50,7 +51,7 @@ class Page extends PageMixin(ElementLiteLit(HTMLElement, style.toString())) {
     if (id) {
       this.data = await fetch(`${location}/data/locations/${id}.json`).then(result => result.json());
       this.locationId = id;
-    };
+    }
   }
 
   set locationId (id) {
