@@ -6,7 +6,7 @@
   "location": "Holy Angel University, Angeles, Pampanga",
   "locationLink": "",
   "registrationLink": "https://forms.gle/d96YfmYWCDjknvoV6",
-  "registrationClosed": false,
+  "registrationClosed": true,
   "banner": {
     "bitmap": "/data/images/pampanga-bitmap.jpg",
     "src": "/data/images/pampanga-small.jpg",
